@@ -20,11 +20,12 @@ class PackagesController extends Controller
         $this->validate(request(),[
           'speciality' => 'required',
           'packagename' => 'required',
-          'packagetype' => 'required'
+          'packagetype' => 'required',
+          'test' => 'required'
           ]
         );
         //create new post
-        Package::create(request(['speciality','packagename','packagetype']));
+        Package::create(request(['speciality','packagename','packagetype','test']));
         // $package = new Package;
         //
         // $package->speciality = request('speciality');

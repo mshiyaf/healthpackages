@@ -68,7 +68,7 @@
 
                               <div class="form-group">
                                   <label>Tests</label>
-                                  <select id="scroll" name="scroll" class="form-control">
+                                  <select id="scroll" name="test" class="form-control">
 
 
                                     @foreach ($tests as $test)

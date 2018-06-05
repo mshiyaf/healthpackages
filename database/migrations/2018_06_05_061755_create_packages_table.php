@@ -20,7 +20,7 @@ class CreatePackagesTable extends Migration
           $table->string('packagename');
           $table->string('packagetype');
           // $table->string('duration');
-          // $table->string('test');
+           $table->string('test');
           // $table->integer('totalcost');
           // $table->integer('offerprice');
           // $table->string('availability');
