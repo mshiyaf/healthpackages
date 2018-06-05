@@ -16,6 +16,7 @@
 <body>
 
 
+
     <br><br>
     <div class="container">
         <div class="row justify-content-center">
@@ -25,7 +26,39 @@
                         <h4 class="card-title mt-2">Create New Health Package</h4>
                     </header>
                     <article class="card-body">
+<<<<<<< HEAD
                         <form method='POST' action='/categories'>
+=======
+                        <form method="POST" action="/packages">
+                            {{ csrf_field() }}
+                            <div class="form-group">
+                                <label>Speciality </label>
+                                <input type="text" name="speciality" id="speciality" class="form-control" placeholder="">
+                            </div>
+                            <!-- form-group end.// -->
+
+                            <div class="form-group">
+                                <label>Package Name</label>
+                                <input type="text" name="packagename" class="form-control" placeholder=" " >
+                            </div>
+                            <!-- form-group end.// -->
+
+                            <div class="form-group">
+                                <label>Package Type</label>
+                                <input type="text" name="packagetype" class="form-control" placeholder=" ">
+                            </div>
+                            <!-- form-group end.// -->
+                            <label>Duration</label>
+                            <div class="form-row">
+
+                                <div class="form-group col-md-4">
+                                  <input type="text" class="form-control" id="duration" placeholder=" ">
+                                </div>
+
+                                <div class="form-group col-md-4">
+                                  <input type="text" class="form-control" placeholder=" ">
+                                </div>
+>>>>>>> origin/maria
 
                               <div class="form-group">
                                   <label>Speciality </label>
@@ -86,6 +119,8 @@
                               <!-- form-group// -->
                               <small class="text-muted">By clicking the 'Create' button, you confirm that you accept our <br> Terms of use and Privacy Policy.</small>
                         </form>
+
+                      @include('errors')
                     </article>
                     <!-- card-body end .// -->
                 </div>
