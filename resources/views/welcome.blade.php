@@ -1,95 +1,117 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html>
 
-        <title>Laravel</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title></title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+</head>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+<body>
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
 
-            .full-height {
-                height: 100vh;
-            }
+    <br><br>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <header class="card-header">
+                        <h4 class="card-title mt-2">Create New Health Package</h4>
+                    </header>
+                    <article class="card-body">
+                        <form method=''>
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+                            <div class="form-group">
+                                <label>Speciality </label>
+                                <input type="text" class="form-control" placeholder="">
+                            </div>
+                            <!-- form-group end.// -->
 
-            .position-ref {
-                position: relative;
-            }
+                            <div class="form-group">
+                                <label>Package Name</label>
+                                <input type="text" class="form-control" placeholder=" ">
+                            </div>
+                            <!-- form-group end.// -->
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+                            <div class="form-group">
+                                <label>Package Type</label>
+                                <input type="text" class="form-control" placeholder=" ">
+                            </div>
+                            <!-- form-group end.// -->
+                            <label>Duration</label>
+                            <div class="form-row">
 
-            .content {
-                text-align: center;
-            }
+                                <div class="form-group col-md-4">
+                                  <input type="text" class="form-control" id="duration" placeholder=" ">
+                                </div>
 
-            .title {
-                font-size: 84px;
-            }
+                                <div class="form-group col-md-4">
+                                  <input type="text" class="form-control" placeholder=" ">
+                                </div>
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
+                                <div class="form-group col-md-4">
 
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
+                                  <input type="text" class="form-control" placeholder=" ">
+                                </div>
+
+                            </div>
+                            <!-- form-group end.// -->
+
+
+                            {{-- <div class="form-group">
+                                <label class="form-check form-check-inline">
+		  <input class="form-check-input" type="radio" name="gender" value="option1">
+		  <span class="form-check-label"> Male </span>
+		</label>
+                                <label class="form-check form-check-inline">
+		  <input class="form-check-input" type="radio" name="gender" value="option2">
+		  <span class="form-check-label"> Female</span>
+		</label>
+                            </div> --}}
+                            <!-- form-group end.// -->
+
+                                <div class="form-group">
+                                    <label>Tests</label>
+                                    <select id="inputState" class="form-control">
+
+                                      <option>Hello</option>
+                                      <option>Hi</option>
+
+                              		  </select>
+                                </div>
+                                <!-- form-group end.// -->
+
+
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-block"> Create </button>
+                            </div>
+                            <!-- form-group// -->
+                            <small class="text-muted">By clicking the 'Create' button, you confirm that you accept our <br> Terms of use and Privacy Policy.</small>
+                        </form>
+                    </article>
+                    <!-- card-body end .// -->
                 </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                <!-- card.// -->
             </div>
+            <!-- col.//-->
+
         </div>
-    </body>
+        <!-- row.//-->
+
+
+    </div>
+    <!--container end.//-->
+
+    <br><br>
+    </article>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
+</body>
+
 </html>
