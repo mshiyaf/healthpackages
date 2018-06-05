@@ -1,2 +1,6 @@
 *.sqlite
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/anjali
 /app/Providers/AppServiceProvider.php
