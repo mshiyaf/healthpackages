@@ -14,8 +14,24 @@ class CreatePackagesTable extends Migration
     public function up()
     {
         Schema::create('packages', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+          $table->increments('clinic_id');
+          $table->string('speciality');
+          $table->integer('package_id');
+          $table->string('packagename');
+          $table->string('packagetype');
+          $table->string('duration');
+          $table->string('test');
+          $table->integer('totalcost');
+          $table->integer('offerprice');
+          $table->string('availability');
+          $table->string('insuranceclaim');
+          $table->string('agegroup');
+          $table->string('medhistory');
+          $table->string('r_duration');
+          $table->string('r_cost');
+          $table->rememberToken();
+          $table->timestamps();
+
         });
     }
 
