@@ -4,15 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Package;
-
+use App\Test;
 
 class PackagesController extends Controller
 {
     function index()
     {
       $package = Package::all();
-
-      return view('index',compact('packages'));
+      $tests = Test::all();
+      return view('index',compact('packages','tests'));
 
     }
     function store()
@@ -21,8 +21,8 @@ class PackagesController extends Controller
           'speciality' => 'required',
           'packagename' => 'required',
           'packagetype' => 'required'
-        ]
-      );
+          ]
+        );
         //create new post
         Package::create(request(['speciality','packagename','packagetype']));
         // $package = new Package;

@@ -71,10 +71,10 @@
                                   <select id="scroll" name="scroll" class="form-control">
 
 
-                                    <option>Hack</option>
-                                    <option>India</option>
-                                    <option>Hello</option>
-                                    <option>Hi</option>
+                                    @foreach ($tests as $test)
+                                      <option>{{ $test->test_name }}</option>
+
+                                    @endforeach
 
                             		  </select>
                               </div>
