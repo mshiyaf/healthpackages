@@ -8,11 +8,11 @@ use App\Package;
 
 class PackagesController extends Controller
 {
-<<<<<<< HEAD
     function index()
     {
       $package = Package::all();
-      return view('index');
+
+      return view('index',compact('packages'));
 
     }
     function store()
@@ -38,11 +38,6 @@ class PackagesController extends Controller
         //redirect to homepage
 
         return redirect('/');
-=======
-    function index(){
-
-      return view('index');
->>>>>>> origin/anjali
 
     }
 }
