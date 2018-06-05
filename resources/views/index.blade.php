@@ -44,35 +44,8 @@
                                 <label>Package Type</label>
                                 <input type="text" name="packagetype" class="form-control" placeholder=" ">
                             </div>
-                            <!-- form-group end.// -->
-                            <label>Duration</label>
-                            <div class="form-row">
-
-                                <div class="form-group col-md-4">
-                                  <input type="text" class="form-control" id="duration" placeholder=" ">
-                                </div>
-
-                                <div class="form-group col-md-4">
-                                  <input type="text" class="form-control" placeholder=" ">
-                                </div>
-
-                              <div class="form-group">
-                                  <label>Speciality </label>
-                                  <input type="text" class="form-control" placeholder="">
-                              </div>
-                              <!-- form-group end.// -->
 
 
-                              <div class="form-group">
-                                  <label>Package Name</label>
-                                  <input type="text" class="form-control" placeholder=" ">
-                              </div>
-                              <!-- form-group end.// -->
-
-                              <div class="form-group">
-                                  <label>Package Type</label>
-                                  <input type="text" class="form-control" placeholder=" ">
-                              </div>
                               <!-- form-group end.// -->
                               <label>Duration</label>
                               <div class="form-row">
@@ -138,7 +111,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
-    
+
     <script type="text/javascript">
           $(document).ready(function() {
             $('#scroll').select2();
