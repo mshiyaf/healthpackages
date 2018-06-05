@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Package;
+use App\Test;
 
 
 class PackagesController extends Controller
@@ -11,9 +12,12 @@ class PackagesController extends Controller
     function index()
     {
       $package = Package::all();
-      return view('index');
+      $tests = Test::all();
+      return view('index',compact('tests','packages'));
 
     }
+
+
     function store()
     {
         $this->validate(request(),[
@@ -39,4 +43,7 @@ class PackagesController extends Controller
         return redirect('/');
 
     }
+
+
+
 }
