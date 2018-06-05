@@ -13,6 +13,7 @@
 <body>
 
 
+
     <br><br>
     <div class="container">
         <div class="row justify-content-center">
@@ -22,23 +23,23 @@
                         <h4 class="card-title mt-2">Create New Health Package</h4>
                     </header>
                     <article class="card-body">
-                        <form method=''>
-
+                        <form method="POST" action="/packages">
+                            {{ csrf_field() }}
                             <div class="form-group">
                                 <label>Speciality </label>
-                                <input type="text" class="form-control" placeholder="">
+                                <input type="text" name="speciality" id="speciality" class="form-control" placeholder="">
                             </div>
                             <!-- form-group end.// -->
 
                             <div class="form-group">
                                 <label>Package Name</label>
-                                <input type="text" class="form-control" placeholder=" ">
+                                <input type="text" name="packagename" class="form-control" placeholder=" " >
                             </div>
                             <!-- form-group end.// -->
 
                             <div class="form-group">
                                 <label>Package Type</label>
-                                <input type="text" class="form-control" placeholder=" ">
+                                <input type="text" name="packagetype" class="form-control" placeholder=" ">
                             </div>
                             <!-- form-group end.// -->
                             <label>Duration</label>
@@ -92,6 +93,8 @@
                             <!-- form-group// -->
                             <small class="text-muted">By clicking the 'Create' button, you confirm that you accept our <br> Terms of use and Privacy Policy.</small>
                         </form>
+
+                      @include('errors')
                     </article>
                     <!-- card-body end .// -->
                 </div>
