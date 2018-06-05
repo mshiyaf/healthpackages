@@ -14,9 +14,6 @@ class PackagesController extends Controller
       return view('index');
 
     }
-<<<<<<< HEAD
-
-=======
     function store()
     {
         $this->validate(request(),[
@@ -42,5 +39,4 @@ class PackagesController extends Controller
         return redirect('/');
 
     }
->>>>>>> origin/maria
 }

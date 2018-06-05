@@ -26,9 +26,6 @@
                         <h4 class="card-title mt-2">Create New Health Package</h4>
                     </header>
                     <article class="card-body">
-<<<<<<< HEAD
-                        <form method='POST' action='/categories'>
-=======
                         <form method="POST" action="/packages">
                             {{ csrf_field() }}
                             <div class="form-group">
@@ -58,7 +55,6 @@
                                 <div class="form-group col-md-4">
                                   <input type="text" class="form-control" placeholder=" ">
                                 </div>
->>>>>>> origin/maria
 
                               <div class="form-group">
                                   <label>Speciality </label>
