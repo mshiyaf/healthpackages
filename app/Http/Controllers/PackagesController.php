@@ -11,4 +11,5 @@ class PackagesController extends Controller
       return view('index');
 
     }
+
 }
