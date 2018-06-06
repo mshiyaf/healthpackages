@@ -56,7 +56,8 @@
   $(document).ready(function() {
   $('.select2-single,.select2-multiple').select2({
     allowClear:true,
-    placeholder: ''
+    placeholder: '',
+    theme: 'bootstrap'
   });
   });
 

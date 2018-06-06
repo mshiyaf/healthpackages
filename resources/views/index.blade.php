@@ -30,17 +30,18 @@
           <label>Duration</label>
           <div class="form-row">
 
-              <div class="form-group col-md-4">
+              <div class="form-group col-md-2">
                 <input type="text" class="form-control" id="duration" placeholder=" ">
               </div>
 
-              <div class="form-group col-md-4">
-                <input type="text" class="form-control" placeholder=" ">
+              <div class="form-group col-md-3">
+                <select name="time" id="time" class="form-control" placeholder=" ">
+                  <option>days</option>
+                  <option>hour</option>
+                  <option>minutes</option>
+                </select>
               </div>
 
-              <div class="form-group col-md-4">
-                <input type="text" class="form-control" placeholder=" ">
-              </div>
 
           </div>
 
@@ -49,33 +50,21 @@
               <input id="default" type="text" class="form-control" placeholder="Placeholder text">
             </div>
 
-            <div class="form-group">
-              <label for="single" class="control-label">Select2 single select</label>
-              <select id="single" class="form-control select2-single">
-
-                <option></option>
-                <optgroup label="Alaskan/Hawaiian Time Zone">
-                <option value="AK">Alaska</option>
-                <option value="HI" disabled="disabled">Hawaii</option>
-                </optgroup>
-
-              </select>
-            </div>
-
 
             <div class="form-group">
-                  <label for="multiple" class="control-label">Select2 multi select</label>
-              <select id="multiple" class="form-control select2-multiple" multiple>
-                <optgroup label="Alaskan/Hawaiian Time Zone">
-                  <option value="AK">Alaska</option>
-                  <option value="HI" disabled="disabled">Hawaii</option>
-                </optgroup>
+                  <label>Multi</label>
+                  <select name="test" id="multiple" class="form-control select2-multiple">
+
+                  <option></option>
+                  @foreach ($tests as $test)
+                    <option>{{ $test->test_name }}</option>
+                  @endforeach
 
               </select>
 
             <div class="form-group">
                 <label>Tests</label>
-                <select name="test" id="inputState" class="form-control select2-single">
+                <select id="single" class="form-control select2-single">
 
                   <option></option>
                 @foreach ($tests as $test)
