@@ -21,8 +21,8 @@ class CreatePackagesTable extends Migration
           $table->string('packagetype');
           $table->string('duration');
           $table->string('test');
-          // $table->integer('totalcost');
-          // $table->integer('offerprice');
+          $table->integer('totalcost');
+          $table->integer('offerprice');
           // $table->string('availability');
           // $table->string('insuranceclaim');
           // $table->string('agegroup');

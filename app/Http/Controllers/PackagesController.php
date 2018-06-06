@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Package;
 use App\Test;
-use DB;
+
 
 
 class PackagesController extends Controller
@@ -20,8 +20,9 @@ class PackagesController extends Controller
     }
 
 
-    function store()
+    function store(Request $request)
     {
+
         $this->validate(request(),[
           'speciality' => 'required',
           'packagename' => 'required',
@@ -29,12 +30,21 @@ class PackagesController extends Controller
           'test'=> 'required'
         ]);
 
-        Package::create(request(['speciality','packagename','packagetype']));
 
         $package = new Package;
-        $test = Package::all();
+
+
         $test = implode(',',$_POST['test']);
         $package->test = $test;
+
+        $full_dur = $request['duration'].' '.$request['time'];
+        $package->duration = $full_dur;
+
+        $package->speciality = request('speciality');
+        $package->packagename = request('packagename');
+        $package->packagetype = request('packagetype');
+
+
         $package->save();
 
         return redirect('/');
