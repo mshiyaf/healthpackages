@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Package;
 use App\Test;
+use DB;
 
 
 class PackagesController extends Controller
@@ -28,9 +29,16 @@ class PackagesController extends Controller
           'test'=> 'required'
         ]);
 
-        Package::create(request(['speciality','packagename','packagetype','test']));
+        Package::create(request(['speciality','packagename','packagetype']));
+
+        $package = new Package;
+        $test = Package::all();
+        $test = implode(',',$_POST['test']);
+        $package->test = $test;
+        $package->save();
 
         return redirect('/');
+
 
     }
 

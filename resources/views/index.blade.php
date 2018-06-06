@@ -37,7 +37,7 @@
               <div class="form-group col-md-3">
                 <select name="time" id="time" class="form-control" placeholder=" ">
                   <option>days</option>
-                  <option>hour</option>
+                  <option>hours</option>
                   <option>minutes</option>
                 </select>
               </div>
@@ -45,34 +45,18 @@
 
           </div>
 
-            <div class="form-group">
-              <label for="default" class="control-label">Default textbox</label>
-              <input id="default" type="text" class="form-control" placeholder="Placeholder text">
-            </div>
 
-
-            <div class="form-group">
-                  <label>Multi</label>
-                  <select name="test" id="multiple" class="form-control select2-multiple">
-
-                  <option></option>
-                  @foreach ($tests as $test)
-                    <option>{{ $test->test_name }}</option>
-                  @endforeach
-
-              </select>
-
-            <div class="form-group">
+          <div class="form-group">
                 <label>Tests</label>
-                <select id="single" class="form-control select2-single">
+                <select name="test[]" id="multiple" class="form-control select2-multiple" multiple="multiple">
 
-                  <option></option>
+                <option></option>
                 @foreach ($tests as $test)
-                  <option>{{ $test->test_name }}</option>
+                  <option value='{{ $test->id }}' >{{ $test->test_name }}</option>
                 @endforeach
 
                 </select>
-            </div>
+          </div>
 
 
           <div class="form-group">
