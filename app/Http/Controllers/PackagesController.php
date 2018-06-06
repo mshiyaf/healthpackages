@@ -7,6 +7,7 @@ use App\Package;
 use App\Test;
 
 
+
 class PackagesController extends Controller
 {
     function index()
@@ -19,8 +20,9 @@ class PackagesController extends Controller
     }
 
 
-    function store()
+    function store(Request $request)
     {
+
         $this->validate(request(),[
           'speciality' => 'required',
           'packagename' => 'required',
@@ -28,9 +30,25 @@ class PackagesController extends Controller
           'test'=> 'required'
         ]);
 
-        Package::create(request(['speciality','packagename','packagetype','test']));
+
+        $package = new Package;
+
+
+        $test = implode(',',$_POST['test']);
+        $package->test = $test;
+
+        $full_dur = $request['duration'].' '.$request['time'];
+        $package->duration = $full_dur;
+
+        $package->speciality = request('speciality');
+        $package->packagename = request('packagename');
+        $package->packagetype = request('packagetype');
+
+
+        $package->save();
 
         return redirect('/');
+
 
     }
 
