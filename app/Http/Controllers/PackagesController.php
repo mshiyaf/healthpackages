@@ -13,6 +13,7 @@ class PackagesController extends Controller
     {
       $package = Package::all();
       $tests = Test::all();
+
       return view('index',compact('tests','packages'));
 
     }
@@ -23,22 +24,11 @@ class PackagesController extends Controller
         $this->validate(request(),[
           'speciality' => 'required',
           'packagename' => 'required',
-          'packagetype' => 'required'
-        ]
-      );
-        //create new post
-        Package::create(request(['speciality','packagename','packagetype']));
-        // $package = new Package;
-        //
-        // $package->speciality = request('speciality');
-        // $package->packagename = request('packagename');
-        // $package->packagetype = request('packagetype');
-        //
-        // //save to db
-        //
-        // $package->save();
+          'packagetype' => 'required',
+          'test'=> 'required'
+        ]);
 
-        //redirect to homepage
+        Package::create(request(['speciality','packagename','packagetype','test']));
 
         return redirect('/');
 
