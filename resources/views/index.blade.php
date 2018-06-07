@@ -13,10 +13,20 @@
               <label>Speciality </label>
               <input type="text" list="listspc" name="speciality" id="speciality" class="form-control" placeholder="">
               <datalist id="listspc">
-                <option>Volvo</option>
-                <option>Saab</option>
-                <option>Mercedes</option>
-                <option>Audi</option>
+                <option>General Medicine</option>
+                <option>General Surgery	</option>
+                <option>Paediatrics</option>
+                <option>Obstetrics & Gynaecology</option>
+                <option>Dermatology	</option>
+                <option>Ophthalmology</option>
+                <option>Orthopaedics</option>
+                <option>ENT (Ear, Nose and Throat)</option>
+                <option>Psychiatry</option>
+                <option>Anaesthesiology</option>
+                <option>Gastroenterology</option>
+                <option>Endocrinology</option>
+                <option>Oncology</option>
+
               </datalist>
           </div>
 
@@ -31,10 +41,9 @@
               <label>Package Type</label>
               <input type="text" list="listptype" name="packagetype" class="form-control" placeholder=" ">
               <datalist id="listptype">
-                <option>Volvo</option>
-                <option>Saab</option>
-                <option>Mercedes</option>
-                <option>Audi</option>
+                <option>Basic</option>
+                <option>Premium</option>
+
               </datalist>
           </div>
 
@@ -54,6 +63,7 @@
                 </select>
               </div>
           </div>
+
 
 
           <div class="form-group">
@@ -85,6 +95,65 @@
             </div>
             <input type="number" class="form-control" id="offerp" aria-label="Text input with checkbox" disabled = 'disabled'>
           </div>
+
+        <div class="form-group">
+            <label>Insurance Claim</label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+
+                <div class="input-group-text">
+                  <input type="checkbox" name="insurance" id="check" aria-label="" />
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Reccuring</label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
+
+
+                <div class="input-group-text" >
+                  <input type="checkbox" id="recurringcheck" aria-label="" />
+
+                  <div class="form-row">
+
+                      <div class="form-group col-md-2">
+                        <input name="r_duration" type="number" min="0" class="form-control" id="r_duration" placeholder=" Enter number " disabled />
+                      </div>
+
+                      <div class="form-group col-md-3">
+                        <select name="r_time" id="r_time" class="form-control" placeholder="     " disabled />
+                          <option>year</option>
+                          <option>month</option>
+                          <option>week</option>
+                        </select>
+                      </div>
+
+
+                  </div>
+                  <input type="text" name="r_cost" id="r_cost" class="form-control" aria-label="Text input with checkbox" disabled />
+
+                  <script>
+                    document.getElementById('recurringcheck').onchange = function()
+                    {
+                    document.getElementById('r_duration').disabled = !this.checked;
+                    document.getElementById('r_cost').disabled = !this.checked;
+                    document.getElementById('r_time').disabled = !this.checked;
+
+                    };
+                  </script>
+                </div>
+              </div>
+            </div>
+        </div>
+
+
+
+
+
 
           <div class="form-group">
               <button type="submit" class="btn btn-primary btn-block"> Create </button>
