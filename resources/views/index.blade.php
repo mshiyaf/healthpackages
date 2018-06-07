@@ -13,10 +13,20 @@
               <label>Speciality </label>
               <input type="text" list="listspc" name="speciality" id="speciality" class="form-control" placeholder="">
               <datalist id="listspc">
-                <option>Volvo</option>
-                <option>Saab</option>
-                <option>Mercedes</option>
-                <option>Audi</option>
+                <option>General Medicine</option>
+                <option>General Surgery	</option>
+                <option>Paediatrics</option>
+                <option>Obstetrics & Gynaecology</option>
+                <option>Dermatology	</option>
+                <option>Ophthalmology</option>
+                <option>Orthopaedics</option>
+                <option>ENT (Ear, Nose and Throat)</option>
+                <option>Psychiatry</option>
+                <option>Anaesthesiology</option>
+                <option>Gastroenterology</option>
+                <option>Endocrinology</option>
+                <option>Oncology</option>
+
               </datalist>
           </div>
 
@@ -31,10 +41,9 @@
               <label>Package Type</label>
               <input type="text" list="listptype" name="packagetype" class="form-control" placeholder=" ">
               <datalist id="listptype">
-                <option>Volvo</option>
-                <option>Saab</option>
-                <option>Mercedes</option>
-                <option>Audi</option>
+                <option>Basic</option>
+                <option>Premium</option>
+
               </datalist>
           </div>
 
@@ -57,50 +66,7 @@
 
           </div>
 
-<<<<<<< HEAD
-            <div class="form-group">
-              <label for="default" class="control-label">Default textbox</label>
-              <input id="default" type="text" class="form-control" placeholder="Placeholder text">
-            </div>
 
-<<<<<<< HEAD
-                              <div class="form-group">
-                                  <label>Tests</label>
-                                  <select id="scroll" name="test" class="form-control">
-=======
-            <div class="form-group">
-              <label for="single" class="control-label">Select2 single select</label>
-              <select id="single" class="form-control select2-single">
->>>>>>> origin/shiyaf
-
-                <option></option>
-                <optgroup label="Alaskan/Hawaiian Time Zone">
-                <option value="AK">Alaska</option>
-                <option value="HI" disabled="disabled">Hawaii</option>
-                </optgroup>
-
-<<<<<<< HEAD
-                                    @foreach ($tests as $test)
-                                      <option>{{ $test->test_name }}</option>
-
-                                    @endforeach
-=======
-              </select>
-            </div>
->>>>>>> origin/shiyaf
-
-
-            <div class="form-group">
-                  <label for="multiple" class="control-label">Select2 multi select</label>
-              <select id="multiple" class="form-control select2-multiple" multiple>
-                <optgroup label="Alaskan/Hawaiian Time Zone">
-                  <option value="AK">Alaska</option>
-                  <option value="HI" disabled="disabled">Hawaii</option>
-                </optgroup>
-
-              </select>
-=======
->>>>>>> origin/shiyaf
 
           <div class="form-group">
                 <label>Tests</label>
@@ -121,8 +87,82 @@
 
           <div class="form-group">
               <label>Offer Price</label>
-              <input type="number" min="0" name="offerprice" class="form-control" placeholder=" " >
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+
+                  <div class="input-group-text">
+                    <input type="checkbox" id="offerpricecheck" aria-label="Checkbox for following text input" />
+                    <input type="text" name="offerprice" id="offerprice" class="form-control" aria-label="Text input with checkbox" disabled />
+                    <script>
+                      document.getElementById('offerpricecheck').onchange = function()
+                      {
+                      document.getElementById('offerprice').disabled = !this.checked;
+                      };
+                    </script>
+
+                  </div>
+                </div>
+              </div>
           </div>
+
+
+        <div class="form-group">
+            <label>Insurance Claim</label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+
+                <div class="input-group-text">
+                  <input type="checkbox" name="insurance" id="check" aria-label="" />
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Reccuring</label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
+
+
+                <div class="input-group-text" >
+                  <input type="checkbox" id="recurringcheck" aria-label="" />
+
+                  <div class="form-row">
+
+                      <div class="form-group col-md-2">
+                        <input name="r_duration" type="number" min="0" class="form-control" id="r_duration" placeholder=" Enter number " disabled />
+                      </div>
+
+                      <div class="form-group col-md-3">
+                        <select name="r_time" id="r_time" class="form-control" placeholder="     " disabled />
+                          <option>year</option>
+                          <option>month</option>
+                          <option>week</option>
+                        </select>
+                      </div>
+
+
+                  </div>
+                  <input type="text" name="r_cost" id="r_cost" class="form-control" aria-label="Text input with checkbox" disabled />
+
+                  <script>
+                    document.getElementById('recurringcheck').onchange = function()
+                    {
+                    document.getElementById('r_duration').disabled = !this.checked;
+                    document.getElementById('r_cost').disabled = !this.checked;
+                    document.getElementById('r_time').disabled = !this.checked;
+
+                    };
+                  </script>
+                </div>
+              </div>
+            </div>
+        </div>
+
+
+
+
 
 
           <div class="form-group">
