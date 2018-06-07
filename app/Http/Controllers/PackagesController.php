@@ -43,6 +43,11 @@ class PackagesController extends Controller
         $package->speciality = request('speciality');
         $package->packagename = request('packagename');
         $package->packagetype = request('packagetype');
+        $package->totalcost = request('totalcost');
+        $package->offerprice = request('offerprice');
+        $package->insuranceclaim = request('insuranceclaim');
+
+
 
 
         $package->save();
