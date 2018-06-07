@@ -42,19 +42,17 @@
           <label>Duration</label>
           <div class="form-row">
 
-              <div class="form-group col-md-2">
+              <div class="form-group col-md-3">
                 <input name="duration" type="number" min="0" class="form-control" id="duration" placeholder=" ">
               </div>
 
-              <div class="form-group col-md-3">
+              <div class="form-group col-md-2">
                 <select name="time" id="time" class="form-control" placeholder=" ">
-                  <option>days</option>
-                  <option>hours</option>
-                  <option>minutes</option>
+                  <option>Days</option>
+                  <option>Hours</option>
+                  <option>Minutes</option>
                 </select>
               </div>
-
-
           </div>
 
 
@@ -75,11 +73,18 @@
               <input type="number" min="0" name="totalcost" class="form-control" placeholder=" " >
           </div>
 
-          <div class="form-group">
-              <label>Offer Price</label>
-              <input type="number" min="0" name="offerprice" class="form-control" placeholder=" " >
-          </div>
 
+          <label>Offer Price</label>
+          <div class="input-group mb-3">
+
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+
+                <input type="checkbox" aria-label="Checkbox for following text input" >
+              </div>
+            </div>
+            <input type="number" class="form-control" id="offerp" aria-label="Text input with checkbox" disabled = 'disabled'>
+          </div>
 
           <div class="form-group">
               <button type="submit" class="btn btn-primary btn-block"> Create </button>
