@@ -92,8 +92,8 @@ $('#submit').click(function(e){
    var duration = $("input[name=duration]").val();
    var time = $("select[name=time]").val();
    var full_dur = duration+time;
-   var test = $("input[id=test]").val();
-   test.toString();
+   // var test = $("input[id=test]").val();
+   // test.toString();
    var totalcost = $("input[name=totalcost]").val();
    var offerp = $("input[name=offerp]").val();
    var totalcost = $("input[name=totalcost]").val();
