@@ -18,6 +18,7 @@ class CreatePackagesTable extends Migration
           $table->integer('service_id');
           $table->integer('test_id')->unsigned();
           $table->string('packagename');
+          $table->string('packagetype');
           $table->string('duration');
           $table->integer('totalcost');
           $table->integer('offerprice');
