@@ -5,7 +5,7 @@
 
   <article class="card-body">
 
-      <form method="POST" action="/packages">
+      <form>
 
           {{ csrf_field() }}
 
@@ -48,6 +48,7 @@
           </div>
 
 
+
           <label>Duration</label>
           <div class="form-row">
 
@@ -78,85 +79,88 @@
                 </select>
           </div>
 
+
+
           <div class="form-group">
               <label>Total Cost</label>
               <input type="number" min="0" name="totalcost" class="form-control" placeholder=" " >
           </div>
 
 
-          <label>Offer Price</label>
-          <div class="input-group mb-3">
 
+          <label>Offer Price</label>
+          <div class="input-group mb-4">
             <div class="input-group-prepend">
               <div class="input-group-text">
 
-                <input type="checkbox" aria-label="Checkbox for following text input" >
+                <input type="checkbox" id="offercheck">
+
               </div>
             </div>
-            <input type="number" class="form-control" id="offerp" aria-label="Text input with checkbox" disabled = 'disabled'>
+              <input type="number" class="form-control" name="offerp" id="offerp" disabled = 'disabled'>
           </div>
 
-        <div class="form-group">
-            <label>Insurance Claim</label>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
 
-                <div class="input-group-text">
-                  <input type="checkbox" name="insurance" id="check" aria-label="" />
-                </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <div class="form-check">
+
+                  <input class="form-check-input" type="checkbox" value="" id="insurancecheck">
+                  <label class="form-check-label" for="insurancecheck">Insurance Claim</label>
+
               </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            <label>Reccuring</label>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
+          </div>
 
 
-                <div class="input-group-text" >
-                  <input type="checkbox" id="recurringcheck" aria-label="" />
-
-                  <div class="form-row">
-
-                      <div class="form-group col-md-2">
-                        <input name="r_duration" type="number" min="0" class="form-control" id="r_duration" placeholder=" Enter number " disabled />
-                      </div>
-
-                      <div class="form-group col-md-3">
-                        <select name="r_time" id="r_time" class="form-control" placeholder="     " disabled />
-                          <option>year</option>
-                          <option>month</option>
-                          <option>week</option>
-                        </select>
-                      </div>
 
 
-                  </div>
-                  <input type="text" name="r_cost" id="r_cost" class="form-control" aria-label="Text input with checkbox" disabled />
+        <label>Reccuring</label>
+        <div class="form-group col-md">
+          <div class="form-row">
 
-                  <script>
-                    document.getElementById('recurringcheck').onchange = function()
-                    {
-                    document.getElementById('r_duration').disabled = !this.checked;
-                    document.getElementById('r_cost').disabled = !this.checked;
-                    document.getElementById('r_time').disabled = !this.checked;
-
-                    };
-                  </script>
-                </div>
+              <div class="form-group col-md-1">
+                <input style="padding-left:1rem" type="checkbox" id="recurringcheck1">
               </div>
-            </div>
+
+
+              <div class="form-group col-md-2">
+                <select name="r_time" id="r_time1" class="form-control" disabled>
+                    <option>Monthly</option>
+                  </select>
+              </div>
+
+              <div class="form-group col-md-4">
+                <input type="text" name="r_cost" id="r_cost1" class="form-control" placeholder="Cost" disabled>
+              </div>
+
+          </div>
+          <div class="form-row">
+
+              <div class="form-group col-md-1">
+                <input style="padding-left:1rem" type="checkbox" id="recurringcheck2">
+              </div>
+
+
+              <div class="form-group col-md-2">
+                <select name="r_time" id="r_time2" class="form-control" disabled>
+                    <option>Yearly</option>
+                  </select>
+              </div>
+
+              <div class="form-group col-md-4">
+                <input type="text" name="r_cost" id="r_cost2" class="form-control" placeholder="Cost" disabled>
+              </div>
+
+          </div>
+
         </div>
-
-
-
 
 
 
           <div class="form-group">
-              <button type="submit" class="btn btn-primary btn-block"> Create </button>
+              <button type="submit" id="submit" class="btn btn-primary btn-block"> Create </button>
           </div>
 
           <small class="text-muted">By clicking the 'Create' button, you confirm that you accept our <br> Terms of use and Privacy Policy.</small>

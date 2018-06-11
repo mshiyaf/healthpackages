@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css"/>
     <link rel="stylesheet" href="/css/app.css">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body>
@@ -45,7 +46,7 @@
     <!--container end.//-->
 
 
-
+<script src="/js/app.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
@@ -61,13 +62,70 @@
   });
 
 
-  $( ":checkbox" ).on( "click", function() {
+  $( "#offercheck" ).on( "click", function() {
     $("#offerp").prop('disabled',!this.checked);
   });
 
+
+  $( "#recurringcheck1" ).on( "click", function() {
+    $("#r_cost1").prop('disabled',!this.checked);
+    $("#r_time1").prop('disabled',!this.checked);
   });
 
+  $( "#recurringcheck2" ).on( "click", function() {
+    $("#r_cost2").prop('disabled',!this.checked);
+    $("#r_time2").prop('disabled',!this.checked);
+  });
+
+});
+
 </script>
+
+<script type="text/javascript">
+
+$("document").ready(function(){
+$('#submit').click(function(e){
+   e.preventDefault();
+   var speciality = $("input[name=speciality]").val();
+   var packagename = $("input[name=packagename]").val();
+   var packagetype = $("input[name=packagetype]").val();
+   var duration = $("input[name=duration]").val();
+   var time = $("select[name=time]").val();
+   var full_dur = duration+time;
+   var test = $("input[name=test[]").val();
+   var totalcost = $("input[name=totalcost]").val();
+   var offerp = $("input[name=offerp]").val();
+   var totalcost = $("input[name=totalcost]").val();
+   alert('Created New Package');
+   $.ajaxSetup({
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+  });
+   $.ajax({
+      url: "/packages",
+      method: 'post',
+      dataType:'json',
+      data: {
+         speciality:speciality,
+         packagename:packagename,
+         packagetype:packagetype,
+         full_dur:full_dur,
+         test:test,
+         totalcost:totalcost,
+         offerp:offerp
+         // type: jQuery('#type').val(),
+         // price: jQuery('#price').val()
+      },
+      success: function(data){
+        alert(response.message)
+      }
+    });
+   });
+ });
+
+</script>
+
 
 <br><br>
 
