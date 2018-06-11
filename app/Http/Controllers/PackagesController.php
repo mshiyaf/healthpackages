@@ -38,11 +38,11 @@ class PackagesController extends Controller
 
         // $full_dur = $request['duration'].' '.$request['time'];
         $package->duration = request('full_dur');
-        // $package->speciality = request('speciality');
-        // $package->packagename = request('packagename');
-        // $package->packagetype = request('packagetype');
-        // $package->totalcost = request('totalcost');
-        // $package->offerprice = request('offerp');
+        $package->speciality = request('speciality');
+        $package->packagename = request('packagename');
+        $package->packagetype = request('packagetype');
+        $package->totalcost = request('totalcost');
+        $package->offerprice = request('offerp');
         // $package->insuranceclaim = request('insuranceclaim');
 
 

@@ -69,7 +69,7 @@
 
           <div class="form-group">
                 <label>Tests</label>
-                <select name="test[]" id="multiple" class="form-control select2-multiple" multiple="multiple">
+                <select name="test[]" id="test" class="form-control select2-multiple" multiple="multiple">
 
                 <option></option>
                 @foreach ($tests as $test)

@@ -14,8 +14,13 @@ class CreateTestsTable extends Migration
     public function up()
     {
         Schema::create('tests', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('test_id');
+            $table->integer('cat_id')->unsigned();
             $table->string('test_name');
+        });
+        Schema::table('tests',function($table){
+            $table->foreign('cat_id')->references('cat_id')->on('categories')->onDelete('cascade');
+
         });
     }
 

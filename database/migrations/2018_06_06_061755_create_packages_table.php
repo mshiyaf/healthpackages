@@ -14,12 +14,10 @@ class CreatePackagesTable extends Migration
     public function up()
     {
         Schema::create('packages', function (Blueprint $table) {
-          $table->increments('clinic_id');
-          $table->string('speciality');
-          $table->integer('package_id')->default('0');
+          $table->increments('package_id');
+          $table->integer('service_id');
+          $table->integer('test_id')->unsigned();
           $table->string('packagename');
-          $table->string('packagetype');
-          // $table->string('test');
           $table->string('duration');
           $table->integer('totalcost');
           $table->integer('offerprice');
@@ -33,6 +31,11 @@ class CreatePackagesTable extends Migration
           $table->timestamps();
 
         });
+
+      Schema::table('packages',function($table){
+          $table->foreign('test_id')->references('test_id')->on('tests')->onDelete('cascade');
+
+      });
     }
 
     /**
