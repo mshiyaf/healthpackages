@@ -55,7 +55,7 @@
 
   $(document).ready(function() {
 
-  $('.select2-single,#test').select2({
+  $('.select2-single,#test,#category').select2({
     allowClear:true,
     placeholder: '',
     theme: 'bootstrap'
@@ -101,8 +101,8 @@ $("document").ready(function(){
 
               x++; //text box increment
               var test_id = 'test_'+x;
-              var $options = $('<option>Hello</option>');
-              var $div = $('<div class="form-group"><label>Tests</label><select name="test[]" id='+test_id+' class="form-control select2-multiple" multiple="multiple"><option></option>'+$options+'</select></div>');
+
+              var $div = $('<div class="form-group"><label>Tests</label><select name="test[]" id='+test_id+' class="form-control select2-multiple" multiple="multiple"><options></options></select></div>');
               $(wrapper).append($div); //add input box
               $div.find("#test_"+x).select2({
               allowClear:true,
@@ -148,7 +148,7 @@ $('#submit').click(function(e){
          packagename:packagename,
          packagetype:packagetype,
          full_dur:full_dur,
-          tests:tests,
+         tests:tests,
          totalcost:totalcost,
          offerp:offerp
          // type: jQuery('#type').val(),

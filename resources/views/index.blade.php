@@ -74,6 +74,10 @@
           <div class="input_fields_wrap">
 
             <div class="form-group">
+              <button class="add_field_button btn btn-primary">Add More Categories</button>
+            </div>
+            
+            <div class="form-group">
                   <label>Category</label>
                   <select name="category[]" id="category" class="form-control select2-multiple" multiple="multiple">
 
@@ -93,9 +97,7 @@
 
                   </select>
             </div>
-            <div class="form-group">
-              <button class="add_field_button btn btn-primary">Add More Categories</button>
-            </div>
+
 
           </div>
 
