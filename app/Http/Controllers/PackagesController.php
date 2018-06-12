@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Package;
 use App\Test;
+use App\Service;
 
 
 
@@ -14,8 +15,8 @@ class PackagesController extends Controller
     {
       $package = Package::all();
       $tests = Test::all();
-
-      return view('index',compact('tests','packages'));
+      $services = Service::all();
+      return view('index',compact('tests','packages','services'));
 
     }
 
