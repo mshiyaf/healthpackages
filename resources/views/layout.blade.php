@@ -8,7 +8,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Health Packages</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css">
     <link rel="stylesheet" href="/css/app.css">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
@@ -55,7 +55,7 @@
 
   $(document).ready(function() {
 
-  $('.select2-single,.select2-multiple').select2({
+  $('.select2-single,#test').select2({
     allowClear:true,
     placeholder: '',
     theme: 'bootstrap'
@@ -84,6 +84,35 @@
 <script type="text/javascript">
 
 $("document").ready(function(){
+
+  var wrapper         = $(".input_fields_wrap"); //Fields wrapper
+  var add_button      = $(".add_field_button"); //Add button ID
+  var x = 0;
+
+
+
+
+  $(add_button).click(function(e){ //on add input button click
+          e.preventDefault();
+
+
+              x++; //text box increment
+              var test_id = 'test_'+x;
+              var $options = $('<option>Hello</option>');
+              var $div = $('<div class="form-group"><label>Tests</label><select name="test[]" id='+test_id+' class="form-control select2-multiple" multiple="multiple"><option></option>'+$options+'</select></div>');
+              $(wrapper).append($div); //add input box
+              $div.find("#test_"+x).select2({
+              allowClear:true,
+              placeholder: '',
+              theme: 'bootstrap' });
+
+      });
+
+      $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+          e.preventDefault(); $(this).parent('div').remove(); x--;
+      })
+
+
 $('#submit').click(function(e){
    e.preventDefault();
    var speciality = $("input[name=speciality]").val();
@@ -94,6 +123,7 @@ $('#submit').click(function(e){
    var full_dur = duration+time;
    // var tests =
    var test = $("select[id=test]").val();
+   // console.log(test);
    var tests = test.join(",");
    // // test.toString();
    var totalcost = $("input[name=totalcost]").val();
@@ -114,7 +144,7 @@ $('#submit').click(function(e){
          packagename:packagename,
          packagetype:packagetype,
          full_dur:full_dur,
-         tests:tests,
+         // tests:tests,
          totalcost:totalcost,
          offerp:offerp
          // type: jQuery('#type').val(),
