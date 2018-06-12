@@ -61,6 +61,9 @@
     theme: 'bootstrap'
   });
 
+  $( "#servicecheck" ).on( "click", function() {
+    $("#service").prop('disabled',!this.checked);
+  });
 
   $( "#offercheck" ).on( "click", function() {
     $("#offerp").prop('disabled',!this.checked);
