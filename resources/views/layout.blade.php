@@ -101,10 +101,6 @@ $("document").ready(function(){
 
               x++; //text box increment
               var test_id = 'test_'+x;
-              // <?php
-              //       echo $tests->test_name;
-              //
-              // ?>
 
               var $div = $('<div class="form-group"><label>Tests</label><select name="test[]" id='+test_id+' class="form-control select2-multiple" multiple="multiple"><options></options></select></div>');
               $(wrapper).append($div); //add input box
@@ -112,9 +108,6 @@ $("document").ready(function(){
               allowClear:true,
               placeholder: '',
               theme: 'bootstrap' });
-              console.log('@foreach ($tests as $test)
-                {{ $test->test_id }}
-              @endforeach');
 
       });
 
@@ -154,7 +147,7 @@ $('#submit').click(function(e){
          packagename:packagename,
          packagetype:packagetype,
          full_dur:full_dur,
-         // tests:tests,
+         tests:tests,
          totalcost:totalcost,
          offerp:offerp
          // type: jQuery('#type').val(),
