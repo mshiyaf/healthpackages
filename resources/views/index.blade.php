@@ -26,7 +26,6 @@
                 <option>Gastroenterology</option>
                 <option>Endocrinology</option>
                 <option>Oncology</option>
-
               </datalist>
           </div>
 
@@ -43,10 +42,31 @@
               <datalist id="listptype">
                 <option>Basic</option>
                 <option>Premium</option>
-
               </datalist>
           </div>
 
+
+
+          <div class="form-group">
+                <label>Category</label>
+                <select name="category[]" id="category" class="form-control select2-multiple" multiple="multiple">
+
+                <option></option>
+
+                </select>
+          </div>
+
+          <div class="form-group">
+                <label>Tests</label>
+                <select name="test[]" id="test" class="form-control select2-multiple" multiple="multiple">
+
+                <option></option>
+                @foreach ($tests as $test)
+                  <option value='{{ $test->test_id }}' >{{ $test->test_name }}</option>
+                @endforeach
+
+                </select>
+          </div>
 
 
           <label>Duration</label>
@@ -63,20 +83,6 @@
                   <option>Minutes</option>
                 </select>
               </div>
-          </div>
-
-
-
-          <div class="form-group">
-                <label>Tests</label>
-                <select name="test[]" id="test" class="form-control select2-multiple" multiple="multiple">
-
-                <option></option>
-                @foreach ($tests as $test)
-                  <option value='{{ $test->id }}' >{{ $test->test_name }}</option>
-                @endforeach
-
-                </select>
           </div>
 
 
