@@ -31,7 +31,8 @@ class PackagesController extends Controller
         // ]);
 
         $package = new Package;
-
+        // $cat = request('test');
+        // alert($cat);
 
         // $test = implode(',',$_POST['test']);
         // $package->test = $test;
@@ -43,6 +44,7 @@ class PackagesController extends Controller
         $package->packagetype = request('packagetype');
         $package->totalcost = request('totalcost');
         $package->offerprice = request('offerp');
+        $package->test_id = request('tests');
         // $package->insuranceclaim = request('insuranceclaim');
 
 
@@ -51,7 +53,7 @@ class PackagesController extends Controller
 
         // return response()->json(['message' => 'Your message']);
         //dd(speciality);
-        return redirect('/');
+        // return redirect('/');
 
 
     }

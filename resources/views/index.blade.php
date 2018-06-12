@@ -62,7 +62,7 @@
 
                 <option></option>
                 @foreach ($tests as $test)
-                  <option value='{{ $test->id }}' >{{ $test->test_name }}</option>
+                  <option value='{{ $test->test_id }}' >{{ $test->test_name }}</option>
                 @endforeach
 
                 </select>

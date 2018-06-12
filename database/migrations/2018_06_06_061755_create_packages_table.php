@@ -16,7 +16,7 @@ class CreatePackagesTable extends Migration
         Schema::create('packages', function (Blueprint $table) {
           $table->increments('package_id');
           $table->integer('service_id');
-          $table->integer('test_id')->unsigned();
+          $table->string('test_id');
           $table->string('packagename');
           $table->string('packagetype');
           $table->string('duration');
@@ -33,10 +33,10 @@ class CreatePackagesTable extends Migration
 
         });
 
-      Schema::table('packages',function($table){
-          $table->foreign('test_id')->references('test_id')->on('tests')->onDelete('cascade');
-
-      });
+      // Schema::table('packages',function($table){
+      //     $table->foreign('test_id')->references('test_id')->on('tests')->onDelete('cascade');
+      //
+      // });
     }
 
     /**
