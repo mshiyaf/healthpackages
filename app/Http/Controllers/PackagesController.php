@@ -51,7 +51,7 @@ class PackagesController extends Controller
 
         $package->save();
 
-        
+
 
         // return response()->json(['message' => 'Your message']);
         //dd(speciality);
