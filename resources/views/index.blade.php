@@ -10,24 +10,17 @@
           {{ csrf_field() }}
 
           <div class="form-group">
-              <label>Speciality </label>
-              <input type="text" list="listspc" name="speciality" id="speciality" class="form-control" placeholder="">
-              <datalist id="listspc">
-                <option>General Medicine</option>
-                <option>General Surgery	</option>
-                <option>Paediatrics</option>
-                <option>Obstetrics & Gynaecology</option>
-                <option>Dermatology	</option>
-                <option>Ophthalmology</option>
-                <option>Orthopaedics</option>
-                <option>ENT (Ear, Nose and Throat)</option>
-                <option>Psychiatry</option>
-                <option>Anaesthesiology</option>
-                <option>Gastroenterology</option>
-                <option>Endocrinology</option>
-                <option>Oncology</option>
-              </datalist>
+                <label>Speciality</label>
+                <select name="services" id="services" class="form-control">
+
+                <option></option>
+                @foreach ($services as $service)
+                  <option value='{{ $service->service_id }}' >{{ $service->service_name }}</option>
+                @endforeach
+
+                </select>
           </div>
+
 
 
           <div class="form-group">
