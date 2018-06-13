@@ -15,8 +15,8 @@ class CreatePackcattestsTable extends Migration
     {
         Schema::create('packcattests', function (Blueprint $table) {
             $table->increments('package_id');
-            $table->integer('cat_id');
-            $table->integer('test_id');
+            $table->string('cat_id');
+            $table->string('test_id');
             $table->timestamps();
         });
     }
