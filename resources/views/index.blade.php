@@ -181,6 +181,25 @@
         </div>
 
 
+        <label>Available Dates</label>
+        <div class="form-group col-md">
+        <div class="form row">
+            <div class="form-group col-md-4">
+              <input class="form-control" type="date" id="from_date">
+            </div>
+
+            <div>
+              <label>to</label>
+            </div>
+
+            <div class="form-group col-md-4">
+              <input class="form-control" type="date" id="to_date">
+            </div>
+        </div>
+      </div>
+
+
+
           <div class="form-group">
               <button type="submit" id="submit" class="btn btn-primary btn-block"> Create </button>
           </div>
