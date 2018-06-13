@@ -7,6 +7,7 @@ use App\Package;
 use App\Test;
 use App\Service;
 use App\Category;
+use App\Packcattest;
 
 
 class PackagesController extends Controller
@@ -17,7 +18,8 @@ class PackagesController extends Controller
       $tests = Test::all();
       $services = Service::all();
       $categories = Category::all();
-      return view('index',compact('tests','packages','services','categories'));
+      $packcattests = Packcattest::all();
+      return view('index',compact('tests','packages','services','categories','packcattests'));
 
     }
 
@@ -50,10 +52,10 @@ class PackagesController extends Controller
         $n = request('y');
         $new = json_decode($output);
         for ($i=1; $i <= $n ; $i++) {
-          $tests = new Package;
-          $tests->test_id = $new->{$i};
-          $tests->service_id = $i;
-          $tests->save();
+          $packcattests = new Packcattest;
+          $packcattests->test_id = $new->{$i};
+          $packcattests->cat_id = $i;
+          $packcattests->save();
         }
 
         // $package->insuranceclaim = request('insuranceclaim');

@@ -178,7 +178,7 @@ $("document").ready(function(){
 
       $('#submit').click(function(e){
          e.preventDefault();
-         var speciality = $("input[name=speciality]").val();
+         var service = $("select[id=service]").val();
          var packagename = $("input[name=packagename]").val();
          var packagetype = $("input[name=packagetype]").val();
          var duration = $("input[name=duration]").val();
@@ -199,7 +199,7 @@ $("document").ready(function(){
           method: 'post',
           dataType:'json',
           data: {
-             speciality:speciality,
+             service:service,
              packagename:packagename,
              packagetype:packagetype,
              full_dur:full_dur,
