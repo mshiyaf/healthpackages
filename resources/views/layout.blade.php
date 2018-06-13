@@ -138,44 +138,44 @@ $("document").ready(function(){
       })
 
 
-$('#submit').click(function(e){
-   e.preventDefault();
-   var speciality = $("input[name=speciality]").val();
-   var packagename = $("input[name=packagename]").val();
-   var packagetype = $("input[name=packagetype]").val();
-   var duration = $("input[name=duration]").val();
-   var time = $("select[name=time]").val();
-   var full_dur = duration+time;
+    $('#submit').click(function(e){
+       e.preventDefault();
+       var speciality = $("input[name=speciality]").val();
+       var packagename = $("input[name=packagename]").val();
+       var packagetype = $("input[name=packagetype]").val();
+       var duration = $("input[name=duration]").val();
+       var time = $("select[name=time]").val();
+       var full_dur = duration+time;
 
-   var totalcost = $("input[name=totalcost]").val();
-   var offerp = $("input[name=offerp]").val();
-   var totalcost = $("input[name=totalcost]").val();
-   // alert();
-   $.ajaxSetup({
-      headers: {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      }
-  });
-   $.ajax({
-      url: "/packages",
-      method: 'post',
-      dataType:'json',
-      data: {
-         speciality:speciality,
-         packagename:packagename,
-         packagetype:packagetype,
-         full_dur:full_dur,
-         tests:tests,
-         totalcost:totalcost,
-         offerp:offerp
-         // type: jQuery('#type').val(),
-         // price: jQuery('#price').val()
-      },
-      success: function(data){
-        alert(response.message)
-      }
-    });
-   });
+       var totalcost = $("input[name=totalcost]").val();
+       var offerp = $("input[name=offerp]").val();
+       var totalcost = $("input[name=totalcost]").val();
+       // alert();
+       $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+      });
+       $.ajax({
+          url: "/packages",
+          method: 'post',
+          dataType:'json',
+          data: {
+             speciality:speciality,
+             packagename:packagename,
+             packagetype:packagetype,
+             full_dur:full_dur,
+             tests:tests,
+             totalcost:totalcost,
+             offerp:offerp
+             // type: jQuery('#type').val(),
+             // price: jQuery('#price').val()
+          },
+          success: function(data){
+            alert(response.message)
+          }
+        });
+       });
  });
 
 </script>
