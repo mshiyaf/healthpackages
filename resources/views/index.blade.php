@@ -78,7 +78,7 @@
               <button class="add_field_button btn btn-primary">Add More Categories</button>
             </div>
 
-            <div class="form-group">
+            {{-- <div class="form-group">
               <article class="card-body">
                   <label>Category 1</label>
                   <select name="category[]" id="category_1" class="form-control select2-multiple" multiple="multiple">
@@ -100,7 +100,7 @@
 
                   </select>
               </article>
-            </div>
+            </div> --}}
 
 
           </div>
