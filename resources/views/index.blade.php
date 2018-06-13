@@ -9,21 +9,7 @@
 
           {{ csrf_field() }}
 
-<<<<<<< HEAD
-          <div class="form-group">
-                <label>Speciality</label>
-                <select name="services" id="services" class="form-control">
 
-                <option></option>
-                @foreach ($services as $service)
-                  <option value='{{ $service->service_id }}' >{{ $service->service_name }}</option>
-                @endforeach
-
-                </select>
-          </div>
-=======
-
->>>>>>> origin/shiyaf
 
 
 

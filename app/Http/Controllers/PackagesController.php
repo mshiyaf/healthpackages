@@ -6,11 +6,7 @@ use Illuminate\Http\Request;
 use App\Package;
 use App\Test;
 use App\Service;
-<<<<<<< HEAD
-
-=======
 use App\Category;
->>>>>>> origin/shiyaf
 
 
 class PackagesController extends Controller
@@ -20,13 +16,8 @@ class PackagesController extends Controller
       $package = Package::all();
       $tests = Test::all();
       $services = Service::all();
-<<<<<<< HEAD
-
-      return view('index',compact('tests','packages','services'));
-=======
       $categories = Category::all();
       return view('index',compact('tests','packages','services','categories'));
->>>>>>> origin/shiyaf
 
     }
 
