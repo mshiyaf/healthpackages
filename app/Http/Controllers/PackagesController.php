@@ -15,9 +15,10 @@ class PackagesController extends Controller
     function index()
     {
       $package = Package::all();
+      $categories = Category::all();
       $tests = Test::all();
       $services = Service::all();
-      $categories = Category::all();
+
       return view('index',compact('tests','packages','services','categories'));
 
     }

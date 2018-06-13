@@ -106,16 +106,16 @@ $("document").ready(function(){
               var category_id = 'category_'+x;
               var $div = $('<div class="form-group"><article class="card-body"><label>Category '+x+'</label><select name="category[]" id='+category_id+' class="form-control select2-multiple" multiple="multiple"><option></option></select><label>Test for Category'+x+'</label><select name="test[]" id='+test_id+' class="form-control select2-multiple" multiple="multiple"></select><a href="#" class="submit_field">Done</a><div></div><a href="#" class="remove_field">Remove</a></article></div>');
               $(wrapper).append($div); //add input box
-              @foreach ($tests as $test)
-              $("#test_"+x).append($('<option>', {
-                  value: {{ $test->test_id }},
-                  text : "{{ $test->test_name }}"
-              }));
-              @endforeach
               @foreach ($categories as $category)
               $("#category_"+x).append($('<option>', {
                   value: {{ $category->cat_id }},
                   text : "{{ $category->cat_name }}"
+              }));
+              @endforeach
+              @foreach ($tests as $test)
+              $("#test_"+x).append($('<option>', {
+                  value: {{ $test->test_id }},
+                  text : "{{ $test->test_name }}"
               }));
               @endforeach
               $div.find("#test_"+x).select2({
