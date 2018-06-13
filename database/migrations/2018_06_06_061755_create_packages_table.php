@@ -25,8 +25,8 @@ class CreatePackagesTable extends Migration
           $table->boolean('insuranceclaim');
           // $table->string('agegroup');
           // // $table->('medhistory');
-          // $table->string('r_duration');
-          // $table->string('r_cost');
+           $table->integer('r_cost_monthly');
+           $table->integer('r_cost_y_yearly');
           $table->rememberToken();
           $table->timestamps();
 

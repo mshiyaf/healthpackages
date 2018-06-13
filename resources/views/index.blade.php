@@ -176,7 +176,7 @@
               </div>
 
               <div class="form-group col-md-4">
-                <input type="text" name="r_cost" id="r_cost1" class="form-control" placeholder="Cost" disabled>
+                <input type="text" name="r_cost1" id="r_cost1" class="form-control" placeholder="Cost" disabled>
               </div>
 
           </div>
@@ -194,7 +194,7 @@
               </div>
 
               <div class="form-group col-md-4">
-                <input type="text" name="r_cost" id="r_cost2" class="form-control" placeholder="Cost" disabled>
+                <input type="text" name="r_cost2" id="r_cost2" class="form-control" placeholder="Cost" disabled>
               </div>
 
           </div>
