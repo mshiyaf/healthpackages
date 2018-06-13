@@ -48,6 +48,8 @@ class PackagesController extends Controller
         $package->totalcost = request('totalcost');
         $package->offerprice = request('offerp');
         $package->insuranceclaim = request('insuranceclaim');
+        $package->from_date = request('from_date');
+        $package->to_date = request('to_date');
         $output = request('soutput');
         $n = request('id_no');
         $new = json_decode($output);

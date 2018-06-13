@@ -190,6 +190,9 @@ $("document").ready(function(){
          var totalcost = $("input[name=totalcost]").val();
          var id_no = x;
          var insuranceclaim = $("input[name=insurance]").val();
+         var from_date = $("input[id=from_date]").val();
+         var to_date = $("input[id=to_date]").val();
+
          // alert();
          $.ajaxSetup({
             headers: {
@@ -209,7 +212,9 @@ $("document").ready(function(){
              soutput:soutput,
              totalcost:totalcost,
              offerp:offerp,
-             insuranceclaim:insuranceclaim
+             insuranceclaim:insuranceclaim,
+             from_date:from_date,
+             to_date:to_date
              // type: jQuery('#type').val(),
              // price: jQuery('#price').val()
           },
