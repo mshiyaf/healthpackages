@@ -9,6 +9,7 @@
 
           {{ csrf_field() }}
 
+<<<<<<< HEAD
           <div class="form-group">
                 <label>Speciality</label>
                 <select name="services" id="services" class="form-control">
@@ -20,6 +21,9 @@
 
                 </select>
           </div>
+=======
+
+>>>>>>> origin/shiyaf
 
 
 
@@ -40,7 +44,7 @@
 
 
 
-          <div class="form-group">
+          {{-- <div class="form-group">
                 <label>Category</label>
                 <select name="category[]" id="category" class="form-control select2-multiple" multiple="multiple">
 
@@ -59,6 +63,60 @@
                 @endforeach
 
                 </select>
+          </div> --}}
+
+          <div class="form-group">
+              <label>Speciality </label>
+              <div class="input-group mb-4">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+
+                    <input type="checkbox" id="servicecheck">
+
+                  </div>
+                </div>
+                <select name="service[]" id="service" class="form-control select2-multiple" disabled="disabled">
+
+                <option></option>
+                @foreach ($services as $service)
+                  <option value='{{ $service->service_id }}' >{{ $service->service_name }}</option>
+                @endforeach
+
+                </select>
+              </div>
+          </div>
+
+          <div class="input_fields_wrap">
+
+            <div class="form-group">
+              <button class="add_field_button btn btn-primary">Add More Categories</button>
+            </div>
+
+            <div class="form-group">
+              <article class="card-body">
+                  <label>Category 1</label>
+                  <select name="category[]" id="category_1" class="form-control select2-multiple" multiple="multiple">
+
+                  <option></option>
+
+                  @foreach ($categories as $category)
+                    <option value='{{ $category->cat_id }}' >{{ $category->cat_name }}</option>
+                  @endforeach
+                  </select>
+
+                  <label>Tests for Category 1</label>
+                  <select name="test[]" id="test_1" class="form-control select2-multiple" multiple="multiple">
+
+
+                  @foreach ($tests as $test)
+                    <option value='{{ $test->test_id }}' >{{ $test->test_name }}</option>
+                  @endforeach
+
+                  </select>
+              </article>
+            </div>
+
+
           </div>
 
 
