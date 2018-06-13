@@ -48,17 +48,18 @@ class PackagesController extends Controller
         $package->packagetype = request('packagetype');
         $package->totalcost = request('totalcost');
         $package->offerprice = request('offerp');
+        $package->insuranceclaim = request('insuranceclaim');
         $output = request('soutput');
-        $n = request('y');
+        $n = request('id_no');
         $new = json_decode($output);
         for ($i=1; $i <= $n ; $i++) {
-          $packcattests = new Packcattest;
-          $packcattests->test_id = $new->{$i};
-          $packcattests->cat_id = $i;
-          $packcattests->save();
+          $tests = new Packcattest;
+          $tests->test_id = $new->{$i};
+          $tests->cat_id = $i;
+          $tests->save();
         }
 
-        // $package->insuranceclaim = request('insuranceclaim');
+        //
 
 
 
