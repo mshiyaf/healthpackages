@@ -50,7 +50,7 @@ class PackagesController extends Controller
         $package->offerprice = request('offerp');
         $package->insuranceclaim = request('insuranceclaim');
         $package->r_cost_monthly=request('r_cost1');
-        $package->r_cost_y_yearly=request('r_cost2');
+        $package->r_cost_yearly=request('r_cost2');
         $output = request('soutput');
         $n = request('id_no');
         $new = json_decode($output);
