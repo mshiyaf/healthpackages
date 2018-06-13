@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Package;
 use App\Test;
 use App\Service;
-
+use App\Category;
 
 
 class PackagesController extends Controller
@@ -16,7 +16,8 @@ class PackagesController extends Controller
       $package = Package::all();
       $tests = Test::all();
       $services = Service::all();
-      return view('index',compact('tests','packages','services'));
+      $categories = Category::all();
+      return view('index',compact('tests','packages','services','categories'));
 
     }
 
@@ -40,7 +41,7 @@ class PackagesController extends Controller
 
         // $full_dur = $request['duration'].' '.$request['time'];
         $package->duration = request('full_dur');
-        $package->service_id = request('speciality');
+        $package->service_id = request('service');
         $package->packagename = request('packagename');
         $package->packagetype = request('packagetype');
         $package->totalcost = request('totalcost');
