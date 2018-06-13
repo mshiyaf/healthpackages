@@ -84,6 +84,9 @@
 
                   <option></option>
 
+                  @foreach ($categories as $category)
+                    <option value='{{ $category->cat_id }}' >{{ $category->cat_name }}</option>
+                  @endforeach
                   </select>
 
                   <label>Tests for Category 1</label>
