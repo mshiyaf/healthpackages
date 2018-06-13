@@ -70,38 +70,38 @@
                 </select>
               </div>
           </div>
-          
+
           <div class="input_fields_wrap">
 
             <div class="form-group">
               <button class="add_field_button btn btn-primary">Add More Categories</button>
             </div>
-            
+
             <div class="form-group">
-                  <label>Category</label>
-                  <select name="category[]" id="category" class="form-control select2-multiple" multiple="multiple">
+              <article class="card-body">
+                  <label>Category 1</label>
+                  <select name="category[]" id="category_1" class="form-control select2-multiple" multiple="multiple">
 
                   <option></option>
 
                   </select>
-            </div>
 
-            <div class="form-group">
-                  <label>Tests</label>
-                  <select name="test[]" id="test" class="form-control select2-multiple" multiple="multiple">
+                  <label>Tests for Category 1</label>
+                  <select name="test[]" id="test_1" class="form-control select2-multiple" multiple="multiple">
 
-                  <option></option>
+
                   @foreach ($tests as $test)
                     <option value='{{ $test->test_id }}' >{{ $test->test_name }}</option>
                   @endforeach
 
                   </select>
+              </article>
             </div>
 
 
           </div>
 
-          <br>
+
           <label>Duration</label>
           <div class="form-row">
 

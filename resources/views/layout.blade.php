@@ -55,7 +55,7 @@
 
   $(document).ready(function() {
 
-  $('.select2-single,#test,#category').select2({
+  $('.select2-single,#test_1,#category_1').select2({
     allowClear:true,
     placeholder: '',
     theme: 'bootstrap'
@@ -90,7 +90,7 @@ $("document").ready(function(){
 
   var wrapper         = $(".input_fields_wrap"); //Fields wrapper
   var add_button      = $(".add_field_button"); //Add button ID
-  var x = 0;
+  var x = 1;
 
 
 
@@ -101,18 +101,40 @@ $("document").ready(function(){
 
               x++; //text box increment
               var test_id = 'test_'+x;
-
-              var $div = $('<div class="form-group"><label>Tests</label><select name="test[]" id='+test_id+' class="form-control select2-multiple" multiple="multiple"><options></options></select></div>');
+              var category_id = 'category_'+x;
+              var $div = $('<div class="form-group"><article class="card-body"><label>Category '+x+'</label><select name="category[]" id='+category_id+' class="form-control select2-multiple" multiple="multiple"><option></option></select><label>Test for Category'+x+'</label><select name="test[]" id='+test_id+' class="form-control select2-multiple" multiple="multiple"></select><a href="#" class="remove_field">Remove</a></article></div>');
               $(wrapper).append($div); //add input box
+              @foreach ($tests as $test)
+              $("#test_"+x).append($('<option>', {
+                  value: {{ $test->test_id }},
+                  text : "{{ $test->test_name }}"
+              }));
+              @endforeach
               $div.find("#test_"+x).select2({
               allowClear:true,
               placeholder: '',
               theme: 'bootstrap' });
+              $div.find("#category_"+x).select2({
+              allowClear:true,
+              placeholder: '',
+              theme: 'bootstrap' });
 
+              y = x-1;
+              var test_id = '#test_'+y;
+              var d = $(test_id).select2("data");
+              //var tests_idn = d.y.id.join(",");
+              //alert(test_id);
+              //var id = d[].id;
+              console.log(tests_idn);
+              // // var tests_id = 'tests_'+x;
+              // var tests_idn = test_idn.join(",");
+              // // console.log(test_id);
+              // alert(test_idn);
+              // // // test.toString();
       });
 
       $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-          e.preventDefault(); $(this).parent('div').remove(); x--;
+          e.preventDefault(); $(this).parent('article').remove(); x--;
       })
 
 
@@ -124,11 +146,7 @@ $('#submit').click(function(e){
    var duration = $("input[name=duration]").val();
    var time = $("select[name=time]").val();
    var full_dur = duration+time;
-   // var tests =
-   var test = $("select[id=test]").val();
-   // console.log(test);
-   var tests = test.join(",");
-   // // test.toString();
+
    var totalcost = $("input[name=totalcost]").val();
    var offerp = $("input[name=offerp]").val();
    var totalcost = $("input[name=totalcost]").val();
