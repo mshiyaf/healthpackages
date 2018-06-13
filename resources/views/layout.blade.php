@@ -90,7 +90,8 @@ $("document").ready(function(){
 
   var wrapper         = $(".input_fields_wrap"); //Fields wrapper
   var add_button      = $(".add_field_button"); //Add button ID
-  var x = 1;
+  var x = 0;
+  var output = {};
 
 
 
@@ -125,17 +126,13 @@ $("document").ready(function(){
               placeholder: '',
               theme: 'bootstrap' });
 
-              y = x-1;
-              var test_id = '#test_'+y;
-              var t = $(test_id).select2("data");
-              console.log(t.map(u => u.id).join(','));
-              tests_id=t.map(u => u.id).join(',');
 
 
-              var category_id = '#category_'+y;
-              var c = $(category_id).select2("data");
-              console.log(c.map(v => v.id).join(','));
-              categories_id=c.map(v => v.id).join(',');
+
+
+
+
+
 
               //console.log(categories_1);
               // z=y;
@@ -143,12 +140,33 @@ $("document").ready(function(){
               // var tests_id = '#test_'+z;
               // var str = '[{"'+categories_id+'":"'+tests_id+'"}';
               // z++;
-              var str = '['; 
-              var str = str+',{"'+categories_id+'":"'+tests_id+'"}]';
-              console.log(str);
 
-              var newstr = JSON.parse(str);
-              console.log(newstr);
+              // var category_id = 'category_'+y;
+              // $("").select2(function(){
+
+              $('#test_1').select2().on('select2:select', function (e) {
+
+                    y = x;
+                    var test_id = '#test_'+y;
+                    var t = $(test_id).select2("data");
+                    // console.log(t.map(u => u.id).join(','));
+                    var category_id = '#category_'+y;
+                    var c = $(category_id).select2("data");
+                    // console.log(c.map(v => v.id).join(','));
+                    tests_id=t.map(u => u.id).join(',');
+                    categories_id=c.map(v => v.id).join(',');
+                    $("output").append(output[categories_id]=tests_id);
+                    console.log(output);
+
+              });
+                    // console.log(output);
+
+              // var str = '[{"'+categories_id+'":"'+tests_id+'"}';
+              // var str = str+',{"'+categories_id+'":"'+tests_id+'"}]';
+              //console.log(str);
+
+              // var newstr = JSON.parse(str);
+              //console.log(newstr);
 
 
       });
@@ -185,7 +203,7 @@ $("document").ready(function(){
              packagename:packagename,
              packagetype:packagetype,
              full_dur:full_dur,
-             tests:tests,
+             // tests:tests,
              totalcost:totalcost,
              offerp:offerp
              // type: jQuery('#type').val(),
@@ -195,6 +213,7 @@ $("document").ready(function(){
             alert(response.message)
           }
         });
+
        });
  });
 
