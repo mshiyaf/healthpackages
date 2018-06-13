@@ -23,7 +23,7 @@ class CreatePackagesTable extends Migration
           $table->integer('totalcost');
           $table->integer('offerprice');
           // // $table->string('availability');
-          // $table->boolean('insuranceclaim');
+          $table->boolean('insuranceclaim');
           // $table->string('agegroup');
           // // $table->('medhistory');
           // $table->string('r_duration');
