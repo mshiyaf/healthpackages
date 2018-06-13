@@ -34,13 +34,7 @@ class PackagesController extends Controller
         // ]);
 
         $package = new Package;
-        // $cat = request('test');
-        // alert($cat);
 
-        // $test = implode(',',$_POST['test']);
-        // $package->test = $test;
-
-        // $full_dur = $request['duration'].' '.$request['time'];
         $package->duration = request('full_dur');
         $package->service_id = request('service');
         $package->packagename = request('packagename');
@@ -48,26 +42,21 @@ class PackagesController extends Controller
         $package->totalcost = request('totalcost');
         $package->offerprice = request('offerp');
         $package->insuranceclaim = request('insuranceclaim');
+
+        $saved = $package->save();
+
+
         $output = request('soutput');
-        $n = request('id_no');
         $new = json_decode($output);
-        for ($i=1; $i <= $n ; $i++) {
+        foreach ($new as $key => $value) {
           $tests = new Packcattest;
-          $tests->test_id = $new->{$i};
-          $tests->cat_id = $i;
+          $tests->package_id = $package->id;
+          $tests->test_id = $value;
+          $tests->cat_id = $key;
           $tests->save();
         }
 
-        //
 
-
-
-        $package->save();
-
-
-
-        // return response()->json(['message' => 'Your message']);
-        //dd(speciality);
         return redirect('/');
 
 
