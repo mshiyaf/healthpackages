@@ -144,7 +144,7 @@ $("document").ready(function(){
               // var category_id = 'category_'+y;
               // $("").select2(function(){
 
-              $('#test_1').select2().on('select2:select', function (e) {
+              $('#test_'+x+'').select2().on('select2:select', function (e) {
 
                     y = x;
                     var test_id = '#test_'+y;
@@ -156,7 +156,7 @@ $("document").ready(function(){
                     tests_id=t.map(u => u.id).join(',');
                     categories_id=c.map(v => v.id).join(',');
                     $("output").append(output[categories_id]=tests_id);
-                    console.log(output);
+                    // console.log(output);
 
               });
                     // console.log(output);
@@ -214,6 +214,7 @@ $("document").ready(function(){
           }
         });
 
+        console.log(output);
        });
  });
 
