@@ -12,6 +12,7 @@
 
 
 
+
           <div class="form-group">
               <label>Package Name</label>
               <input type="text" name="packagename" class="form-control" placeholder=" " >
@@ -27,28 +28,6 @@
               </datalist>
           </div>
 
-
-
-          {{-- <div class="form-group">
-                <label>Category</label>
-                <select name="category[]" id="category" class="form-control select2-multiple" multiple="multiple">
-
-                <option></option>
-
-                </select>
-          </div>
-
-          <div class="form-group">
-                <label>Tests</label>
-                <select name="test[]" id="test" class="form-control select2-multiple" multiple="multiple">
-
-                <option></option>
-                @foreach ($tests as $test)
-                  <option value='{{ $test->test_id }}' >{{ $test->test_name }}</option>
-                @endforeach
-
-                </select>
-          </div> --}}
 
           <div class="form-group">
               <label>Speciality </label>
