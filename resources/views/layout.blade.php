@@ -110,6 +110,12 @@ $("document").ready(function(){
                   text : "{{ $test->test_name }}"
               }));
               @endforeach
+              @foreach ($categories as $category)
+              $("#category_"+x).append($('<option>', {
+                  value: {{ $category->cat_id }},
+                  text : "{{ $category->cat_name }}"
+              }));
+              @endforeach
               $div.find("#test_"+x).select2({
               allowClear:true,
               placeholder: '',
