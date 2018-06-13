@@ -178,7 +178,7 @@ $("document").ready(function(){
 
       $('#submit').click(function(e){
          e.preventDefault();
-         var speciality = $("input[name=speciality]").val();
+         var service = $("select[id=service]").val();
          var packagename = $("input[name=packagename]").val();
          var packagetype = $("input[name=packagetype]").val();
          var duration = $("input[name=duration]").val();
@@ -188,6 +188,8 @@ $("document").ready(function(){
          var totalcost = $("input[name=totalcost]").val();
          var offerp = $("input[name=offerp]").val();
          var totalcost = $("input[name=totalcost]").val();
+         var id_no = x;
+         var insuranceclaim = $("input[name=insurance]").val();
          // alert();
          $.ajaxSetup({
             headers: {
@@ -199,14 +201,15 @@ $("document").ready(function(){
           method: 'post',
           dataType:'json',
           data: {
-             speciality:speciality,
+             service:service,
              packagename:packagename,
              packagetype:packagetype,
              full_dur:full_dur,
-             y:y,
+             id_no:id_no,
              soutput:soutput,
              totalcost:totalcost,
-             offerp:offerp
+             offerp:offerp,
+             insuranceclaim:insuranceclaim
              // type: jQuery('#type').val(),
              // price: jQuery('#price').val()
           },

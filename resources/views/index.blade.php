@@ -149,7 +149,9 @@
             <div class="form-group">
               <div class="form-check">
 
-                  <input class="form-check-input" type="checkbox" value="" id="insurancecheck">
+                  <input type="hidden" value="0" name="insurance" id="insurance">
+                  <input class="form-check-input" type="checkbox" name="select_letter" value="1" id="insurancecheck" onchange="document.getElementById('insurance').value = this.checked ? 1 : 0">
+                  {{-- <input  type="checkbox" value="" id="insurancecheck"> --}}
                   <label class="form-check-label" for="insurancecheck">Insurance Claim</label>
 
               </div>
