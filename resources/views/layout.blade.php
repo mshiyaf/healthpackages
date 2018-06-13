@@ -156,7 +156,7 @@ $("document").ready(function(){
                     tests_id=t.map(u => u.id).join(',');
                     categories_id=c.map(v => v.id).join(',');
                     $("output").append(output[categories_id]=tests_id);
-                    // console.log(output);
+
 
               });
                     // console.log(output);
@@ -184,7 +184,7 @@ $("document").ready(function(){
          var duration = $("input[name=duration]").val();
          var time = $("select[name=time]").val();
          var full_dur = duration+time;
-
+         var soutput = JSON.stringify(output);
          var totalcost = $("input[name=totalcost]").val();
          var offerp = $("input[name=offerp]").val();
          var totalcost = $("input[name=totalcost]").val();
@@ -203,7 +203,8 @@ $("document").ready(function(){
              packagename:packagename,
              packagetype:packagetype,
              full_dur:full_dur,
-             // tests:tests,
+             y:y,
+             soutput:soutput,
              totalcost:totalcost,
              offerp:offerp
              // type: jQuery('#type').val(),
