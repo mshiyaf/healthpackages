@@ -46,7 +46,16 @@ class PackagesController extends Controller
         $package->packagetype = request('packagetype');
         $package->totalcost = request('totalcost');
         $package->offerprice = request('offerp');
-        $package->test_id = request('tests');
+        $output = request('soutput');
+        $n = request('y');
+        $new = json_decode($output);
+        for ($i=1; $i <= $n ; $i++) {
+          $tests = new Package;
+          $tests->test_id = $new->{$i};
+          $tests->service_id = $i;
+          $tests->save();
+        }
+
         // $package->insuranceclaim = request('insuranceclaim');
 
 
@@ -57,7 +66,7 @@ class PackagesController extends Controller
 
         // return response()->json(['message' => 'Your message']);
         //dd(speciality);
-        // return redirect('/');
+        return redirect('/');
 
 
     }
