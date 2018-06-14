@@ -17,7 +17,7 @@ class CreateServicesTable extends Migration
             $table->increments('service_id');
             $table->string('service_name');
             $table->integer('clinic_id');
-            
+
         });
     }
 

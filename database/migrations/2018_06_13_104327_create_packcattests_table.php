@@ -14,10 +14,15 @@ class CreatePackcattestsTable extends Migration
     public function up()
     {
         Schema::create('packcattests', function (Blueprint $table) {
-            $table->increments('package_id');
+            $table->integer('package_id')->unsigned();
             $table->string('cat_id');
             $table->string('test_id');
             $table->timestamps();
+        });
+
+        Schema::table('packcattests',function($table){
+            $table->foreign('package_id')->references('id')->on('packages')->onDelete('cascade');
+
         });
     }
 
