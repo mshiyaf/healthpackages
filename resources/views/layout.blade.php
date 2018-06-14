@@ -253,12 +253,6 @@ $("document").ready(function(){
          var totalcost = $("input[name=totalcost]").val();
          var id_no = x;
          var insuranceclaim = $("input[name=insurance]").val();
-<<<<<<< HEAD
-=======
-
-         var r_cost1 = $("input[name=r_cost1]").val();
-         var r_cost2 = $("input[name=r_cost2]").val();
->>>>>>> origin/shiyaf
          var from_date = $("input[id=from_date]").val();
          var to_date = $("input[id=to_date]").val();
          var r_cost1 = $("input[name=r_cost1]").val();
