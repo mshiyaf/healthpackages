@@ -8,7 +8,7 @@ use App\Test;
 use App\Service;
 use App\Category;
 use App\Packcattest;
-
+use DB;
 
 class PackagesController extends Controller
 {
@@ -23,6 +23,15 @@ class PackagesController extends Controller
 
     }
 
+    function selectAjax(Request $request)
+    {
+      if($request->ajax())
+      {
+      $tests = DB::table('tests')->where('cat_id',$request->cat_id)->pluck("test_name","test_id")->all();
+      $data = view('ajax-select',compact('tests'))->render();
+      return response()->json(['options'=>$data]);
+      }
+    }
 
     function store(Request $request)
     {
