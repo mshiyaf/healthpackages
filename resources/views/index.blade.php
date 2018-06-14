@@ -5,7 +5,7 @@
 
   <article class="card-body">
 
-      <form>
+      <form id="formvalues">
 
           {{ csrf_field() }}
 
@@ -185,7 +185,7 @@
         <div class="form-group col-md">
         <div class="form row">
             <div class="form-group col-md-4">
-              <input class="form-control" type="date" id="from_date">
+              <input class="form-control" name="from_date" type="date" id="from_date">
             </div>
 
             <div>
@@ -193,7 +193,7 @@
             </div>
 
             <div class="form-group col-md-4">
-              <input class="form-control" type="date" id="to_date">
+              <input class="form-control" name="to_date"  type="date" id="to_date">
             </div>
         </div>
       </div>
