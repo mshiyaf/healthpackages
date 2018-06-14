@@ -104,18 +104,19 @@ $("document").ready(function(){
               x++; //text box increment
               var test_id = 'test_'+x;
               var category_id = 'category_'+x;
-              var $div = $('<div class="form-group"><article class="card-body"><label>Category '+x+'</label><select name="category[]" id='+category_id+' class="form-control" ><option></option></select><label>Test for Category'+x+'</label><select name="test[]" id='+test_id+' class="form-control select2-multiple" multiple="multiple"></select><a href="#" class="submit_field">Done</a><div></div><a href="#" class="remove_field">Remove</a></article></div>');
+              var $div = $('<div class="form-group"><article class="card-body"><label>Category</label><select name="category[]" id='+category_id+' class="form-control select2-multiple"><option></option></select><label>Tests</label><select name="test[]" id='+test_id+' class="form-control select2-multiple" multiple="multiple"></select><a href="#" class="submit_field">Done</a><div></div><a href="#" class="remove_field">Remove</a></article></div>');
               $(wrapper).append($div); //add input box
-              @foreach ($tests as $test)
-              $("#test_"+x).append($('<option>', {
-                  value: {{ $test->test_id }},
-                  text : "{{ $test->test_name }}"
-              }));
-              @endforeach
+
               @foreach ($categories as $category)
               $("#category_"+x).append($('<option>', {
                   value: {{ $category->cat_id }},
                   text : "{{ $category->cat_name }}"
+              }));
+              @endforeach
+              @foreach ($tests as $test)
+              $("#test_"+x).append($('<option>', {
+                  value: {{ $test->test_id }},
+                  text : "{{ $test->test_name }}"
               }));
               @endforeach
               $div.find("#test_"+x).select2({
@@ -159,6 +160,7 @@ $("document").ready(function(){
                   });
               });
 
+
               $div.on("click",".submit_field", function (e) {
 
                     e.preventDefault();
@@ -178,6 +180,46 @@ $("document").ready(function(){
                     });
 
               });
+
+              // $(wrapper).select2().on('select2:select',function(e){
+              //
+              //       e.preventDefault();
+              //       var category_id = $(this).find('select:eq(0)').select2("data");
+              //       var c = category_id.map(m => m.id).join(',');
+              //
+              //       var test_id = $(this).parent().find('select:eq(1)').select2("data");
+              //       var t = test_id.map(n => n.id).join(',');
+              //
+              //       $("output").append(output[c]=t);
+
+                    // $(this).parent().find('select:eq(1)').select2({
+                    //   disabled:'disabled'
+                    // });
+                    // $(this).parent().find('select:eq(0)').select2({
+                    //   disabled:'disabled'
+                    // });
+
+              // });
+
+              // $div.select2().on('select2:select', function (e) {
+              //
+              //       e.preventDefault();
+              //       var category_id = $(this).parent().find('select:eq(0)').select2("data");
+              //       var c = category_id.map(m => m.id).join(',');
+              //
+              //       var test_id = $(this).parent().find('select:eq(1)').select2("data");
+              //       var t = test_id.map(n => n.id).join(',');
+              //
+              //       $("output").append(output[c]=t);
+              //
+              //       $(this).parent().find('select:eq(1)').select2({
+              //         disabled:'disabled'
+              //       });
+              //       $(this).parent().find('select:eq(0)').select2({
+              //         disabled:'disabled'
+              //       });
+              //
+              // });
 
 
       });
@@ -205,12 +247,18 @@ $("document").ready(function(){
          var time = $("select[name=time]").val();
          var full_dur = duration+time;
          var soutput = JSON.stringify(output);
-         //var sroutput = JSON.stringify(output);
+
          var totalcost = $("input[name=totalcost]").val();
          var offerp = $("input[name=offerp]").val();
          var totalcost = $("input[name=totalcost]").val();
          var id_no = x;
          var insuranceclaim = $("input[name=insurance]").val();
+<<<<<<< HEAD
+=======
+
+         var r_cost1 = $("input[name=r_cost1]").val();
+         var r_cost2 = $("input[name=r_cost2]").val();
+>>>>>>> origin/shiyaf
          var from_date = $("input[id=from_date]").val();
          var to_date = $("input[id=to_date]").val();
          var r_cost1 = $("input[name=r_cost1]").val();
