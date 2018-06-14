@@ -73,12 +73,12 @@
 
   $( "#recurringcheck1" ).on( "click", function() {
     $("#r_cost1").prop('disabled',!this.checked);
-    $("#r_time1").prop('disabled',!this.checked);
+    // $("#r_time1").prop('disabled',!this.checked);
   });
 
   $( "#recurringcheck2" ).on( "click", function() {
     $("#r_cost2").prop('disabled',!this.checked);
-    $("#r_time2").prop('disabled',!this.checked);
+    // $("#r_time2").prop('disabled',!this.checked);
   });
 
 });
