@@ -27,8 +27,8 @@ class CreatePackagesTable extends Migration
           $table->date('to_date');
           // $table->string('agegroup');
           // // $table->('medhistory');
-          // $table->string('r_duration');
-          // $table->string('r_cost');
+           $table->integer('r_cost_monthly');
+           $table->integer('r_cost_yearly');
           $table->rememberToken();
           $table->timestamps();
 
