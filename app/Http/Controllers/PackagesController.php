@@ -18,8 +18,7 @@ class PackagesController extends Controller
       $tests = Test::all();
       $services = Service::all();
       $categories = Category::all();
-      $packcattests = Packcattest::all();
-      return view('index',compact('tests','packages','services','categories','packcattests'));
+      return view('index',compact('tests','packages','services','categories'));
 
     }
 

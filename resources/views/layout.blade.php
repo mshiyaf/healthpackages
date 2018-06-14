@@ -145,11 +145,8 @@ $("document").ready(function(){
               //
               // });
               $("select[id="+category_id+"]").change(function(){
-                  alert('alert');
                   var cat_id = $(this).val();
-                  // console.log(cat_id);
                   var token = $("input[name='_token']").val();
-                  console.log(token);
 
                   $.ajax({
                       url: 'select-ajax',
