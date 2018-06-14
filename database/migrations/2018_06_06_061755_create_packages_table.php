@@ -14,7 +14,7 @@ class CreatePackagesTable extends Migration
     public function up()
     {
         Schema::create('packages', function (Blueprint $table) {
-          $table->increments('package_id');
+          $table->increments('id');
           $table->integer('service_id');
           $table->string('packagename');
           $table->string('packagetype');
@@ -23,6 +23,8 @@ class CreatePackagesTable extends Migration
           $table->integer('offerprice');
           // // $table->string('availability');
           $table->boolean('insuranceclaim');
+          $table->date('from_date');
+          $table->date('to_date');
           // $table->string('agegroup');
           // // $table->('medhistory');
            $table->integer('r_cost_monthly');
@@ -32,10 +34,6 @@ class CreatePackagesTable extends Migration
 
         });
 
-      // Schema::table('packages',function($table){
-      //     $table->foreign('test_id')->references('test_id')->on('tests')->onDelete('cascade');
-      //
-      // });
     }
 
     /**
