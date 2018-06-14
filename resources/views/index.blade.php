@@ -123,9 +123,7 @@
 
 
               <div class="form-group col-md-2">
-                <select name="r_time" id="r_time1" class="form-control" disabled>
-                    <option>Monthly</option>
-                  </select>
+                <input name="r_time" id="r_time1" class="form-control" disabled placeholder="Monthly">
               </div>
 
               <div class="form-group col-md-4">
@@ -141,9 +139,7 @@
 
 
               <div class="form-group col-md-2">
-                <select name="r_time" id="r_time2" class="form-control" disabled>
-                    <option>Yearly</option>
-                  </select>
+                <input name="r_time" id="r_time2" class="form-control" style='background-colour:white' disabled placeholder="Yearly">
               </div>
 
               <div class="form-group col-md-4">
@@ -165,7 +161,6 @@
             </div>
 
             <div class="form-group">
-              <br>
               <label>to</label>
             </div>
 

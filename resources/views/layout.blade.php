@@ -73,12 +73,12 @@
 
   $( "#recurringcheck1" ).on( "click", function() {
     $("#r_cost1").prop('disabled',!this.checked);
-    $("#r_time1").prop('disabled',!this.checked);
+    //$("#r_time1").prop('background-color:#FFF',this.checked);
   });
 
   $( "#recurringcheck2" ).on( "click", function() {
     $("#r_cost2").prop('disabled',!this.checked);
-    $("#r_time2").prop('disabled',!this.checked);
+    //$("#r_time2").prop('background-color:#FFF',this.checked);
   });
 
 });
@@ -129,22 +129,6 @@ $("document").ready(function(){
               theme: 'bootstrap' });
 
 
-              // $('#test_'+x+'').select2().on('select2:select', function (e) {
-              //
-              //       y = x;
-              //       var test_id = '#test_'+y;
-              //       var t = $(test_id).select2("data");
-              //
-              //       var category_id = '#category_'+y;
-              //       var c = $(category_id).select2("data");
-              //
-              //       tests_id=t.map(u => u.id).join(',');
-              //       categories_id=c.map(v => v.id).join(',');
-              //       $("output").append(output[categories_id]=tests_id);
-              //
-              //
-              //
-              // });
               $("select[id="+category_id+"]").change(function(){
                   var cat_id = $(this).val();
                   var token = $("input[name='_token']").val();
@@ -160,47 +144,47 @@ $("document").ready(function(){
                   });
               });
 
-              $div.on('select2:select', function (e) {
-
-                    e.preventDefault();
-                    var category_id = $(this).parent().find('select2:select').select2("data");
-                    console.log(category_id);
-                    var c = category_id.map(m => m.id).join(',');
-                    console.log(c);
-
-                    var test_id = $(this).parent().find('select:eq(1)').select2("data");
-                    var t = test_id.map(n => n.id).join(',');
-
-                    $("output").append(output[c]=t);
-
-                    // $(this).parent().find('select:eq(1)').select2({
-                    //   disabled:'disabled'
-                    // });
-                    // $(this).parent().find('select:eq(0)').select2({
-                    //   disabled:'disabled'
-                    // });
-
-              });
-
-              // $div.on("click",".submit_field", function (e) {
+              // $div.on('select2:select', function (e) {
               //
               //       e.preventDefault();
-              //       var category_id = $(this).parent().find('select:eq(0)').select2("data");
+              //       var category_id = $(this).parent().parent().find('select2:select').select2("data");
+              //       console.log(category_id);
               //       var c = category_id.map(m => m.id).join(',');
+              //       console.log(c);
               //
               //       var test_id = $(this).parent().find('select:eq(1)').select2("data");
               //       var t = test_id.map(n => n.id).join(',');
               //
               //       $("output").append(output[c]=t);
               //
-              //       $(this).parent().find('select:eq(1)').select2({
-              //         disabled:'disabled'
-              //       });
-              //       $(this).parent().find('select:eq(0)').select2({
-              //         disabled:'disabled'
-              //       });
+              //       // $(this).parent().find('select:eq(1)').select2({
+              //       //   disabled:'disabled'
+              //       // });
+              //       // $(this).parent().find('select:eq(0)').select2({
+              //       //   disabled:'disabled'
+              //       // });
               //
               // });
+
+              $div.on("click",".submit_field", function (e) {
+
+                    e.preventDefault();
+                    var category_id = $(this).parent().find('select:eq(0)').select2("data");
+                    var c = category_id.map(m => m.id).join(',');
+
+                    var test_id = $(this).parent().find('select:eq(1)').select2("data");
+                    var t = test_id.map(n => n.id).join(',');
+
+                    $("output").append(output[c]=t);
+
+                    $(this).parent().find('select:eq(1)').select2({
+                      disabled:'disabled'
+                    });
+                    $(this).parent().find('select:eq(0)').select2({
+                      disabled:'disabled'
+                    });
+
+              });
 
               // $(wrapper).select2().on('select2:select',function(e){
               //
@@ -222,25 +206,7 @@ $("document").ready(function(){
 
               // });
 
-              // $div.select2().on('select2:select', function (e) {
-              //
-              //       e.preventDefault();
-              //       var category_id = $(this).parent().find('select:eq(0)').select2("data");
-              //       var c = category_id.map(m => m.id).join(',');
-              //
-              //       var test_id = $(this).parent().find('select:eq(1)').select2("data");
-              //       var t = test_id.map(n => n.id).join(',');
-              //
-              //       $("output").append(output[c]=t);
-              //
-              //       $(this).parent().find('select:eq(1)').select2({
-              //         disabled:'disabled'
-              //       });
-              //       $(this).parent().find('select:eq(0)').select2({
-              //         disabled:'disabled'
-              //       });
-              //
-              // });
+
 
 
       });
