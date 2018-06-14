@@ -52,20 +52,11 @@ class PackagesController extends Controller
         $package->totalcost = request('totalcost');
         $package->offerprice = request('offerp');
         $package->insuranceclaim = request('insuranceclaim');
-<<<<<<< HEAD
         $package->from_date = request('from_date');
         $package->to_date = request('to_date');
         $package->r_cost_monthly=request('r_cost1');
         $package->r_cost_yearly=request('r_cost2');
         $saved = $package->save();
-=======
-        $package->r_cost_monthly = request('r_cost1');
-        $package->r_cost_yearly = request('r_cost2');
-        $package->from_date = request('from_date');
-        $package->to_date = request('to_date');
-        $saved = $package->save();
-
->>>>>>> origin/maria
         $output = request('soutput');
         $new = json_decode($output);
         foreach ($new as $key => $value) {

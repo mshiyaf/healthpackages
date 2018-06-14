@@ -211,18 +211,10 @@ $("document").ready(function(){
          var totalcost = $("input[name=totalcost]").val();
          var id_no = x;
          var insuranceclaim = $("input[name=insurance]").val();
-<<<<<<< HEAD
          var from_date = $("input[id=from_date]").val();
          var to_date = $("input[id=to_date]").val();
          var r_cost1 = $("input[name=r_cost1]").val();
          var r_cost2 = $("input[name=r_cost2]").val();
-=======
-         var r_cost1 = $("input[name=r_cost1]").val();
-         var r_cost2 = $("input[name=r_cost2]").val();
-
-         var from_date = $("input[id=from_date]").val();
-         var to_date = $("input[id=to_date]").val();
->>>>>>> origin/maria
 
          // alert();
          $.ajaxSetup({
@@ -243,19 +235,12 @@ $("document").ready(function(){
              totalcost:totalcost,
              offerp:offerp,
              insuranceclaim:insuranceclaim,
-<<<<<<< HEAD
              from_date:from_date,
              to_date:to_date,
              r_cost1:r_cost1,
              r_cost2:r_cost2
              // type: jQuery('#type').val(),
              // price: jQuery('#price').val()
-=======
-             r_cost1:r_cost1,
-             r_cost2:r_cost2,
-             from_date:from_date,
-             to_date:to_date
->>>>>>> origin/maria
           },
           success: function(data){
             alert(response.message)
