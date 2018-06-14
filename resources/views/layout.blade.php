@@ -104,7 +104,7 @@ $("document").ready(function(){
               x++; //text box increment
               var test_id = 'test_'+x;
               var category_id = 'category_'+x;
-              var $div = $('<div class="form-group"><article class="card-body"><label>Category '+x+'</label><select name="category[]" id='+category_id+' class="form-control select2-multiple" multiple="multiple"><option></option></select><label>Test for Category'+x+'</label><select name="test[]" id='+test_id+' class="form-control select2-multiple" multiple="multiple"></select><a href="#" class="submit_field">Done</a><div></div><a href="#" class="remove_field">Remove</a></article></div>');
+              var $div = $('<div class="form-group"><article class="card-body"><label>Category '+x+'</label><select name="category[]" id='+category_id+' class="form-control" ><option></option></select><label>Test for Category'+x+'</label><select name="test[]" id='+test_id+' class="form-control select2-multiple" multiple="multiple"></select><a href="#" class="submit_field">Done</a><div></div><a href="#" class="remove_field">Remove</a></article></div>');
               $(wrapper).append($div); //add input box
               @foreach ($tests as $test)
               $("#test_"+x).append($('<option>', {
@@ -144,6 +144,20 @@ $("document").ready(function(){
               //
               //
               // });
+              $("select[id="+category_id+"]").change(function(){
+                  var cat_id = $(this).val();
+                  var token = $("input[name='_token']").val();
+
+                  $.ajax({
+                      url: 'select-ajax',
+                      method: 'POST',
+                      data: {cat_id:cat_id, _token:token},
+                      success: function(data) {
+                        $("select[id="+test_id+"]").html('');
+                        $("select[id="+test_id+"]").html(data.options);
+                      }
+                  });
+              });
 
               $div.on("click",".submit_field", function (e) {
 
@@ -197,10 +211,18 @@ $("document").ready(function(){
          var totalcost = $("input[name=totalcost]").val();
          var id_no = x;
          var insuranceclaim = $("input[name=insurance]").val();
+<<<<<<< HEAD
          var from_date = $("input[id=from_date]").val();
          var to_date = $("input[id=to_date]").val();
          var r_cost1 = $("input[name=r_cost1]").val();
          var r_cost2 = $("input[name=r_cost2]").val();
+=======
+         var r_cost1 = $("input[name=r_cost1]").val();
+         var r_cost2 = $("input[name=r_cost2]").val();
+
+         var from_date = $("input[id=from_date]").val();
+         var to_date = $("input[id=to_date]").val();
+>>>>>>> origin/maria
 
          // alert();
          $.ajaxSetup({
@@ -221,12 +243,19 @@ $("document").ready(function(){
              totalcost:totalcost,
              offerp:offerp,
              insuranceclaim:insuranceclaim,
+<<<<<<< HEAD
              from_date:from_date,
              to_date:to_date,
              r_cost1:r_cost1,
              r_cost2:r_cost2
              // type: jQuery('#type').val(),
              // price: jQuery('#price').val()
+=======
+             r_cost1:r_cost1,
+             r_cost2:r_cost2,
+             from_date:from_date,
+             to_date:to_date
+>>>>>>> origin/maria
           },
           success: function(data){
             alert(response.message)
