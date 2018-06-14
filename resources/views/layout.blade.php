@@ -145,7 +145,22 @@ $("document").ready(function(){
               //
               //
               // });
-              //
+              $("select[id="+category_id+"]").change(function(){
+                  var cat_id = $(this).val();
+                  var token = $("input[name='_token']").val();
+
+                  $.ajax({
+                      url: 'select-ajax',
+                      method: 'POST',
+                      data: {cat_id:cat_id, _token:token},
+                      success: function(data) {
+                        $("select[id="+test_id+"]").html('');
+                        $("select[id="+test_id+"]").html(data.options);
+                      }
+                  });
+              });
+
+
               $div.on("click",".submit_field", function (e) {
 
                     e.preventDefault();
