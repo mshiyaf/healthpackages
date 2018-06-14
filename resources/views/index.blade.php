@@ -56,31 +56,6 @@
               <button class="add_field_button btn btn-primary">Add More Categories</button>
             </div>
 
-            {{-- <div class="form-group">
-              <article class="card-body">
-                  <label>Category 1</label>
-                  <select name="category[]" id="category_1" class="form-control select2-multiple" multiple="multiple">
-
-                  <option></option>
-
-                  @foreach ($categories as $category)
-                    <option value='{{ $category->cat_id }}' >{{ $category->cat_name }}</option>
-                  @endforeach
-                  </select>
-
-                  <label>Tests for Category 1</label>
-                  <select name="test[]" id="test_1" class="form-control select2-multiple" multiple="multiple">
-
-
-                  @foreach ($tests as $test)
-                    <option value='{{ $test->test_id }}' >{{ $test->test_name }}</option>
-                  @endforeach
-
-                  </select>
-              </article>
-            </div> --}}
-
-
           </div>
 
 
@@ -129,7 +104,6 @@
 
                   <input type="hidden" value="0" name="insurance" id="insurance">
                   <input class="form-check-input" type="checkbox" name="select_letter" value="1" id="insurancecheck" onchange="document.getElementById('insurance').value = this.checked ? 1 : 0">
-                  {{-- <input  type="checkbox" value="" id="insurancecheck"> --}}
                   <label class="form-check-label" for="insurancecheck">Insurance Claim</label>
 
               </div>
@@ -149,9 +123,7 @@
 
 
               <div class="form-group col-md-2">
-                <select name="r_time" id="r_time1" class="form-control" disabled>
-                    <option>Monthly</option>
-                  </select>
+                <input name="r_time" id="r_time1" class="form-control" disabled placeholder="Monthly">
               </div>
 
               <div class="form-group col-md-4">
@@ -167,9 +139,7 @@
 
 
               <div class="form-group col-md-2">
-                <select name="r_time" id="r_time2" class="form-control" disabled>
-                    <option>Yearly</option>
-                  </select>
+                <input name="r_time" id="r_time2" class="form-control" style='background-colour:white' disabled placeholder="Yearly">
               </div>
 
               <div class="form-group col-md-4">
@@ -182,13 +152,15 @@
 
 
         <label>Available Dates</label>
+        <article class="card-body">
+
         <div class="form-group col-md">
         <div class="form row">
             <div class="form-group col-md-4">
               <input class="form-control" name="from_date" type="date" id="from_date">
             </div>
 
-            <div>
+            <div class="form-group">
               <label>to</label>
             </div>
 
@@ -196,8 +168,9 @@
               <input class="form-control" name="to_date"  type="date" id="to_date">
             </div>
         </div>
-      </div>
+        </div>
 
+      </article>
 
 
           <div class="form-group">
