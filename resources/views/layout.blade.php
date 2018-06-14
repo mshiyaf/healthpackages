@@ -220,7 +220,7 @@ $("document").ready(function(){
               delete output[j];
               $(this).parent().parent('div').remove();
               //x--;
-              console.log(output);
+          
       })
 
 
@@ -275,7 +275,6 @@ $("document").ready(function(){
           }
         });
 
-        console.log(output);
        });
  });
 
