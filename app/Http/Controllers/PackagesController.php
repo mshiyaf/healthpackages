@@ -18,7 +18,8 @@ class PackagesController extends Controller
       $tests = Test::all();
       $services = Service::all();
       $categories = Category::all();
-      return view('index',compact('tests','packages','services','categories'));
+      $packcattests = Packcattest::all();
+      return view('index',compact('tests','packages','services','categories','packcattests'));
 
     }
 
@@ -44,8 +45,9 @@ class PackagesController extends Controller
         $package->insuranceclaim = request('insuranceclaim');
         $package->from_date = request('from_date');
         $package->to_date = request('to_date');
+        $package->r_cost_monthly=request('r_cost1');
+        $package->r_cost_yearly=request('r_cost2');
         $saved = $package->save();
-
         $output = request('soutput');
         $new = json_decode($output);
         foreach ($new as $key => $value) {

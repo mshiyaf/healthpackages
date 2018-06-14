@@ -199,6 +199,8 @@ $("document").ready(function(){
          var insuranceclaim = $("input[name=insurance]").val();
          var from_date = $("input[id=from_date]").val();
          var to_date = $("input[id=to_date]").val();
+         var r_cost1 = $("input[name=r_cost1]").val();
+         var r_cost2 = $("input[name=r_cost2]").val();
 
          // alert();
          $.ajaxSetup({
@@ -220,13 +222,18 @@ $("document").ready(function(){
              offerp:offerp,
              insuranceclaim:insuranceclaim,
              from_date:from_date,
-             to_date:to_date
+             to_date:to_date,
+             r_cost1:r_cost1,
+             r_cost2:r_cost2
+             // type: jQuery('#type').val(),
+             // price: jQuery('#price').val()
           },
           success: function(data){
             alert(response.message)
           }
         });
 
+        console.log(output);
        });
  });
 
