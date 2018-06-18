@@ -1,5 +1,9 @@
-@extends('layout')
-
+@extends('edit\layoutedit')
+{{-- <script type="text/javascript">
+var d = $package->duration;
+var d = d.replace ( /[^\d.]/g, '' );
+var dur = parseInt(d,10);
+</script> --}}
 @section('form')
 
 
@@ -63,7 +67,8 @@
           <div class="form-row">
 
               <div class="form-group col-md-3">
-                <input name="duration" type="number" min="0" class="form-control" id="duration" placeholder=" " value={{ $package->duration }}>
+
+                <input name="duration" type="number" min="0" class="form-control" id="duration" placeholder=" "  >
               </div>
 
               <div class="form-group col-md-2">
@@ -196,5 +201,6 @@
       @include('errors')
 
   </article>
+
 
 @endsection
