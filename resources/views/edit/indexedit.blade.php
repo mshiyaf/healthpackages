@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layoutedit')
 
 @section('form')
 
@@ -46,7 +46,7 @@
                   <option value='{{ $service->service_id }}' >{{ $service->service_name }}</option>
                 @endforeach
 
-                </select>
+              </select>
               </div>
           </div>
 
