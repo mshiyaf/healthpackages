@@ -82,7 +82,14 @@ class PackagesController extends Controller
       $services = Service::all();
       $categories = Category::all();
       $id = $package->service_id;
+      if($id!=0){
       $thisservice = Service::find($id);
+    }
+    else{
+      $thisservice = new Service;
+      $thisservice->service_id=0;
+      $thisservice->service_name="";
+    }
       return view('edit.indexedit',compact('tests','package','services','categories','thisservice'));
 
     }

@@ -76,7 +76,7 @@
     $("#r_cost2").prop('disabled',!recurringcheck2.checked);
 
     var service = $("select[id=service]").val();
-    var bool5 = (service==0);
+    var bool5 = (service>0);
     $("#servicecheck").attr('checked', bool5);
     $("#service").prop('disabled',!servicecheck.checked);
 
