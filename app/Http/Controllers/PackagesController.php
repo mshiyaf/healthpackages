@@ -18,7 +18,7 @@ class PackagesController extends Controller
       $tests = Test::all();
       $services = Service::all();
       $categories = Category::all();
-      return view('index',compact('tests','packages','services','categories'));
+      return view('index',compact('tests','package','services','categories'));
 
     }
 
@@ -73,6 +73,17 @@ class PackagesController extends Controller
 
 
         return redirect('/');
+
+    }
+
+    function show($id){
+      $package = Package::find($id);
+      $tests = Test::all();
+      $services = Service::all();
+      $categories = Category::all();
+      $id = $package->service_id;
+      $thisservice = Service::find($id);
+      return view('edit.indexedit',compact('tests','package','services','categories','thisservice'));
 
     }
 
