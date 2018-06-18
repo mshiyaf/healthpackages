@@ -104,7 +104,7 @@ $("document").ready(function(){
               x++; //text box increment
               var test_id = 'test_'+x;
               var category_id = 'category_'+x;
-              var $div = $('<div class="form-group"><div class="card"><article class="card-body"><label>Category</label><select name="category[]" id='+category_id+' class="form-control select2-multiple"><option></option></select><label>Tests</label><select name="test[]" id='+test_id+' class="form-control select2-multiple" multiple="multiple"></select><a href="#" class="submit_field">Done</a><div></div><a href="#" class="remove_field">Remove</a></article></div></div>');
+              var $div = $('<div class="form-group catclass"><div class="card"><article class="card-body"><label>Category</label><select name="category[]" id='+category_id+' class="form-control select2-multiple"><option></option></select><label>Tests</label><select name="test[]" id='+test_id+' class="form-control select2-multiple" multiple="multiple"></select><a href="#" class="submit_field">Done</a><div></div><a href="#" class="remove_field">Remove</a></article></div></div>');
               $(wrapper).append($div); //add input box
 
               @foreach ($categories as $category)
@@ -166,25 +166,25 @@ $("document").ready(function(){
               //
               // });
 
-              $div.on("click",".submit_field", function (e) {
+              // $div.on("select2:select", function (e) {
+              //
+              //       e.preventDefault();
+              //       var category_id = $(this).parent().find('select:eq(0)').select2("data");
+              //       var c = category_id.map(m => m.id).join(',');
+              //       console.log(c);
+              //       var test_id = $(this).parent().find('select:eq(1)').select2("data");
+              //       var t = test_id.map(n => n.id).join(',');
+              //       console.log(t);
+              //       $("output").append(output[c]=t);
 
-                    e.preventDefault();
-                    var category_id = $(this).parent().find('select:eq(0)').select2("data");
-                    var c = category_id.map(m => m.id).join(',');
+                    // $(this).parent().find('select:eq(1)').select2({
+                    //   disabled:'disabled'
+                    // });
+                    // $(this).parent().find('select:eq(0)').select2({
+                    //   disabled:'disabled'
+                    // });
 
-                    var test_id = $(this).parent().find('select:eq(1)').select2("data");
-                    var t = test_id.map(n => n.id).join(',');
-
-                    $("output").append(output[c]=t);
-
-                    $(this).parent().find('select:eq(1)').select2({
-                      disabled:'disabled'
-                    });
-                    $(this).parent().find('select:eq(0)').select2({
-                      disabled:'disabled'
-                    });
-
-              });
+              // });
 
               // $(wrapper).select2().on('select2:select',function(e){
               //
@@ -211,19 +211,26 @@ $("document").ready(function(){
 
       });
 
+      // $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+      //         e.preventDefault();
+      //
+      //         // var k = $(this).parent().find('select:eq(0)').select2("data");
+      //         // var j=k.map(m => m.id).join(',');
+      //
+      //         // delete output[j];
+      //         $(this).parent().parent('div').remove();
+      //         //x--;
+      //
+      // });
+
       $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
               e.preventDefault();
 
-              var k = $(this).parent().find('select:eq(0)').select2("data");
-              var j=k.map(m => m.id).join(',');
-
-              delete output[j];
               $(this).parent().parent('div').remove();
               //x--;
-          
-      })
 
-
+      });
+  
 
       $('#submit').click(function(e){
          e.preventDefault();
@@ -241,6 +248,18 @@ $("document").ready(function(){
          var id_no = x;
          var insuranceclaim = $("input[name=insurance]").val();
 
+         $(".catclass").each(function(){
+            var category_id = $(this).find('select:eq(0)').select2("data");
+            //var c = category_id.map(m => m.id).join(',');
+            console.log(category_id);
+
+            var test_id = $(this).find('select:eq(1)').select2("data");
+            var t = test_id.map(n => n.id).join(',');
+            console.log(t);
+
+
+
+         });
          var r_cost1 = $("input[name=r_cost1]").val();
          var r_cost2 = $("input[name=r_cost2]").val();
          var from_date = $("input[id=from_date]").val();
