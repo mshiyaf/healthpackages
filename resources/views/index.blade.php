@@ -123,13 +123,13 @@
 
 
               <div class="form-group col-md-2">
-<<<<<<< HEAD
+
                 <input name="r_time" id="r_time1" value="Monthly" class="form-control" disabled>
 
               </input>
-=======
+
                 <input name="r_time" id="r_time1" class="form-control" disabled placeholder="Monthly">
->>>>>>> origin/shiyaf
+
               </div>
 
               <div class="form-group col-md-4">
@@ -145,13 +145,13 @@
 
 
               <div class="form-group col-md-2">
-<<<<<<< HEAD
+
                 <input name="r_time" value="Yearly" id="r_time2" class="form-control" disabled>
 
               </input>
-=======
+
                 <input name="r_time" id="r_time2" class="form-control" style='background-colour:white' disabled placeholder="Yearly">
->>>>>>> origin/shiyaf
+
               </div>
 
               <div class="form-group col-md-4">
