@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Health Packages</title>
+    <title>Health Packages edit</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css">
     <link rel="stylesheet" href="/css/app.css">
@@ -56,11 +56,38 @@
 
   $(document).ready(function() {
 
+    var insuranceclaim = $("input[name=insurance]").val();
+    var bool = (insuranceclaim==1);
+    $("#insurancecheck").attr('checked', bool);
+    $("#offerp").prop('disabled',!insurancecheck.checked);
+
+    var offerp = $("input[name=offerp]").val();
+    var bool2 = (offerp>0);
+    $("#offercheck").attr('checked', bool2);
+
+    var r_cost1 = $("input[name=r_cost1]").val();
+    var bool3 = (r_cost1>0);
+    $("#recurringcheck1").attr('checked', bool3);
+    $("#r_cost1").prop('disabled',!recurringcheck1.checked);
+
+    var r_cost2 = $("input[name=r_cost2]").val();
+    var bool4 = (r_cost2>0);
+    $("#recurringcheck2").attr('checked', bool4);
+    $("#r_cost2").prop('disabled',!recurringcheck2.checked);
+
+    var service = $("select[id=service]").val();
+    var bool5 = (service==0);
+    $("#servicecheck").attr('checked', bool5);
+    $("#service").prop('disabled',!servicecheck.checked);
+
+
   $('.select2-single,#test_1,#category_1').select2({
     allowClear:true,
     placeholder: '',
     theme: 'bootstrap'
   });
+
+
 
   $( "#servicecheck" ).on( "click", function() {
     $("#service").prop('disabled',!this.checked);
@@ -80,6 +107,14 @@
     $("#r_cost2").prop('disabled',!this.checked);
     //$("#r_time2").prop('background-color:#FFF',this.checked);
   });
+
+  // $('#offerp').change(function () {
+  //    if ( $('input[name="offerp"]').val()==="460" ) {
+  //          $('input[id="offercheck"]')[0].checked = true;
+  //      }
+  //    });
+
+
 
 });
 
@@ -144,84 +179,11 @@ $("document").ready(function(){
                   });
               });
 
-              // $div.on('select2:select', function (e) {
-              //
-              //       e.preventDefault();
-              //       var category_id = $(this).parent().parent().find('select2:select').select2("data");
-              //       console.log(category_id);
-              //       var c = category_id.map(m => m.id).join(',');
-              //       console.log(c);
-              //
-              //       var test_id = $(this).parent().find('select:eq(1)').select2("data");
-              //       var t = test_id.map(n => n.id).join(',');
-              //
-              //       $("output").append(output[c]=t);
-              //
-              //       // $(this).parent().find('select:eq(1)').select2({
-              //       //   disabled:'disabled'
-              //       // });
-              //       // $(this).parent().find('select:eq(0)').select2({
-              //       //   disabled:'disabled'
-              //       // });
-              //
-              // });
-
-              // $div.on("select2:select", function (e) {
-              //
-              //       e.preventDefault();
-              //       var category_id = $(this).parent().find('select:eq(0)').select2("data");
-              //       var c = category_id.map(m => m.id).join(',');
-              //       console.log(c);
-              //       var test_id = $(this).parent().find('select:eq(1)').select2("data");
-              //       var t = test_id.map(n => n.id).join(',');
-              //       console.log(t);
-              //       $("output").append(output[c]=t);
-
-                    // $(this).parent().find('select:eq(1)').select2({
-                    //   disabled:'disabled'
-                    // });
-                    // $(this).parent().find('select:eq(0)').select2({
-                    //   disabled:'disabled'
-                    // });
-
-              // });
-
-              // $(wrapper).select2().on('select2:select',function(e){
-              //
-              //       e.preventDefault();
-              //       var category_id = $(this).find('select:eq(0)').select2("data");
-              //       var c = category_id.map(m => m.id).join(',');
-              //
-              //       var test_id = $(this).parent().find('select:eq(1)').select2("data");
-              //       var t = test_id.map(n => n.id).join(',');
-              //
-              //       $("output").append(output[c]=t);
-
-                    // $(this).parent().find('select:eq(1)').select2({
-                    //   disabled:'disabled'
-                    // });
-                    // $(this).parent().find('select:eq(0)').select2({
-                    //   disabled:'disabled'
-                    // });
-
-              // });
-
-
 
 
       });
 
-      // $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-      //         e.preventDefault();
-      //
-      //         // var k = $(this).parent().find('select:eq(0)').select2("data");
-      //         // var j=k.map(m => m.id).join(',');
-      //
-      //         // delete output[j];
-      //         $(this).parent().parent('div').remove();
-      //         //x--;
-      //
-      // });
+
 
       $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
               e.preventDefault();
