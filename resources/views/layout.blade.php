@@ -230,7 +230,7 @@ $("document").ready(function(){
               //x--;
 
       });
-  
+
 
       $('#submit').click(function(e){
          e.preventDefault();
@@ -265,6 +265,7 @@ $("document").ready(function(){
          var from_date = $("input[id=from_date]").val();
          var to_date = $("input[id=to_date]").val();
 
+
          // alert();
          $.ajaxSetup({
             headers: {
@@ -284,10 +285,12 @@ $("document").ready(function(){
              totalcost:totalcost,
              offerp:offerp,
              insuranceclaim:insuranceclaim,
-             r_cost1:r_cost1,
-             r_cost2:r_cost2,
              from_date:from_date,
-             to_date:to_date
+             to_date:to_date,
+             r_cost1:r_cost1,
+             r_cost2:r_cost2
+             // type: jQuery('#type').val(),
+             // price: jQuery('#price').val()
           },
           success: function(data){
             alert(response.message)
