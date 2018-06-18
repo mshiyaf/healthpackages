@@ -21,7 +21,7 @@ class CreatePackcattestsTable extends Migration
         });
 
         Schema::table('packcattests',function($table){
-            $table->foreign('package_id')->references('id')->on('packages')->onDelete('cascade');
+            $table->foreign('package_id')->references('package_id')->on('packages')->onDelete('cascade');
 
         });
     }

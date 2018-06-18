@@ -87,215 +87,140 @@
 
 <script type="text/javascript">
 
-$("document").ready(function(){
+    $("document").ready(function(){
 
-  var wrapper         = $(".input_fields_wrap"); //Fields wrapper
-  var add_button      = $(".add_field_button"); //Add button ID
-  var x = 0;
-  var output = {};
-  //var routput = {};
-
+      var wrapper         = $(".input_fields_wrap"); //Fields wrapper
+      var add_button      = $(".add_field_button"); //Add button ID
+      var x = 0;
+      var output = {};
 
 
-      $(add_button).click(function(e){ //on add input button click
-              e.preventDefault();
+
+          $(add_button).click(function(e){ //on add input button click
+                  e.preventDefault();
 
 
-              x++; //text box increment
-              var test_id = 'test_'+x;
-              var category_id = 'category_'+x;
-              var $div = $('<div class="form-group catclass"><div class="card"><article class="card-body"><label>Category</label><select name="category[]" id='+category_id+' class="form-control select2-multiple"><option></option></select><label>Tests</label><select name="test[]" id='+test_id+' class="form-control select2-multiple" multiple="multiple"></select><a href="#" class="submit_field">Done</a><div></div><a href="#" class="remove_field">Remove</a></article></div></div>');
-              $(wrapper).append($div); //add input box
+                  x++; //text box increment
+                  var test_id = 'test_'+x;
+                  var category_id = 'category_'+x;
+                  var $div = $('<div class="form-group catclass"><div class="card"><article class="card-body"><label>Category</label><select name="category[]" id='+category_id+' class="form-control select2-multiple"><option></option></select><label>Tests</label><select name="test[]" id='+test_id+' class="form-control select2-multiple" multiple="multiple"></select><div></div><a href="#" class="remove_field">Remove</a></article></div></div>');
+                  $(wrapper).append($div); //add input box
 
-              @foreach ($categories as $category)
-              $("#category_"+x).append($('<option>', {
-                  value: {{ $category->cat_id }},
-                  text : "{{ $category->cat_name }}"
-              }));
-              @endforeach
-              @foreach ($tests as $test)
-              $("#test_"+x).append($('<option>', {
-                  value: {{ $test->test_id }},
-                  text : "{{ $test->test_name }}"
-              }));
-              @endforeach
-              $div.find("#test_"+x).select2({
-              allowClear:true,
-              placeholder: '',
-              theme: 'bootstrap' });
-              $div.find("#category_"+x).select2({
-              allowClear:true,
-              placeholder: '',
-              theme: 'bootstrap' });
+                  @foreach ($categories as $category)
+                  $("#category_"+x).append($('<option>', {
+                      value: {{ $category->cat_id }},
+                      text : "{{ $category->cat_name }}"
+                  }));
+                  @endforeach
+                  @foreach ($tests as $test)
+                  $("#test_"+x).append($('<option>', {
+                      value: {{ $test->test_id }},
+                      text : "{{ $test->test_name }}"
+                  }));
+                  @endforeach
+                  $div.find("#test_"+x).select2({
+                  allowClear:true,
+                  placeholder: '',
+                  theme: 'bootstrap' });
+                  $div.find("#category_"+x).select2({
+                  allowClear:true,
+                  placeholder: '',
+                  theme: 'bootstrap' });
 
 
-              $("select[id="+category_id+"]").change(function(){
-                  var cat_id = $(this).val();
-                  var token = $("input[name='_token']").val();
+                  $("select[id="+category_id+"]").change(function(){
+                      var cat_id = $(this).val();
+                      var token = $("input[name='_token']").val();
 
-                  $.ajax({
-                      url: 'select-ajax',
-                      method: 'POST',
-                      data: {cat_id:cat_id, _token:token},
-                      success: function(data) {
-                        $("select[id="+test_id+"]").html('');
-                        $("select[id="+test_id+"]").html(data.options);
-                      }
+                      $.ajax({
+                          url: 'select-ajax',
+                          method: 'POST',
+                          data: {cat_id:cat_id, _token:token},
+                          success: function(data) {
+                            $("select[id="+test_id+"]").html('');
+                            $("select[id="+test_id+"]").html(data.options);
+                          }
+                      });
                   });
-              });
-
-              // $div.on('select2:select', function (e) {
-              //
-              //       e.preventDefault();
-              //       var category_id = $(this).parent().parent().find('select2:select').select2("data");
-              //       console.log(category_id);
-              //       var c = category_id.map(m => m.id).join(',');
-              //       console.log(c);
-              //
-              //       var test_id = $(this).parent().find('select:eq(1)').select2("data");
-              //       var t = test_id.map(n => n.id).join(',');
-              //
-              //       $("output").append(output[c]=t);
-              //
-              //       // $(this).parent().find('select:eq(1)').select2({
-              //       //   disabled:'disabled'
-              //       // });
-              //       // $(this).parent().find('select:eq(0)').select2({
-              //       //   disabled:'disabled'
-              //       // });
-              //
-              // });
-
-              // $div.on("select2:select", function (e) {
-              //
-              //       e.preventDefault();
-              //       var category_id = $(this).parent().find('select:eq(0)').select2("data");
-              //       var c = category_id.map(m => m.id).join(',');
-              //       console.log(c);
-              //       var test_id = $(this).parent().find('select:eq(1)').select2("data");
-              //       var t = test_id.map(n => n.id).join(',');
-              //       console.log(t);
-              //       $("output").append(output[c]=t);
-
-                    // $(this).parent().find('select:eq(1)').select2({
-                    //   disabled:'disabled'
-                    // });
-                    // $(this).parent().find('select:eq(0)').select2({
-                    //   disabled:'disabled'
-                    // });
-
-              // });
-
-              // $(wrapper).select2().on('select2:select',function(e){
-              //
-              //       e.preventDefault();
-              //       var category_id = $(this).find('select:eq(0)').select2("data");
-              //       var c = category_id.map(m => m.id).join(',');
-              //
-              //       var test_id = $(this).parent().find('select:eq(1)').select2("data");
-              //       var t = test_id.map(n => n.id).join(',');
-              //
-              //       $("output").append(output[c]=t);
-
-                    // $(this).parent().find('select:eq(1)').select2({
-                    //   disabled:'disabled'
-                    // });
-                    // $(this).parent().find('select:eq(0)').select2({
-                    //   disabled:'disabled'
-                    // });
-
-              // });
 
 
+          $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+                  e.preventDefault();
+
+                  $(this).parent().parent().parent('div').remove();
+
+          });
+
+    });
 
 
-      });
+    $('#submit').click(function(e){
+       e.preventDefault();
 
-      // $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-      //         e.preventDefault();
-      //
-      //         // var k = $(this).parent().find('select:eq(0)').select2("data");
-      //         // var j=k.map(m => m.id).join(',');
-      //
-      //         // delete output[j];
-      //         $(this).parent().parent('div').remove();
-      //         //x--;
-      //
-      // });
+       $(".catclass").each(function(){
+          var category_id = $(this).find('select:eq(0)').select2("data");
+          var c = category_id.map(m => m.id).join(',');
 
-      $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-              e.preventDefault();
+          var test_id = $(this).find('select:eq(1)').select2("data");
+          var t = test_id.map(n => n.id).join(',');
 
-              $(this).parent().parent('div').remove();
-              //x--;
-
-      });
-  
-
-      $('#submit').click(function(e){
-         e.preventDefault();
-         var service = $("select[id=service]").val();
-         var packagename = $("input[name=packagename]").val();
-         var packagetype = $("input[name=packagetype]").val();
-         var duration = $("input[name=duration]").val();
-         var time = $("select[name=time]").val();
-         var full_dur = duration+time;
-         var soutput = JSON.stringify(output);
-
-         var totalcost = $("input[name=totalcost]").val();
-         var offerp = $("input[name=offerp]").val();
-         var totalcost = $("input[name=totalcost]").val();
-         var id_no = x;
-         var insuranceclaim = $("input[name=insurance]").val();
-
-         $(".catclass").each(function(){
-            var category_id = $(this).find('select:eq(0)').select2("data");
-            //var c = category_id.map(m => m.id).join(',');
-            console.log(category_id);
-
-            var test_id = $(this).find('select:eq(1)').select2("data");
-            var t = test_id.map(n => n.id).join(',');
-            console.log(t);
+          $("output").append(output[c]=t);
 
 
-
-         });
-         var r_cost1 = $("input[name=r_cost1]").val();
-         var r_cost2 = $("input[name=r_cost2]").val();
-         var from_date = $("input[id=from_date]").val();
-         var to_date = $("input[id=to_date]").val();
-
-         // alert();
-         $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-       $.ajax({
-          url: "/packages",
-          method: 'post',
-          dataType:'json',
-          data: {
-             service:service,
-             packagename:packagename,
-             packagetype:packagetype,
-             full_dur:full_dur,
-             soutput:soutput,
-             totalcost:totalcost,
-             offerp:offerp,
-             insuranceclaim:insuranceclaim,
-             r_cost1:r_cost1,
-             r_cost2:r_cost2,
-             from_date:from_date,
-             to_date:to_date
-          },
-          success: function(data){
-            alert(response.message)
-          }
-        });
 
        });
- });
+       
+       var service = $("select[id=service]").val();
+       var packagename = $("input[name=packagename]").val();
+       var packagetype = $("input[name=packagetype]").val();
+       var duration = $("input[name=duration]").val();
+       var time = $("select[name=time]").val();
+       var full_dur = duration+time;
+       var soutput = JSON.stringify(output);
+
+       var totalcost = $("input[name=totalcost]").val();
+       var offerp = $("input[name=offerp]").val();
+       var totalcost = $("input[name=totalcost]").val();
+       var id_no = x;
+       var insuranceclaim = $("input[name=insurance]").val();
+
+
+       var r_cost1 = $("input[name=r_cost1]").val();
+       var r_cost2 = $("input[name=r_cost2]").val();
+       var from_date = $("input[id=from_date]").val();
+       var to_date = $("input[id=to_date]").val();
+
+       // alert();
+       $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+      });
+     $.ajax({
+        url: "/packages",
+        method: 'post',
+        dataType:'json',
+        data: {
+           service:service,
+           packagename:packagename,
+           packagetype:packagetype,
+           full_dur:full_dur,
+           soutput:soutput,
+           totalcost:totalcost,
+           offerp:offerp,
+           insuranceclaim:insuranceclaim,
+           r_cost1:r_cost1,
+           r_cost2:r_cost2,
+           from_date:from_date,
+           to_date:to_date
+        },
+        success: function(data){
+          alert(response.message)
+        }
+      });
+
+     });
+   });
 
 </script>
 
