@@ -93,7 +93,7 @@
 
               </div>
             </div>
-              <input type="number" class="form-control" name="offerp" id="offerp" disabled = 'disabled' value={{ $package->offerprice }} }}>
+              <input type="number" class="form-control" name="offerp" id="offerp" disabled = 'disabled' value={{ $package->offerprice }}>
           </div>
 
 
