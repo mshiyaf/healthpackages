@@ -65,7 +65,7 @@ class PackagesController extends Controller
         $new = json_decode($output);
         foreach ($new as $key => $value) {
           $tests = new Packcattest;
-          $tests->package_id = $package->id;
+          $tests->package_id = $package->package_id;
           $tests->test_id = $value;
           $tests->cat_id = $key;
           $tests->save();

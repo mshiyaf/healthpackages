@@ -141,7 +141,6 @@ $("document").ready(function(){
   var add_button      = $(".add_field_button"); //Add button ID
   var x = 0;
   var output = {};
-  //var routput = {};
 
 
 
@@ -152,7 +151,7 @@ $("document").ready(function(){
               x++; //text box increment
               var test_id = 'test_'+x;
               var category_id = 'category_'+x;
-              var $div = $('<div class="form-group catclass"><div class="card"><article class="card-body"><label>Category</label><select name="category[]" id='+category_id+' class="form-control select2-multiple"><option></option></select><label>Tests</label><select name="test[]" id='+test_id+' class="form-control select2-multiple" multiple="multiple"></select><a href="#" class="submit_field">Done</a><div></div><a href="#" class="remove_field">Remove</a></article></div></div>');
+              var $div = $('<div class="form-group catclass"><div class="card"><article class="card-body"><label>Category</label><select name="category[]" id='+category_id+' class="form-control select2-multiple"><option></option></select><label>Tests</label><select name="test[]" id='+test_id+' class="form-control select2-multiple" multiple="multiple"></select><div></div><a href="#" class="remove_field">Remove</a></article></div></div>');
               $(wrapper).append($div); //add input box
 
               @foreach ($categories as $category)
@@ -193,18 +192,14 @@ $("document").ready(function(){
               });
 
 
-
-      });
-
-
-
       $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
               e.preventDefault();
 
-              $(this).parent().parent('div').remove();
-              //x--;
+              $(this).parent().parent().parent('div').remove();
 
       });
+
+});
 
 
       $('#submit').click(function(e){
@@ -226,16 +221,17 @@ $("document").ready(function(){
 
          $(".catclass").each(function(){
             var category_id = $(this).find('select:eq(0)').select2("data");
-            //var c = category_id.map(m => m.id).join(',');
-            console.log(category_id);
+            var c = category_id.map(m => m.id).join(',');
 
             var test_id = $(this).find('select:eq(1)').select2("data");
             var t = test_id.map(n => n.id).join(',');
-            console.log(t);
+
+            $("output").append(output[c]=t);
 
 
 
          });
+
          var r_cost1 = $("input[name=r_cost1]").val();
          var r_cost2 = $("input[name=r_cost2]").val();
          var from_date = $("input[id=from_date]").val();
@@ -276,7 +272,8 @@ $("document").ready(function(){
         });
 
        });
- });
+     });
+
 
 </script>
 
