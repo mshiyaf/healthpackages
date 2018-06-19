@@ -5,7 +5,7 @@
 Route::get('/', 'DatatablesController@index');
 Route::get('/datatable', 'DatatablesController@getdata');
 Route::get('/create_package','PackagesController@create');
-Route::post('select-ajax', 'PackagesController@selectAjax');
+Route::post('/select-ajax', 'PackagesController@selectAjax');
 Route::post('/packages','PackagesController@store');
 
 Route::get('/edit/{id}','PackagesController@edit');

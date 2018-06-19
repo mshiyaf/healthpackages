@@ -36,12 +36,12 @@ class PackagesController extends Controller
     function store(Request $request)
     {
 
-        // $this->validate(request(),[
-          // 'speciality' => 'required',
-          // 'packagename' => 'required',
-          // 'packagetype' => 'required'
-          // 'test'=> 'required'
-        // ]);
+        $request->validate([
+
+          'packagename' => 'required',
+          'packagetype' => 'required',
+          'totalcost'=> 'required'
+        ]);
 
         $package = new Package;
         $package->duration = request('full_dur');
@@ -81,16 +81,20 @@ class PackagesController extends Controller
       $tests = Test::all();
       $services = Service::all();
       $categories = Category::all();
-      $id = $package->service_id;
-      if($id!=0){
-      $thisservice = Service::find($id);
+
+      $service_id = $package->service_id;
+      if($service_id!=0){
+      $thisservice = Service::find($service_id);
     }
     else{
       $thisservice = new Service;
       $thisservice->service_id=0;
       $thisservice->service_name="";
     }
-      return view('edit.indexedit',compact('tests','package','services','categories','thisservice'));
+
+    $packcattests = DB::table('packcattests')->where('package_id', '=', $package_id)->get();
+    $thiscategory = DB::table('categories')->where('cat_id', '=', 3)->get();
+      return view('edit.edit_index',compact('tests','package','services','categories','thisservice','packcattests','thiscategory'));
 
     }
 
