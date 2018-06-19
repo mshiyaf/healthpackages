@@ -1,4 +1,4 @@
-@extends('/edit/layoutedit')
+@extends('/edit/edit_layout')
 
 @section('form')
 

@@ -90,7 +90,7 @@ class PackagesController extends Controller
       $thisservice->service_id=0;
       $thisservice->service_name="";
     }
-      return view('edit.indexedit',compact('tests','package','services','categories','thisservice'));
+      return view('edit.edit_index',compact('tests','package','services','categories','thisservice'));
 
     }
 
