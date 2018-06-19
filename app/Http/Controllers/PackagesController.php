@@ -65,7 +65,7 @@ class PackagesController extends Controller
         $new = json_decode($output);
         foreach ($new as $key => $value) {
           $tests = new Packcattest;
-          $tests->package_id = $package->id;
+          $tests->package_id = $package->package_id;
           $tests->test_id = $value;
           $tests->cat_id = $key;
           $tests->save();
@@ -90,7 +90,7 @@ class PackagesController extends Controller
       $thisservice->service_id=0;
       $thisservice->service_name="";
     }
-      return view('edit.indexedit',compact('tests','package','services','categories','thisservice'));
+      return view('edit.edit_index',compact('tests','package','services','categories','thisservice'));
 
     }
 
