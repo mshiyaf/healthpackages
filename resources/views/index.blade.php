@@ -29,9 +29,6 @@
 
             @endforeach
           </tbody> --}}
-<<<<<<< HEAD
-  
-=======
           <tfoot>
               <tr>
                   <th>Id</th>
@@ -43,7 +40,6 @@
                   {{-- <th>Action</th> --}}
               </tr>
           </tfoot>
->>>>>>> origin/shiyaf
       </table>
 
 

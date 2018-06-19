@@ -19,11 +19,7 @@ class PackagesController extends Controller
       $tests = Test::all();
       $services = Service::all();
       $categories = Category::all();
-<<<<<<< HEAD
-      return view('index',compact('tests','package','services','categories'));
-=======
       return view('/create/create_index',compact('tests','package','services','categories'));
->>>>>>> origin/shiyaf
 
     }
 
