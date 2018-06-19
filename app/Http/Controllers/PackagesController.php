@@ -112,7 +112,6 @@ class PackagesController extends Controller
         $package->insuranceclaim = request('insuranceclaim');
         $package->from_date = request('from_date');
         $package->to_date = request('to_date');
-
         $package->r_cost_monthly=request('r_cost1');
         $package->r_cost_yearly=request('r_cost2');
         $saved = $package->save();
