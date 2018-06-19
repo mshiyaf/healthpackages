@@ -11,7 +11,7 @@
 
 
 
-
+          <input type=hidden name="pack_id" id="pack_id" value={{ $package->id }}></input>
 
           <div class="form-group">
               <label>Package Name</label>
