@@ -196,7 +196,7 @@ $("document").ready(function(){
 
       $('#submit').click(function(e){
          e.preventDefault();
-         var id = <?php echo $package->id ?>;
+         var id = {{ $package->id }};
          var service = $("select[id=service]").val();
          var packagename = $("input[name=packagename]").val();
          var packagetype = $("input[name=packagetype]").val();
