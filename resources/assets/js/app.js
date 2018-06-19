@@ -21,5 +21,8 @@ require('./bootstrap');
 //     el: '#app'
 // });
 
+// //Datatables
+// require('./datatables.min')
+
 //select2-js
 require('./anchor.min')
