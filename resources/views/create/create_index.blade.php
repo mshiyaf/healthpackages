@@ -1,52 +1,11 @@
-@extends('layout')
+@extends('/create/create_layout')
 
-@section('table')
-
-  <table id="table_id" class="display" style="width:100%">
-          <thead>
-              <tr>
-                  <th>Id</th>
-                  <th>Package Name</th>
-                  <th>Type</th>
-                  <th>Offer Price</th>
-                  <th>Created At</th>
-                  <th>Updated At</th>
-                  {{-- <th>Action</th> --}}
-              </tr>
-          </thead>
-          {{-- <tbody>
-            @foreach ($packages as $package)
-
-              <tr>
-                <td>{{ $package->package_id }}</td>
-                <td>{{ $package->packagename }}</td>
-                <td>{{ $package->packagetype }}</td>
-                <td>{{ $package->from_date }}</td>
-                <td>{{ $package->to_date }}</td>
-                <td>{{ $package->offerprice }}</td>
-                <td></td>
-              </tr>
-
-            @endforeach
-          </tbody> --}}
-          <tfoot>
-              <tr>
-                  <th>Id</th>
-                  <th>Package Name</th>
-                  <th>Type</th>
-                  <th>Offer Price</th>
-                  <th>Created At</th>
-                  <th>Updated At</th>
-                  {{-- <th>Action</th> --}}
-              </tr>
-          </tfoot>
-      </table>
+@section('form')
 
 
-<<<<<<< HEAD
   <article class="card-body">
 
-      <form id="formvalues">
+      <form>
 
           {{ csrf_field() }}
 
@@ -164,17 +123,11 @@
 
 
               <div class="form-group col-md-2">
-
-                {{-- <input name="r_time" id="r_time1" value="Monthly" class="form-control" disabled>
-
-              </input> --}}
-
                 <input name="r_time" id="r_time1" class="form-control" disabled placeholder="Monthly">
-
               </div>
 
               <div class="form-group col-md-4">
-                <input type="text" name="r_cost" id="r_cost1" class="form-control" placeholder="Cost" disabled>
+                <input type="text" name="r_cost1" id="r_cost1" class="form-control" placeholder="Cost" disabled>
               </div>
 
           </div>
@@ -186,17 +139,11 @@
 
 
               <div class="form-group col-md-2">
-
-                {{-- <input name="r_time" value="Yearly" id="r_time2" class="form-control" disabled>
-
-              </input> --}}
-
                 <input name="r_time" id="r_time2" class="form-control" style='background-colour:white' disabled placeholder="Yearly">
-
               </div>
 
               <div class="form-group col-md-4">
-                <input type="text" name="r_cost" id="r_cost2" class="form-control" placeholder="Cost" disabled>
+                <input type="text" name="r_cost2" id="r_cost2" class="form-control" placeholder="Cost" disabled>
               </div>
 
           </div>
@@ -210,7 +157,7 @@
         <div class="form-group col-md">
         <div class="form row">
             <div class="form-group col-md-4">
-              <input class="form-control" name="from_date" type="date" id="from_date">
+              <input class="form-control" type="date" id="from_date">
             </div>
 
             <div class="form-group">
@@ -218,7 +165,7 @@
             </div>
 
             <div class="form-group col-md-4">
-              <input class="form-control" name="to_date"  type="date" id="to_date">
+              <input class="form-control" type="date" id="to_date">
             </div>
         </div>
         </div>
@@ -238,6 +185,4 @@
 
   </article>
 
-=======
->>>>>>> origin/shiyaf
 @endsection
