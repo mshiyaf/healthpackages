@@ -29,7 +29,21 @@
 
             @endforeach
           </tbody> --}}
+<<<<<<< HEAD
   
+=======
+          <tfoot>
+              <tr>
+                  <th>Id</th>
+                  <th>Package Name</th>
+                  <th>Type</th>
+                  <th>Offer Price</th>
+                  <th>Created At</th>
+                  <th>Updated At</th>
+                  {{-- <th>Action</th> --}}
+              </tr>
+          </tfoot>
+>>>>>>> origin/shiyaf
       </table>
 
 

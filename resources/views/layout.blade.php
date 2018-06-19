@@ -76,6 +76,7 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
               // $div.on("select2:select", function (e) {
               //
               //       e.preventDefault();
@@ -205,6 +206,8 @@
           success: function(data){
             alert(response.message)
           }
+=======
+>>>>>>> origin/shiyaf
 =======
 >>>>>>> origin/shiyaf
 =======
