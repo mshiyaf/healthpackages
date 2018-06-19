@@ -8,4 +8,4 @@ Route::post('/packages','PackagesController@store');
 
 Route::resource('edit','PackagesController');
 
-// Route::get('/delete/{id}','PackagesController@delete');
+Route::get('/delete/{id}','PackagesController@delete');

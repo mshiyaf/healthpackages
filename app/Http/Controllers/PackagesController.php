@@ -42,8 +42,10 @@ class PackagesController extends Controller
           // 'test'=> 'required'
         // ]);
 
-        $package = new Package;
-
+        // $package = new Package;
+        // $package->id=request('id');
+        $id=request('id');
+        $package=Package::find($id);
         $package->duration = request('full_dur');
         $package->service_id = request('service');
         $package->packagename = request('packagename');
