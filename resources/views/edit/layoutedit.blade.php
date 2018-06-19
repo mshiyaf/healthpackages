@@ -196,6 +196,7 @@ $("document").ready(function(){
 
       $('#submit').click(function(e){
          e.preventDefault();
+         var id = $("input[name=pack_id]").val();
          var service = $("select[id=service]").val();
          var packagename = $("input[name=packagename]").val();
          var packagetype = $("input[name=packagetype]").val();
@@ -234,6 +235,9 @@ $("document").ready(function(){
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+        // $.ajax({
+        //   url:"/delete/"
+        // });
        $.ajax({
           url: "/packages",
           method: 'post',

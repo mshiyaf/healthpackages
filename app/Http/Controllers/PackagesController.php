@@ -94,6 +94,11 @@ class PackagesController extends Controller
 
     }
 
+    public function delete($id){
+      Package::find($id)->delete();
+
+    }
+
 
 
 }
