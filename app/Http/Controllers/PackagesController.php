@@ -12,13 +12,14 @@ use DB;
 
 class PackagesController extends Controller
 {
-    function index()
+
+    function create()
     {
       $package = Package::all();
       $tests = Test::all();
       $services = Service::all();
       $categories = Category::all();
-      return view('index',compact('tests','packages','services','categories'));
+      return view('/create/create_index',compact('tests','package','services','categories'));
 
     }
 
@@ -27,7 +28,7 @@ class PackagesController extends Controller
       if($request->ajax())
       {
       $tests = DB::table('tests')->where('cat_id',$request->cat_id)->pluck("test_name","test_id")->all();
-      $data = view('ajax-select',compact('tests'))->render();
+      $data = view('/create/ajax-select',compact('tests'))->render();
       return response()->json(['options'=>$data]);
       }
     }
