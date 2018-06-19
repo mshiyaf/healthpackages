@@ -56,6 +56,12 @@
 
   $(document).ready(function() {
 
+    var d = "<?php echo $package->duration ?>";
+    var d1 = d.replace("Days","");
+    var dur = parseInt(d,10);
+    $("#duration").attr("value",dur);
+       // alert(dur);
+
     var insuranceclaim = $("input[name=insurance]").val();
     var bool = (insuranceclaim==1);
     $("#insurancecheck").attr('checked', bool);
