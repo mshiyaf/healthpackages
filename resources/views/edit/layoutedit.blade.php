@@ -237,7 +237,7 @@ $("document").ready(function(){
         });
 
        $.ajax({
-          url: "/packages",
+          url: "/update",
           method: 'post',
           dataType:'json',
           data: {
