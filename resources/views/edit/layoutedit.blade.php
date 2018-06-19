@@ -63,6 +63,8 @@
     var d2 = "{{ $package->duration }}";
     var d3 = d2.replace(/[0-9]/g, '');
     $("#dtime").attr("label",d3);
+    $("#dtime").attr("value",d3);
+
 
 
 
