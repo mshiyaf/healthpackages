@@ -10,9 +10,6 @@
           {{ csrf_field() }}
 
 
-
-          <input type=hidden name="pack_id" id="pack_id" value={{ $package->id }}></input>
-
           <div class="form-group">
               <label>Package Name</label>
               <input type="text" name="packagename" class="form-control" placeholder=" " value={{ $package->packagename }}>
@@ -68,8 +65,8 @@
               </div>
 
               <div class="form-group col-md-2">
-                <select name="time" id="time" class="form-control" placeholder=" " >
-                  <option id="dtime"  selected ></option>
+                <select name="time" id="time" class="form-control" placeholder=" ">
+                  <option id="dtime" selected ></option>
                   <option>Days</option>
                   <option>Hours</option>
                   <option>Minutes</option>

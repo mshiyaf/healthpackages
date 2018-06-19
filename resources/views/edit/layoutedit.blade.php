@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Health Packages edit</title>
+    <title>Edit Health Packages</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css">
     <link rel="stylesheet" href="/css/app.css">
@@ -63,7 +63,7 @@
     var d2 = "{{ $package->duration }}";
     var d3 = d2.replace(/[0-9]/g, '');
     $("#dtime").attr("label",d3);
-    alert(d3);
+
 
 
        // alert(dur);
@@ -208,7 +208,7 @@ $("document").ready(function(){
 
       $('#submit').click(function(e){
          e.preventDefault();
-         var id = $("input[name=pack_id]").val();
+         var id = {{ $package->id }};
          var service = $("select[id=service]").val();
          var packagename = $("input[name=packagename]").val();
          var packagetype = $("input[name=packagetype]").val();
@@ -247,14 +247,13 @@ $("document").ready(function(){
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        // $.ajax({
-        //   url:"/delete/"
-        // });
+
        $.ajax({
-          url: "/packages",
+          url: "/update",
           method: 'post',
           dataType:'json',
           data: {
+            id:id,
              service:service,
              packagename:packagename,
              packagetype:packagetype,
