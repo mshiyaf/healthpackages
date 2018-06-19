@@ -8,7 +8,7 @@
       <form>
 
           {{ csrf_field() }}
-      
+
 
           <div class="form-group">
               <label>Package Name</label>
@@ -66,7 +66,7 @@
 
               <div class="form-group col-md-2">
                 <select name="time" id="time" class="form-control" placeholder=" ">
-                  <option id="dtime" value ="<?php echo $package->duration ?>.replace(/[0-9]/g, '')" selected ></option>
+                  <option id="dtime" selected ></option>
                   <option>Days</option>
                   <option>Hours</option>
                   <option>Minutes</option>

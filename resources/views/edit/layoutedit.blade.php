@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Health Packages edit</title>
+    <title>Edit Health Packages</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css">
     <link rel="stylesheet" href="/css/app.css">
@@ -62,8 +62,8 @@
     $("#duration").attr("value",dur);
     var d2 = "{{ $package->duration }}";
     var d3 = d2.replace(/[0-9]/g, '');
-    $("#dtime").attr("value",d3);
-    alert(d3);
+    $("#dtime").attr("label",d3);
+
 
 
        // alert(dur);
