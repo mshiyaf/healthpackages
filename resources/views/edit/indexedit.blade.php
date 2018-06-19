@@ -60,15 +60,19 @@
           <div class="form-row">
 
               <div class="form-group col-md-3">
-                <input name="duration" type="number" min="0" class="form-control" id="duration" placeholder=" " value={{ $package->duration }}>
+
+                <input name="duration" type="number" min="0" class="form-control" id="duration" placeholder=" "  >
               </div>
 
               <div class="form-group col-md-2">
                 <select name="time" id="time" class="form-control" placeholder=" ">
+                  <option id="dtime" value ="<?php echo $package->duration ?>.replace(/[0-9]/g, '')" selected ></option>
                   <option>Days</option>
                   <option>Hours</option>
                   <option>Minutes</option>
                 </select>
+                {{-- <input type='hidden' id='myhidden' value=''> --}}
+
               </div>
           </div>
 
@@ -186,5 +190,6 @@
       @include('errors')
 
   </article>
+
 
 @endsection
