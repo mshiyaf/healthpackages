@@ -44,6 +44,7 @@
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   <article class="card-body">
 
       <form id="formvalues">
@@ -238,6 +239,8 @@
 
   </article>
 
+=======
+>>>>>>> origin/shiyaf
 =======
 >>>>>>> origin/shiyaf
 @endsection
