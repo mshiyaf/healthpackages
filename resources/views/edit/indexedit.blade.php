@@ -138,7 +138,6 @@
 
           </div>
           <div class="form-row">
-
               <div class="form-group col-md-1">
                 <input style="padding-left:1rem" type="checkbox" id="recurringcheck2">
               </div>
