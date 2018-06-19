@@ -75,8 +75,8 @@ class PackagesController extends Controller
 
     }
 
-    function edit($id){
-      $package = Package::find($id);
+    function edit($package_id){
+      $package = Package::find($package_id);
       $tests = Test::all();
       $services = Service::all();
       $categories = Category::all();
