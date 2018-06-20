@@ -146,46 +146,30 @@
         var add_button      = $(".add_field_button"); //Add button ID
         var x = 0;
         var output = {};
-        var id3 = {{ $package->package_id }};
+        var i = 0;
 
         @foreach ($packcattest as $pct)
         x++; //text box increment
         var test_id = 'test_'+x;
         var category_id = 'category_'+x;
         var cd = {{ $pct->cat_id }};
+        var td = [{{ $pct->test_id }}]
+         <?php $arr=explode(",", $pct->test_id); ?>
 
-        // alert(cd);
+        console.log(td);
+
+        var l = td.length;
+        console.log(td.length);
+
         @foreach ($categories as $category)
-          @if ($category->cat_id==$pct->cat_id)
 
+
+          @if ($category->cat_id==$pct->cat_id)
+        
           var cn = "{{ $category->cat_name }}";
           console.log(cn);
-          @foreach ($tests as $test)
-
-            @if ($test->test_id==$pct->test_id)
-            var td = "{{ $pct->test_id }}";
-            var tn = "{{ $test->test_name }}";
-            console.log(tn);
-            var $div = $('<div class="form-group catclass"><div class="card"><article class="card-body"><label>Category</label><select name="category[]" id='+category_id+' class="form-control select2-multiple" ><option selected="selected" value='+cd+'>'+cn+'</option></select><label>Tests</label><select name="test[]" id='+test_id+' class="form-control select2-multiple" multiple="multiple"><option selected="selected" value='+td+'>'+tn+'</option></select><div></div><a href="#" class="remove_field">Remove</a></article></div></div>');
-            $(wrapper).append($div); //add input box
-
-            $("#test_"+x).append($('<option selected="selected">', {
-                value: {{ $test->test_id }},
-                text : "{{ $test->test_name }}"
-            }));
-            @endif
-          @endforeach
-
-
-
-          @endif
-
-
-        @endforeach
-        // $("#+category_id+").attr("value",cn);
-
-        // var $div = $('<div class="form-group catclass"><div class="card"><article class="card-body"><label>Category</label><select name="category[]" id='+category_id+' class="form-control select2-multiple" ><option></option></select><label>Tests</label><select name="test[]" id='+test_id+' class="form-control select2-multiple" multiple="multiple"></select><div></div><a href="#" class="remove_field">Remove</a></article></div></div>');
-        // $(wrapper).append($div); //add input box
+          var $div = $('<div class="form-group catclass"><div class="card"><article class="card-body"><label>Category</label><select name="category[]" id='+category_id+' class="form-control select2-multiple" ><option selected="selected" value='+cd+'>'+cn+'</option></select><label>Tests</label><select name="test[]" id='+test_id+' class="form-control select2-multiple" multiple="multiple"><option selected="selected"></option></select><div></div><a href="#" class="remove_field">Remove</a></article></div></div>');
+          $(wrapper).append($div); //add input box
 
       @foreach ($categories as $category)
       $("#category_"+x).append($('<option>', {
@@ -199,6 +183,16 @@
           text : "{{ $test->test_name }}"
       }));
       @endforeach
+
+      $("#test_"+x).val(td);
+      $("#test_"+x).trigger('change');
+
+
+    @endif
+
+    @endforeach
+
+
       $div.find("#test_"+x).select2({
       allowClear:true,
       placeholder: '',
@@ -209,20 +203,6 @@
       placeholder: '',
       theme: 'bootstrap' });
 
-      $("select[id="+category_id+"]").change(function(){
-          var cat_id = $(this).val();
-          var token = $("input[name='_token']").val();
-
-          $.ajax({
-              url: 'select-ajax',
-              method: 'POST',
-              data: {cat_id:cat_id, _token:token},
-              success: function(data) {
-                $("select[id="+test_id+"]").html('');
-                $("select[id="+test_id+"]").html(data.options);
-              }
-          });
-      });
 
 
       $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
@@ -231,10 +211,13 @@
       $(this).parent().parent().parent('div').remove();
 
       });
-      @endforeach
 
-      });
-</script>
+
+
+    @endforeach
+
+
+{{-- </script>
 
 
 
@@ -246,7 +229,7 @@ $("document").ready(function(){
   var wrapper         = $(".input_fields_wrap"); //Fields wrapper
   var add_button      = $(".add_field_button"); //Add button ID
   var x = 0;
-  var output = {};
+  var output = {}; --}}
 
 
 
@@ -287,7 +270,7 @@ $("document").ready(function(){
                   var token = $("input[name='_token']").val();
 
                   $.ajax({
-                      url: 'select-ajax',
+                      url: '/select-ajax',
                       method: 'POST',
                       data: {cat_id:cat_id, _token:token},
                       success: function(data) {
