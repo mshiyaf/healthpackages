@@ -125,11 +125,7 @@
 </script>
 
 <script type="text/javascript">
-$("document").ready(function(){
-  var x=0;
-    @foreach ($packcattests as $new)
 
-@if($new->cat_id==$category->cat_)
 
       $("document").ready(function(){
 
@@ -145,23 +141,30 @@ $("document").ready(function(){
         var category_id = 'category_'+x;
         var cd = {{ $pct->cat_id }};
 
+
         // alert(cd);
         @foreach ($categories as $category)
           @if ($category->cat_id==$pct->cat_id)
 
           var cn = "{{ $category->cat_name }}";
           console.log(cn);
+          @endif
+          @endforeach
+
           @foreach ($tests as $test)
 
             @if ($test->test_id==$pct->test_id)
             var td = "{{ $pct->test_id }}";
             var tn = "{{ $test->test_name }}";
             console.log(tn);
+            @endif
+            @endforeach
             var $div = $('<div class="form-group catclass"><div class="card"><article class="card-body"><label>Category</label><select name="category[]" id='+category_id+' class="form-control select2-multiple" ><option selected="selected" value='+cd+'>'+cn+'</option></select><label>Tests</label><select name="test[]" id='+test_id+' class="form-control select2-multiple" multiple="multiple"><option selected="selected" value='+td+'>'+tn+'</option></select><div></div><a href="#" class="remove_field">Remove</a></article></div></div>');
             $(wrapper).append($div); //add input box
 
+
       @foreach ($categories as $category)
-        @if($new->cat_id!=$category->cat_id)
+        @if($pct->cat_id!=$category->cat_id)
         $("#category_"+x).append($('<option>', {
             value: {{ $category->cat_id }},
             text: "{{ $category->cat_name }}"
@@ -170,25 +173,14 @@ $("document").ready(function(){
       @endforeach
 
       @foreach ($tests as $test)
-        @if($new->test_id==$test->test_id)
-          $("#test_"+x).append($('<option>', {
-            selected:{
-              value: {{ $test->test_id }},
-              // label: "show me"
-            }
-          }));
-            @else
+        @if($pct->test_id!=$test->test_id)
+
               $("#test_"+x).append($('<option>', {
                   value: {{ $test->test_id }},
                   text: "{{ $test->test_name }}"
 
                 }));
-
-
-
         @endif
-
-
       @endforeach
       $div.find("#test_"+x).select2({
       allowClear:true,
@@ -214,8 +206,8 @@ $("document").ready(function(){
               }
           });
         });
-    @endforeach
 
+@endforeach
 
     $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
             e.preventDefault();
@@ -356,9 +348,23 @@ $("document").ready(function(){
              // type: jQuery('#type').val(),
              // price: jQuery('#price').val()
           },
-          success: function(data){
-            alert("success");
+          error: function(x,e) {
+            if (x.status==0) {
+                alert('You are offline!!\n Please Check Your Network.');
+            } else if(x.status==200){
+                alert('Successfully entered');
+            } else if(x.status==404) {
+                alert('Requested URL not found.');
+            } else if(x.status==500) {
+                alert('Internel Server Error.');
+            } else if(e=='timeout'){
+                alert('Request Time out.');
+            } else {
+                alert('Unknown Error.\n'+x.responseText);
+            }
           }
+
+
 
        });
      });

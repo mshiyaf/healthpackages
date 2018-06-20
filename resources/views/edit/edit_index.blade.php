@@ -12,7 +12,7 @@
 
           <div class="form-group">
               <label>Package Name</label>
-              <input type="text" name="packagename" class="form-control" placeholder=" " value={{ $package->packagename }}>
+              <input type="text" name="packagename" class="form-control" placeholder=" " value={{ $package->packagename }} required>
           </div>
 
 
@@ -61,7 +61,7 @@
 
               <div class="form-group col-md-3">
 
-                <input name="duration" type="number" min="0" class="form-control" id="duration" placeholder=" "  >
+                <input name="duration" type="number" min="0" class="form-control" id="duration" placeholder=" " required>
               </div>
 
               <div class="form-group col-md-2">
@@ -79,7 +79,7 @@
 
           <div class="form-group">
               <label>Total Cost</label>
-              <input type="number" min="0" name="totalcost" class="form-control" placeholder=" " value={{ $package->totalcost }}>
+              <input type="number" min="0" name="totalcost" class="form-control" placeholder=" " value={{ $package->totalcost }} required>
           </div>
 
 

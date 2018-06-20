@@ -82,17 +82,6 @@ class PackagesController extends Controller
       $services = Service::all();
       $categories = Category::all();
       $packcattest = DB::table('packcattests')->where('package_id','=',$package->package_id)->get();
-      // $categories =DB::table('$categories')->where('cat_id','=',$packcattest->cat_id)->get();
-
-      // foreach ($packcatest->package_id as $newid) {
-      //   if($newid==$id)
-      //   {
-      //     $thispackcattest = Packcattest::find($id);
-      //   }
-      //   else {
-      //     // code...
-      //   }
-      // }
 
       $id = $package->service_id;
       if($id!=0){
@@ -109,11 +98,18 @@ class PackagesController extends Controller
 
     public function delete($id){
       Package::find($id)->delete();
-
+      return redirect()->action('DatatablesController@index');
     }
 
     function update(Request $request)
     {
+
+      $request->validate([
+
+        'packagename' => 'required',
+        'packagetype' => 'required',
+        'totalcost'=> 'required'
+      ]);
 
         $id=request('id');
         $package=Package::find($id);
@@ -135,9 +131,10 @@ class PackagesController extends Controller
 
         $output = request('soutput');
         $new = json_decode($output);
+        $id=request('id');
         foreach ($new as $key => $value) {
           $tests = new Packcattest;
-          $tests->package_id = $package->id;
+          $tests->package_id = $id;
           $tests->test_id = $value;
           $tests->cat_id = $key;
           $tests->save();
