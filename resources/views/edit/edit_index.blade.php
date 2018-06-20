@@ -71,7 +71,6 @@
                   <option>Hours</option>
                   <option>Minutes</option>
                 </select>
-                {{-- <input type='hidden' id='myhidden' value=''> --}}
 
               </div>
           </div>
@@ -136,7 +135,6 @@
 
           </div>
           <div class="form-row">
-
               <div class="form-group col-md-1">
                 <input style="padding-left:1rem" type="checkbox" id="recurringcheck2">
               </div>
@@ -182,6 +180,8 @@
           <div class="form-group">
               <button type="submit" id="submit" class="btn btn-primary btn-block"> Update </button>
           </div>
+
+          <small class="text-muted">By clicking the 'Update' button, you confirm that you accept our <br> Terms of use and Privacy Policy.</small>
 
       </form>
 

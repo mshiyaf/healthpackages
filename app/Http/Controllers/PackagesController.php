@@ -81,20 +81,29 @@ class PackagesController extends Controller
       $tests = Test::all();
       $services = Service::all();
       $categories = Category::all();
+      $packcattest = DB::table('packcattests')->where('package_id','=',$package->package_id)->get();
+      // $categories =DB::table('$categories')->where('cat_id','=',$packcattest->cat_id)->get();
 
-      $service_id = $package->service_id;
-      if($service_id!=0){
-      $thisservice = Service::find($service_id);
+      // foreach ($packcatest->package_id as $newid) {
+      //   if($newid==$id)
+      //   {
+      //     $thispackcattest = Packcattest::find($id);
+      //   }
+      //   else {
+      //     // code...
+      //   }
+      // }
+
+      $id = $package->service_id;
+      if($id!=0){
+      $thisservice = Service::find($id);
     }
     else{
       $thisservice = new Service;
       $thisservice->service_id=0;
       $thisservice->service_name="";
     }
-
-    $packcattests = DB::table('packcattests')->where('package_id', '=', $package_id)->get();
-    $thiscategory = DB::table('categories')->where('cat_id', '=', 3)->get();
-      return view('edit.edit_index',compact('tests','package','services','categories','thisservice','packcattests','thiscategory'));
+      return view('edit.edit_index',compact('tests','package','services','categories','thisservice','packcattest'));
 
     }
 
