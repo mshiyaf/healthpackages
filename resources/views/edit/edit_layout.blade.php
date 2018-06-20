@@ -136,20 +136,25 @@ $("document").ready(function(){
 
 
 
-      $(add_button).click(function(e){ //on add input button click
-              e.preventDefault();
+
+
+      @foreach ($packcattest as $pct)
 
 
               x++; //text box increment
               var test_id = 'test_'+x;
               var category_id = 'category_'+x;
+              var cd = {{ $pct->cat_id }};
+              var td = [{{ $pct->test_id }}];
+
+              @foreach ($categories as $category)
+                @if ($category->cat_id == $pct->cat_id)
+
+
+                var cn = "{{ $category->cat_id }}"
+
               var $div = $('<div class="form-group catclass"><div class="card"><article class="card-body"><label>Category</label><select name="category[]" id='+category_id+' class="form-control select2-multiple"><option></option></select><label>Tests</label><select name="test[]" id='+test_id+' class="form-control select2-multiple" multiple="multiple"></select><div></div><a href="#" class="remove_field">Remove</a></article></div></div>');
               $(wrapper).append($div); //add input box
-
-              // $("#category_"+x).append($('<option selected="selected">', {
-              //     value: 1,
-              //     text : "Hello"
-              // }));
 
               @foreach ($categories as $category)
               $("#category_"+x).append($('<option>', {
@@ -174,6 +179,67 @@ $("document").ready(function(){
               placeholder: '',
               tags : true,
               theme: 'bootstrap' });
+
+
+
+
+            $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+              e.preventDefault();
+
+              $(this).parent().parent().parent('div').remove();
+
+            });
+
+          
+            $("#category_"+x).val(cn);
+            $("#category_"+x).trigger('change');
+
+            @endif
+          @endforeach
+
+
+          $("#test_"+x).val(td);
+          $("#test_"+x).trigger('change');
+
+
+
+      @endforeach
+
+
+      $(add_button).click(function(e){ //on add input button click
+              e.preventDefault();
+
+
+              x++; //text box increment
+              var test_id = 'test_'+x;
+              var category_id = 'category_'+x;
+              var $div = $('<div class="form-group catclass"><div class="card"><article class="card-body"><label>Category</label><select name="category[]" id='+category_id+' class="form-control select2-multiple"><option></option></select><label>Tests</label><select name="test[]" id='+test_id+' class="form-control select2-multiple" multiple="multiple"></select><div></div><a href="#" class="remove_field">Remove</a></article></div></div>');
+              $(wrapper).append($div); //add input box
+
+              @foreach ($categories as $category)
+              $("#category_"+x).append($('<option>', {
+                  value: {{ $category->cat_id }},
+                  text : "{{ $category->cat_name }}"
+              }));
+              @endforeach
+              @foreach ($tests as $test)
+              $("#test_"+x).append($('<option>', {
+                  value: {{ $test->test_id }},
+                  text : "{{ $test->test_name }}"
+              }));
+              @endforeach
+
+              $div.find("#test_"+x).select2({
+              allowClear:true,
+              tags :true,
+              placeholder: '',
+              theme: 'bootstrap' });
+              $div.find("#category_"+x).select2({
+              allowClear:true,
+              placeholder: '',
+              tags : true,
+              theme: 'bootstrap' });
+
 
 
               $("select[id="+category_id+"]").change(function(){

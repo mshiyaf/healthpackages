@@ -90,6 +90,10 @@ class PackagesController extends Controller
         $tests = Test::all();
         $services = Service::all();
         $categories = Category::all();
+
+        $packcattest = DB::table('packcattests')->where('package_id','=',$package->package_id)->get();
+
+
         $id = $package->service_id;
 
         if($id!=0){
@@ -100,7 +104,7 @@ class PackagesController extends Controller
           $thisservice->service_id=0;
           $thisservice->service_name="";
         }
-        return view('edit.edit_index',compact('tests','package','services','categories','thisservice'));
+        return view('edit.edit_index',compact('packcattest','tests','package','services','categories','thisservice'));
 
     }
 
