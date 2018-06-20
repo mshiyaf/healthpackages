@@ -12,13 +12,13 @@
 
           <div class="form-group">
               <label>Package Name</label>
-              <input type="text" name="packagename" class="form-control" placeholder=" " value={{ $package->packagename }} required>
+              <input type="text" name="packagename" class="form-control" placeholder="" value="{{ $package->packagename }}" required>
           </div>
 
 
           <div class="form-group">
               <label>Package Type</label>
-              <input type="text" list="listptype" name="packagetype" class="form-control" placeholder=" " value={{ $package->packagetype }}>
+              <input type="text" list="listptype" name="packagetype" class="form-control" placeholder=" " value="{{ $package->packagetype }}">
               <datalist id="listptype">
                 <option>Basic</option>
                 <option>Premium</option>

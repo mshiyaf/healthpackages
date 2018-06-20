@@ -27,7 +27,7 @@
 
                     <header class="card-header">
 
-                        <h4 class="card-title mt-2">Create New Health Package</h4>
+                        <h4 class="card-title mt-2">Edit Health Package</h4>
 
                     </header>
 
@@ -215,18 +215,18 @@
             $(this).parent().parent().parent('div').remove();
 
     });
-  });
 
-</script>
 
-<script type="text/javascript">
+{{-- </script> --}}
+
+{{-- <script type="text/javascript">
 
 $("document").ready(function(){
 
   var wrapper         = $(".input_fields_wrap"); //Fields wrapper
   var add_button      = $(".add_field_button"); //Add button ID
   var x = 0;
-  var output = {};
+  var output = {}; --}}
 
 
 
@@ -267,7 +267,7 @@ $("document").ready(function(){
                   var token = $("input[name='_token']").val();
 
                   $.ajax({
-                      url: 'select-ajax',
+                      url: '/select-ajax',
                       method: 'POST',
                       data: {cat_id:cat_id, _token:token},
                       success: function(data) {
@@ -360,7 +360,7 @@ $("document").ready(function(){
             } else if(e=='timeout'){
                 alert('Request Time out.');
             } else {
-                alert('Unknown Error.\n'+x.responseText);
+                alert('Error.\n'+x.responseText);
             }
           }
 

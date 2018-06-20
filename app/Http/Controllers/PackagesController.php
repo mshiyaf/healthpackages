@@ -33,6 +33,7 @@ class PackagesController extends Controller
       }
     }
 
+
     function store(Request $request)
     {
 
@@ -132,6 +133,9 @@ class PackagesController extends Controller
         $output = request('soutput');
         $new = json_decode($output);
         $id=request('id');
+        foreach ($new as $key => $value) {
+          $test = DB::table('packcattests')->where('package_id','=',$id)->delete();
+        }
         foreach ($new as $key => $value) {
           $tests = new Packcattest;
           $tests->package_id = $id;
