@@ -41,6 +41,7 @@ class PackagesController extends Controller
       }
     }
 
+
     function store(Request $request)
     {
         // $request->validate([
@@ -112,12 +113,18 @@ class PackagesController extends Controller
 
     public function delete($id){
       Package::find($id)->delete();
-      return redirect('/');
-
+      return redirect()->action('DatatablesController@index');
     }
 
     function update(Request $request)
     {
+
+      $request->validate([
+
+        'packagename' => 'required',
+        'packagetype' => 'required',
+        'totalcost'=> 'required'
+      ]);
 
         $id=request('id');
         $package=Package::find($id);
@@ -130,7 +137,6 @@ class PackagesController extends Controller
         $package->insuranceclaim = request('insuranceclaim');
         $package->from_date = request('from_date');
         $package->to_date = request('to_date');
-
         $package->r_cost_monthly=request('r_cost1');
         $package->r_cost_yearly=request('r_cost2');
         $saved = $package->save();
@@ -140,9 +146,13 @@ class PackagesController extends Controller
 
         $output = request('soutput');
         $new = json_decode($output);
+        $id=request('id');
+        foreach ($new as $key => $value) {
+          $test = DB::table('packcattests')->where('package_id','=',$id)->delete();
+        }
         foreach ($new as $key => $value) {
           $tests = new Packcattest;
-          $tests->package_id = $package->id;
+          $tests->package_id = $id;
           $tests->test_id = $value;
           $tests->cat_id = $key;
           $tests->save();
