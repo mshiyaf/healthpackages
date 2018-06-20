@@ -111,10 +111,11 @@ class PackagesController extends Controller
 
 
 
-    public function delete($id){
+    function delete($id){
       Package::find($id)->delete();
-      return redirect()->action('DatatablesController@index');
+      return redirect('/');
     }
+
 
     function update(Request $request)
     {
