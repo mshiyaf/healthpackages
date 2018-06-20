@@ -52,7 +52,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
 
-
 <script type="text/javascript">
 
   $(document).ready(function() {
@@ -65,9 +64,6 @@
     var d3 = d2.replace(/[0-9]/g, '');
     $("#dtime").attr("label",d3);
     $("#dtime").attr("value",d3);
-    //
-    // var id3 = ;
-    // alert(id3);
 
 
 
@@ -125,102 +121,9 @@
     //$("#r_time2").prop('background-color:#FFF',this.checked);
   });
 
-  // $('#offerp').change(function () {
-  //    if ( $('input[name="offerp"]').val()==="460" ) {
-  //          $('input[id="offercheck"]')[0].checked = true;
-  //      }
-  //    });
-
-
-
 });
 
 </script>
-
-<script type="text/javascript">
-
-
-      $("document").ready(function(){
-
-        var wrapper         = $(".input_fields_wrap"); //Fields wrapper
-        var add_button      = $(".add_field_button"); //Add button ID
-        var x = 0;
-        var output = {};
-        var i = 0;
-
-        @foreach ($packcattest as $pct)
-        x++; //text box increment
-        var test_id = 'test_'+x;
-        var category_id = 'category_'+x;
-        var cd = {{ $pct->cat_id }};
-        var td = [{{ $pct->test_id }}]
-         <?php $arr=explode(",", $pct->test_id); ?>
-
-        console.log(td);
-
-        var l = td.length;
-        console.log(td.length);
-
-        @foreach ($categories as $category)
-
-
-          @if ($category->cat_id==$pct->cat_id)
-        
-          var cn = "{{ $category->cat_name }}";
-          console.log(cn);
-          var $div = $('<div class="form-group catclass"><div class="card"><article class="card-body"><label>Category</label><select name="category[]" id='+category_id+' class="form-control select2-multiple" ><option selected="selected" value='+cd+'>'+cn+'</option></select><label>Tests</label><select name="test[]" id='+test_id+' class="form-control select2-multiple" multiple="multiple"><option selected="selected"></option></select><div></div><a href="#" class="remove_field">Remove</a></article></div></div>');
-          $(wrapper).append($div); //add input box
-
-      @foreach ($categories as $category)
-      $("#category_"+x).append($('<option>', {
-          value: {{ $category->cat_id }},
-          text : "{{ $category->cat_name }}"
-      }));
-      @endforeach
-      @foreach ($tests as $test)
-      $("#test_"+x).append($('<option>', {
-          value: {{ $test->test_id }},
-          text : "{{ $test->test_name }}"
-      }));
-      @endforeach
-
-      $("#test_"+x).val(td);
-      $("#test_"+x).trigger('change');
-
-
-    @endif
-
-    @endforeach
-
-
-      $div.find("#test_"+x).select2({
-      allowClear:true,
-      placeholder: '',
-      tag:true,
-      theme: 'bootstrap' });
-      $div.find("#category_"+x).select2({
-      allowClear:true,
-      placeholder: '',
-      theme: 'bootstrap' });
-
-
-
-      $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-      e.preventDefault();
-
-      $(this).parent().parent().parent('div').remove();
-
-      });
-
-
-
-    @endforeach
-
-
-{{-- </script>
-
-
-
 
 <script type="text/javascript">
 
@@ -229,8 +132,78 @@ $("document").ready(function(){
   var wrapper         = $(".input_fields_wrap"); //Fields wrapper
   var add_button      = $(".add_field_button"); //Add button ID
   var x = 0;
-  var output = {}; --}}
+  var output = {};
 
+
+
+
+
+      @foreach ($packcattest as $pct)
+
+
+              x++; //text box increment
+              var test_id = 'test_'+x;
+              var category_id = 'category_'+x;
+              var cd = {{ $pct->cat_id }};
+              var td = [{{ $pct->test_id }}];
+
+              @foreach ($categories as $category)
+                @if ($category->cat_id == $pct->cat_id)
+
+
+                var cn = "{{ $category->cat_id }}"
+
+              var $div = $('<div class="form-group catclass"><div class="card"><article class="card-body"><label>Category</label><select name="category[]" id='+category_id+' class="form-control select2-multiple"><option></option></select><label>Tests</label><select name="test[]" id='+test_id+' class="form-control select2-multiple" multiple="multiple"></select><div></div><a href="#" class="remove_field">Remove</a></article></div></div>');
+              $(wrapper).append($div); //add input box
+
+              @foreach ($categories as $category)
+              $("#category_"+x).append($('<option>', {
+                  value: {{ $category->cat_id }},
+                  text : "{{ $category->cat_name }}"
+              }));
+              @endforeach
+              @foreach ($tests as $test)
+              $("#test_"+x).append($('<option>', {
+                  value: {{ $test->test_id }},
+                  text : "{{ $test->test_name }}"
+              }));
+              @endforeach
+
+              $div.find("#test_"+x).select2({
+              allowClear:true,
+              tags :true,
+              placeholder: '',
+              theme: 'bootstrap' });
+              $div.find("#category_"+x).select2({
+              allowClear:true,
+              placeholder: '',
+              tags : true,
+              theme: 'bootstrap' });
+
+
+
+
+            $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+              e.preventDefault();
+
+              $(this).parent().parent().parent('div').remove();
+
+            });
+
+
+            $("#category_"+x).val(cn);
+            $("#category_"+x).trigger('change');
+
+            @endif
+          @endforeach
+
+
+          $("#test_"+x).val(td);
+          $("#test_"+x).trigger('change');
+
+
+
+      @endforeach
 
 
       $(add_button).click(function(e){ //on add input button click
@@ -255,14 +228,18 @@ $("document").ready(function(){
                   text : "{{ $test->test_name }}"
               }));
               @endforeach
+
               $div.find("#test_"+x).select2({
               allowClear:true,
+              tags :true,
               placeholder: '',
               theme: 'bootstrap' });
               $div.find("#category_"+x).select2({
               allowClear:true,
               placeholder: '',
+              tags : true,
               theme: 'bootstrap' });
+
 
 
               $("select[id="+category_id+"]").change(function(){
@@ -281,6 +258,7 @@ $("document").ready(function(){
               });
 
 
+
       $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
               e.preventDefault();
 
@@ -288,25 +266,24 @@ $("document").ready(function(){
 
       });
 
-});
+  });
 
 
-$('#submit').click(function(e){
-   e.preventDefault();
+      $('#submit').click(function(e){
+         e.preventDefault();
 
-   $(".catclass").each(function(){
-      var category_id = $(this).find('select:eq(0)').select2("data");
-      var c = category_id.map(m => m.id).join(',');
+         $(".catclass").each(function(){
+            var category_id = $(this).find('select:eq(0)').select2("data");
+            var c = category_id.map(m => m.id).join(',');
 
-      var test_id = $(this).find('select:eq(1)').select2("data");
-      var t = test_id.map(n => n.id).join(',');
+            var test_id = $(this).find('select:eq(1)').select2("data");
+            var t = test_id.map(n => n.id).join(',');
 
-      $("output").append(output[c]=t);
+            $("output").append(output[c]=t);
 
 
 
-   });
-
+         });
 
          var id = {{ $package->package_id }};
          var service = $("select[id=service]").val();
@@ -323,18 +300,7 @@ $('#submit').click(function(e){
          var id_no = x;
          var insuranceclaim = $("input[name=insurance]").val();
 
-         $(".catclass").each(function(){
-            var category_id = $(this).find('select:eq(0)').select2("data");
-            //var c = category_id.map(m => m.id).join(',');
-            console.log(category_id);
 
-            var test_id = $(this).find('select:eq(1)').select2("data");
-            var t = test_id.map(n => n.id).join(',');
-            console.log(t);
-
-
-
-         });
          var r_cost1 = $("input[name=r_cost1]").val();
          var r_cost2 = $("input[name=r_cost2]").val();
          var from_date = $("input[id=from_date]").val();
@@ -353,7 +319,7 @@ $('#submit').click(function(e){
           method: 'post',
           dataType:'json',
           data: {
-            id:id,
+             id:id,
              service:service,
              packagename:packagename,
              packagetype:packagetype,
@@ -366,16 +332,12 @@ $('#submit').click(function(e){
              to_date:to_date,
              r_cost1:r_cost1,
              r_cost2:r_cost2
-             // type: jQuery('#type').val(),
-             // price: jQuery('#price').val()
           },
           success: function(data){
-            alert(response.message),
-            // redirect('/')
-            window.location.href = "/";
+            alert(response.message);
           }
         });
-
+        window.location.href = "/";
        });
  });
 

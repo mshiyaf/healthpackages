@@ -13,6 +13,13 @@ use DB;
 class PackagesController extends Controller
 {
 
+    function index(){
+
+      return view('index');
+
+    }
+
+
     function create()
     {
       $package = Package::all();
@@ -23,24 +30,24 @@ class PackagesController extends Controller
 
     }
 
+
     function selectAjax(Request $request)
     {
       if($request->ajax())
       {
       $tests = DB::table('tests')->where('cat_id',$request->cat_id)->pluck("test_name","test_id")->all();
-      $data = view('/create/ajax-select',compact('tests'))->render();
+      $data = view('/ajax-select',compact('tests'))->render();
       return response()->json(['options'=>$data]);
       }
     }
 
+
     function store(Request $request)
     {
-
-        // $this->validate(request(),[
-          // 'speciality' => 'required',
-          // 'packagename' => 'required',
-          // 'packagetype' => 'required'
-          // 'test'=> 'required'
+        // $request->validate([
+        //   'packagename' => 'required',
+        //   'packagetype' => 'required',
+        //
         // ]);
 
         $package = new Package;
@@ -76,44 +83,49 @@ class PackagesController extends Controller
 
     }
 
+
+
     function edit($id){
-      $package = Package::find($id);
-      $tests = Test::all();
-      $services = Service::all();
-      $categories = Category::all();
-      $packcattest = DB::table('packcattests')->where('package_id','=',$package->package_id)->get();
-      // $categories =DB::table('$categories')->where('cat_id','=',$packcattest->cat_id)->get();
 
-      // foreach ($packcatest->package_id as $newid) {
-      //   if($newid==$id)
-      //   {
-      //     $thispackcattest = Packcattest::find($id);
-      //   }
-      //   else {
-      //     // code...
-      //   }
-      // }
+        $package = Package::find($id);
+        $tests = Test::all();
+        $services = Service::all();
+        $categories = Category::all();
 
-      $id = $package->service_id;
-      if($id!=0){
-      $thisservice = Service::find($id);
-    }
-    else{
-      $thisservice = new Service;
-      $thisservice->service_id=0;
-      $thisservice->service_name="";
-    }
-      return view('edit.edit_index',compact('tests','package','services','categories','thisservice','packcattest'));
+        $packcattest = DB::table('packcattests')->where('package_id','=',$package->package_id)->get();
+
+
+        $id = $package->service_id;
+
+        if($id!=0){
+          $thisservice = Service::find($id);
+        }
+        else{
+          $thisservice = new Service;
+          $thisservice->service_id=0;
+          $thisservice->service_name="";
+        }
+        return view('edit.edit_index',compact('packcattest','tests','package','services','categories','thisservice'));
 
     }
 
-    public function delete($id){
+
+
+    function delete($id){
       Package::find($id)->delete();
-
+      return redirect('/');
     }
+
 
     function update(Request $request)
     {
+
+      $request->validate([
+
+        'packagename' => 'required',
+        'packagetype' => 'required',
+        'totalcost'=> 'required'
+      ]);
 
         $id=request('id');
         $package=Package::find($id);
@@ -126,7 +138,6 @@ class PackagesController extends Controller
         $package->insuranceclaim = request('insuranceclaim');
         $package->from_date = request('from_date');
         $package->to_date = request('to_date');
-
         $package->r_cost_monthly=request('r_cost1');
         $package->r_cost_yearly=request('r_cost2');
         $saved = $package->save();
@@ -136,9 +147,13 @@ class PackagesController extends Controller
 
         $output = request('soutput');
         $new = json_decode($output);
+        $id=request('id');
+        foreach ($new as $key => $value) {
+          $test = DB::table('packcattests')->where('package_id','=',$id)->delete();
+        }
         foreach ($new as $key => $value) {
           $tests = new Packcattest;
-          $tests->package_id = $package->id;
+          $tests->package_id = $id;
           $tests->test_id = $value;
           $tests->cat_id = $key;
           $tests->save();

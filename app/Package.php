@@ -5,6 +5,7 @@ namespace App;
 
 class Package extends Model
 {
-  protected $primaryKey = 'package_id';
+
+    protected $primaryKey = 'package_id';
 
 }

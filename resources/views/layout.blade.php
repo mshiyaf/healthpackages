@@ -28,7 +28,16 @@
 
                     <header class="card-header">
 
-                        <h4 class="card-title mt-2">Health Packages</h4>
+
+                        <div class="row">
+                          <div class="col">
+                                  <h4 class="card-title mt-2">Health Packages</h4>
+                          </div>
+                          <div class="col-md-2">
+                              <a class="btn btn-primary" href="/create_package" role="button">Create New</a>
+                          </div>
+
+                        </div>
 
                     </header>
 
@@ -64,14 +73,21 @@
 
           "processing": true,
   				"serverSide": true,
-  				"ajax": '/datatable',
+          "ajax": {
+                "url":"<?= route('dataProcessing') ?>",
+                "dataType":"json",
+                "type":"POST",
+                "data":{"_token":"<?= csrf_token() ?>"}
+              },
+
           columns: [
-            { data: 'package_id', name: 'package_id' },
-            { data: 'packagename', name: 'packagename' },
-            { data: 'packagetype', name: 'packagetype' },
-            { data: 'offerprice', name: 'offerprice' },
-            { data: 'created_at', name: 'created_at' },
-            { data: 'updated_at', name: 'updated_at' }
+            { data: 'package_id'},
+            { data: 'packagename'},
+            { data: 'packagetype'},
+            { data: 'offerprice'},
+            { data: 'created_at'},
+            { data: 'updated_at'},
+            { data: 'action' ,'searchable':false,'orderable':false}
           ]
 
         });
