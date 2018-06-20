@@ -181,7 +181,7 @@
 
       </form>
 
-      @include('errors')
+      @include('/errors')
 
   </article>
 

@@ -178,10 +178,10 @@
 
 
           <div class="form-group">
-              <button type="submit" id="submit" class="btn btn-primary btn-block"> Create </button>
+              <button type="submit" id="submit" class="btn btn-primary btn-block"> Update </button>
           </div>
 
-          <small class="text-muted">By clicking the 'Create' button, you confirm that you accept our <br> Terms of use and Privacy Policy.</small>
+          <small class="text-muted">By clicking the 'Update' button, you confirm that you accept our <br> Terms of use and Privacy Policy.</small>
 
       </form>
 

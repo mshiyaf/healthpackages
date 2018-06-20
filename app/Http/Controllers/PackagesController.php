@@ -13,6 +13,13 @@ use DB;
 class PackagesController extends Controller
 {
 
+    function index(){
+
+      return view('index');
+
+    }
+
+
     function create()
     {
       $package = Package::all();
@@ -23,24 +30,23 @@ class PackagesController extends Controller
 
     }
 
+
     function selectAjax(Request $request)
     {
       if($request->ajax())
       {
       $tests = DB::table('tests')->where('cat_id',$request->cat_id)->pluck("test_name","test_id")->all();
-      $data = view('/create/ajax-select',compact('tests'))->render();
+      $data = view('/ajax-select',compact('tests'))->render();
       return response()->json(['options'=>$data]);
       }
     }
 
     function store(Request $request)
     {
-
-        // $this->validate(request(),[
-          // 'speciality' => 'required',
-          // 'packagename' => 'required',
-          // 'packagetype' => 'required'
-          // 'test'=> 'required'
+        // $request->validate([
+        //   'packagename' => 'required',
+        //   'packagetype' => 'required',
+        //
         // ]);
 
         $package = new Package;
@@ -76,26 +82,33 @@ class PackagesController extends Controller
 
     }
 
+
+
     function edit($id){
-      $package = Package::find($id);
-      $tests = Test::all();
-      $services = Service::all();
-      $categories = Category::all();
-      $id = $package->service_id;
-      if($id!=0){
-      $thisservice = Service::find($id);
-    }
-    else{
-      $thisservice = new Service;
-      $thisservice->service_id=0;
-      $thisservice->service_name="";
-    }
-      return view('edit.edit_index',compact('tests','package','services','categories','thisservice'));
+
+        $package = Package::find($id);
+        $tests = Test::all();
+        $services = Service::all();
+        $categories = Category::all();
+        $id = $package->service_id;
+
+        if($id!=0){
+          $thisservice = Service::find($id);
+        }
+        else{
+          $thisservice = new Service;
+          $thisservice->service_id=0;
+          $thisservice->service_name="";
+        }
+        return view('edit.edit_index',compact('tests','package','services','categories','thisservice'));
 
     }
+
+
 
     public function delete($id){
       Package::find($id)->delete();
+      return redirect('/');
 
     }
 

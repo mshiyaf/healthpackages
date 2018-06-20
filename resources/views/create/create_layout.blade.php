@@ -218,7 +218,7 @@
           alert(response.message)
         }
       });
-
+      window.location.href = "/";
      });
    });
 
