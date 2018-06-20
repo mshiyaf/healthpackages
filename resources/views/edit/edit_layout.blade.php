@@ -131,14 +131,34 @@ $("document").ready(function(){
 
 @if($new->cat_id==$category->cat_)
 
-      var wrapper = $(".input_fields_wrap");
-      x++; //text box increment
-      var test_id = 'test_'+x;
-      var category_id = 'category_'+x;
-      var cn={{ $new->cat }}
-      var $div = $('<div class="form-group catclass"><div class="card"><article class="card-body"><label>Category</label><select name="category[]" id='+category_id+' class="form-control select2-multiple" value='+cn+'><option>'+cn+'</option></select><label>Tests</label><select name="test[]" id='+test_id+' class="form-control select2-multiple" multiple="multiple"></select><div></div><a href="#" class="remove_field">Remove</a></article></div></div>');
-      $(wrapper).append($div); //add input box
+      $("document").ready(function(){
 
+        var wrapper         = $(".input_fields_wrap"); //Fields wrapper
+        var add_button      = $(".add_field_button"); //Add button ID
+        var x = 0;
+        var output = {};
+        var id3 = {{ $package->package_id }};
+
+        @foreach ($packcattest as $pct)
+        x++; //text box increment
+        var test_id = 'test_'+x;
+        var category_id = 'category_'+x;
+        var cd = {{ $pct->cat_id }};
+
+        // alert(cd);
+        @foreach ($categories as $category)
+          @if ($category->cat_id==$pct->cat_id)
+
+          var cn = "{{ $category->cat_name }}";
+          console.log(cn);
+          @foreach ($tests as $test)
+
+            @if ($test->test_id==$pct->test_id)
+            var td = "{{ $pct->test_id }}";
+            var tn = "{{ $test->test_name }}";
+            console.log(tn);
+            var $div = $('<div class="form-group catclass"><div class="card"><article class="card-body"><label>Category</label><select name="category[]" id='+category_id+' class="form-control select2-multiple" ><option selected="selected" value='+cd+'>'+cn+'</option></select><label>Tests</label><select name="test[]" id='+test_id+' class="form-control select2-multiple" multiple="multiple"><option selected="selected" value='+td+'>'+tn+'</option></select><div></div><a href="#" class="remove_field">Remove</a></article></div></div>');
+            $(wrapper).append($div); //add input box
 
       @foreach ($categories as $category)
         @if($new->cat_id!=$category->cat_id)
