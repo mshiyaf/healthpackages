@@ -81,6 +81,19 @@ class PackagesController extends Controller
       $tests = Test::all();
       $services = Service::all();
       $categories = Category::all();
+      $packcattest = DB::table('packcattests')->where('package_id','=',$package->package_id)->get();
+      // $categories =DB::table('$categories')->where('cat_id','=',$packcattest->cat_id)->get();
+
+      // foreach ($packcatest->package_id as $newid) {
+      //   if($newid==$id)
+      //   {
+      //     $thispackcattest = Packcattest::find($id);
+      //   }
+      //   else {
+      //     // code...
+      //   }
+      // }
+
       $id = $package->service_id;
       if($id!=0){
       $thisservice = Service::find($id);
@@ -90,7 +103,7 @@ class PackagesController extends Controller
       $thisservice->service_id=0;
       $thisservice->service_name="";
     }
-      return view('edit.edit_index',compact('tests','package','services','categories','thisservice'));
+      return view('edit.edit_index',compact('tests','package','services','categories','thisservice','packcattest'));
 
     }
 
