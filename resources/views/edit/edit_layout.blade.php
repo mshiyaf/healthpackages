@@ -153,7 +153,7 @@
         var test_id = 'test_'+x;
         var category_id = 'category_'+x;
         var cd = {{ $pct->cat_id }};
-        var td = {{ $pct->test_id }}
+
         // alert(cd);
         @foreach ($categories as $category)
           @if ($category->cat_id==$pct->cat_id)
@@ -161,11 +161,12 @@
           var cn = "{{ $category->cat_name }}";
           console.log(cn);
           @foreach ($tests as $test)
+
             @if ($test->test_id==$pct->test_id)
-            //
-            // var tn = "";
-            // console.log(tn);
-            var $div = $('<div class="form-group catclass"><div class="card"><article class="card-body"><label>Category</label><select name="category[]" id='+category_id+' class="form-control select2-multiple" ><option selected="selected" value='+cd+'>'+cn+'</option></select><label>Tests</label><select name="test[]" id='+test_id+' class="form-control select2-multiple" multiple="multiple"></select><div></div><a href="#" class="remove_field">Remove</a></article></div></div>');
+            var td = "{{ $pct->test_id }}";
+            var tn = "{{ $test->test_name }}";
+            console.log(tn);
+            var $div = $('<div class="form-group catclass"><div class="card"><article class="card-body"><label>Category</label><select name="category[]" id='+category_id+' class="form-control select2-multiple" ><option selected="selected" value='+cd+'>'+cn+'</option></select><label>Tests</label><select name="test[]" id='+test_id+' class="form-control select2-multiple" multiple="multiple"><option selected="selected" value='+td+'>'+tn+'</option></select><div></div><a href="#" class="remove_field">Remove</a></article></div></div>');
             $(wrapper).append($div); //add input box
 
             $("#test_"+x).append($('<option selected="selected">', {
