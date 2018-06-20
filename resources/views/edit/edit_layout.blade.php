@@ -135,12 +135,13 @@ $("document").ready(function(){
       x++; //text box increment
       var test_id = 'test_'+x;
       var category_id = 'category_'+x;
-      var cn={{  }}
-      var $div = $('<div class="form-group catclass"><div class="card"><article class="card-body"><label>Category</label><select name="category[]" id='+category_id+' class="form-control select2-multiple" value='+cn+'><option>'+cn+'</option></select><label>Tests</label><select name="test[]" id='+test_id+' class="form-control select2-multiple" multiple="multiple"></select><div></div><a href="#" class="remove_field">Remove</a></article></div></div>');
-      $(wrapper).append($div); //add input box
-
-
       @foreach ($categories as $category)
+        @if($new->cat_id==$category->cat_id)
+        var cn={{ $category->cat_name }};
+        var $div = $('<div class="form-group catclass"><div class="card"><article class="card-body"><label>Category</label><select name="category[]" id='+category_id+' class="form-control select2-multiple"><option>'+cn+'</option></select><label>Tests</label><select name="test[]" id='+test_id+' class="form-control select2-multiple" multiple="multiple"></select><div></div><a href="#" class="remove_field">Remove</a></article></div></div>');
+        $(wrapper).append($div); //add input box
+        @endif
+
         @if($new->cat_id!=$category->cat_id)
         $("#category_"+x).append($('<option>', {
             value: {{ $category->cat_id }},
