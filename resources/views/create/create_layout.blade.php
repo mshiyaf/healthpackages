@@ -199,6 +199,7 @@
         method: 'post',
         dataType:'json',
         data: {
+           duration:duration,
            service:service,
            packagename:packagename,
            packagetype:packagetype,

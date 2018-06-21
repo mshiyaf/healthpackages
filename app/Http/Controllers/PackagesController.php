@@ -47,10 +47,13 @@ class PackagesController extends Controller
 
       $request->validate([
 
-        'packagename' => 'required',
-        'packagetype' => 'required',
-        'totalcost'=> 'required'
-      ]);
+          'packagename' => 'required',
+          'packagetype' => 'required',
+          'duration'=>'required',
+          'totalcost'=> 'required',
+          'from_date'=>'required',
+          'to_date'=>'required'
+        ]);
 
         $package = new Package;
         $package->duration = request('full_dur');
@@ -126,7 +129,10 @@ class PackagesController extends Controller
 
           'packagename' => 'required',
           'packagetype' => 'required',
-          'totalcost'=> 'required'
+          'duration'=>'required',
+          'totalcost'=> 'required',
+          'from_date'=>'required',
+          'to_date'=>'required'
         ]);
 
         $id=request('id');
