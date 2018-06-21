@@ -44,11 +44,16 @@ class PackagesController extends Controller
 
     function store(Request $request)
     {
-        // $request->validate([
-        //   'packagename' => 'required',
-        //   'packagetype' => 'required',
-        //
-        // ]);
+
+        $request->validate([
+
+          'packagename' => 'required',
+          'packagetype' => 'required',
+          'duration'=>'required',
+          'totalcost'=> 'required',
+          'from_date'=>'required',
+          'to_date'=>'required'
+        ]);
 
         $package = new Package;
         $package->duration = request('full_dur');
@@ -78,8 +83,8 @@ class PackagesController extends Controller
           $tests->save();
         }
 
+        return response()->json(['success' => true]);
 
-        return redirect('/');
 
     }
 
@@ -120,12 +125,15 @@ class PackagesController extends Controller
     function update(Request $request)
     {
 
-      $request->validate([
+        $request->validate([
 
-        'packagename' => 'required',
-        'packagetype' => 'required',
-        'totalcost'=> 'required'
-      ]);
+          'packagename' => 'required',
+          'packagetype' => 'required',
+          'duration'=>'required',
+          'totalcost'=> 'required',
+          'from_date'=>'required',
+          'to_date'=>'required'
+        ]);
 
         $id=request('id');
         $package=Package::find($id);
@@ -159,7 +167,7 @@ class PackagesController extends Controller
           $tests->save();
         }
 
-
+        return response()->json(['success' => true]);
         return redirect('/');
 
     }
