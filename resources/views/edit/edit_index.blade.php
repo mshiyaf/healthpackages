@@ -12,13 +12,13 @@
 
           <div class="form-group">
               <label>Package Name</label>
-              <input type="text" name="packagename" class="form-control" placeholder="" value="{{ $package->packagename }}" required>
+              <input type="text" name="packagename" class="form-control" placeholder=" " value={{ $package->packagename }}>
           </div>
 
 
           <div class="form-group">
               <label>Package Type</label>
-              <input type="text" list="listptype" name="packagetype" class="form-control" placeholder=" " value="{{ $package->packagetype }}">
+              <input type="text" list="listptype" name="packagetype" class="form-control" placeholder=" " value={{ $package->packagetype }}>
               <datalist id="listptype">
                 <option>Basic</option>
                 <option>Premium</option>
@@ -61,7 +61,7 @@
 
               <div class="form-group col-md-3">
 
-                <input name="duration" type="number" min="0" class="form-control" id="duration" placeholder=" " required>
+                <input name="duration" type="number" min="0" class="form-control" id="duration" placeholder=" "  >
               </div>
 
               <div class="form-group col-md-2">
@@ -93,7 +93,7 @@
 
               </div>
             </div>
-              <input type="number" class="form-control" name="offerp" id="offerp" disabled = 'disabled' value={{ $package->offerprice }} >
+              <input type="number" class="form-control" name="offerp" id="offerp" disabled = 'disabled' value={{ $package->offerprice }}>
           </div>
 
 

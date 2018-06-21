@@ -27,7 +27,7 @@
 
                     <header class="card-header">
 
-                        <h4 class="card-title mt-2">Edit Health Package</h4>
+                        <h4 class="card-title mt-2">Create New Health Package</h4>
 
                     </header>
 
@@ -72,11 +72,11 @@
     var insuranceclaim = $("input[name=insurance]").val();
     var bool = (insuranceclaim==1);
     $("#insurancecheck").attr('checked', bool);
+    $("#offerp").prop('disabled',!insurancecheck.checked);
 
     var offerp = $("input[name=offerp]").val();
     var bool2 = (offerp>0);
     $("#offercheck").attr('checked', bool2);
-    $("#offerp").prop('disabled',!offercheck.checked);
 
     var r_cost1 = $("input[name=r_cost1]").val();
     var bool3 = (r_cost1>0);
@@ -100,6 +100,8 @@
     theme: 'bootstrap'
   });
 
+
+
   $( "#servicecheck" ).on( "click", function() {
     $("#service").prop('disabled',!this.checked);
   });
@@ -119,128 +121,89 @@
     //$("#r_time2").prop('background-color:#FFF',this.checked);
   });
 
-
 });
 
 </script>
 
 <script type="text/javascript">
-var data={};
-
-      $("document").ready(function(){
-
-        var wrapper         = $(".input_fields_wrap"); //Fields wrapper
-        var add_button      = $(".add_field_button"); //Add button ID
-        var x = 0;
-        var output = {};
-        var id3 = {{ $package->package_id }};
-
-        @foreach ($packcattest as $pct)
-        x++; //text box increment
-        var test_id = 'test_'+x;
-        var category_id = 'category_'+x;
-        var cd = {{ $pct->cat_id }};
-
-        // alert(cd);
-        @foreach ($categories as $category)
-          @if ($category->cat_id==$pct->cat_id)
-
-          var cat_id = {{$category->cat_id}};
-          var token = $("input[name='_token']").val();
-
-          $.ajax({
-              url: '/select-ajax',
-              method: 'POST',
-              data: {cat_id:cat_id, _token:token},
-              success: function(data) {
-                $("select[id="+test_id+"]").html('');
-                $("select[id="+test_id+"]").html(data.options);
-              }
-          });
-
-
-
-          var cn = "{{ $category->cat_name }}";
-          console.log(cn);
-          @endif
-          @endforeach
-
-
-          @foreach ($tests as $test)
-
-            var td = "{{ $test->test_id }}";
-            var tn = "{{ $test->test_name }}";
-            console.log(tn);
-
-            $("#test_"+x).append($('<option>', {
-                value: {{ $test->test_id }},
-                text: "{{ $test->test_name }}"
-            }));
-
-
-          @endforeach
-
-
-            var $div = $('<div class="form-group catclass"><div class="card"><article class="card-body"><label>Category</label><select name="category[]" id='+category_id+' class="form-control select2-multiple" ><option selected="selected" value='+cd+'>'+cn+'</option></select><label>Tests</label><select name="test[]" id='+test_id+' class="form-control select2-multiple" multiple="multiple"><option selected="selected" value='+td+'>'+tn+'</option></select><div></div><a href="#" class="remove_field">Remove</a></article></div></div>');
-            $(wrapper).append($div); //add input box
-
-
-      @foreach ($categories as $category)
-        @if($pct->cat_id!=$category->cat_id)
-        $("#category_"+x).append($('<option>', {
-            value: {{ $category->cat_id }},
-            text: "{{ $category->cat_name }}"
-        }));
-        @endif
-      @endforeach
-
-
-      $div.find("#test_"+x).select2({
-      allowClear:true,
-      placeholder: '',
-      theme: 'bootstrap' });
-      $div.find("#category_"+x).select2({
-      allowClear:true,
-      placeholder: '',
-      theme: 'bootstrap' });
-
-
-      $("select[id="+category_id+"]").change(function(){
-          var cat_id = $(this).val();
-          var token = $("input[name='_token']").val();
-
-          $.ajax({
-              url: '/select-ajax',
-              method: 'POST',
-              data: {cat_id:cat_id, _token:token},
-              success: function(data) {
-                $("select[id="+test_id+"]").html('');
-                $("select[id="+test_id+"]").html(data.options);
-              }
-          });
-        });
-
-@endforeach
-
-    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-            e.preventDefault();
-
-            $(this).parent().parent().parent('div').remove();
-
-    });
-
-
-{{-- </script> --}}
-
-{{-- <script type="text/javascript">
 
 $("document").ready(function(){
 
   var wrapper         = $(".input_fields_wrap"); //Fields wrapper
   var add_button      = $(".add_field_button"); //Add button ID
   var x = 0;
-  var output = {}; --}}
+  var output = {};
 
+
+
+
+
+      @foreach ($packcattest as $pct)
+
+
+              x++; //text box increment
+              var test_id = 'test_'+x;
+              var category_id = 'category_'+x;
+              var cd = {{ $pct->cat_id }};
+              var td = [{{ $pct->test_id }}];
+
+              @foreach ($categories as $category)
+                @if ($category->cat_id == $pct->cat_id)
+
+
+                var cn = "{{ $category->cat_id }}"
+
+              var $div = $('<div class="form-group catclass"><div class="card"><article class="card-body"><label>Category</label><select name="category[]" id='+category_id+' class="form-control select2-multiple"><option></option></select><label>Tests</label><select name="test[]" id='+test_id+' class="form-control select2-multiple" multiple="multiple"></select><div></div><a href="#" class="remove_field">Remove</a></article></div></div>');
+              $(wrapper).append($div); //add input box
+
+              @foreach ($categories as $category)
+              $("#category_"+x).append($('<option>', {
+                  value: {{ $category->cat_id }},
+                  text : "{{ $category->cat_name }}"
+              }));
+              @endforeach
+              @foreach ($tests as $test)
+              $("#test_"+x).append($('<option>', {
+                  value: {{ $test->test_id }},
+                  text : "{{ $test->test_name }}"
+              }));
+              @endforeach
+
+              $div.find("#test_"+x).select2({
+              allowClear:true,
+              tags :true,
+              placeholder: '',
+              theme: 'bootstrap' });
+              $div.find("#category_"+x).select2({
+              allowClear:true,
+              placeholder: '',
+              tags : true,
+              theme: 'bootstrap' });
+
+
+
+
+            $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+              e.preventDefault();
+
+              $(this).parent().parent().parent('div').remove();
+
+            });
+
+
+            $("#category_"+x).val(cn);
+            $("#category_"+x).trigger('change');
+
+            @endif
+          @endforeach
+
+
+          $("#test_"+x).val(td);
+          $("#test_"+x).trigger('change');
+
+
+
+      @endforeach
 
 
       $(add_button).click(function(e){ //on add input button click
@@ -265,14 +228,18 @@ $("document").ready(function(){
                   text : "{{ $test->test_name }}"
               }));
               @endforeach
+
               $div.find("#test_"+x).select2({
               allowClear:true,
+              tags :true,
               placeholder: '',
               theme: 'bootstrap' });
               $div.find("#category_"+x).select2({
               allowClear:true,
               placeholder: '',
+              tags : true,
               theme: 'bootstrap' });
+
 
 
               $("select[id="+category_id+"]").change(function(){
@@ -291,6 +258,7 @@ $("document").ready(function(){
               });
 
 
+
       $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
               e.preventDefault();
 
@@ -298,7 +266,7 @@ $("document").ready(function(){
 
       });
 
-});
+  });
 
 
       $('#submit').click(function(e){
@@ -312,7 +280,10 @@ $("document").ready(function(){
             var t = test_id.map(n => n.id).join(',');
 
             $("output").append(output[c]=t);
-           });
+
+
+
+         });
 
          var id = {{ $package->package_id }};
          var service = $("select[id=service]").val();
@@ -322,11 +293,14 @@ $("document").ready(function(){
          var time = $("select[name=time]").val();
          var full_dur = duration+time;
          var soutput = JSON.stringify(output);
+
          var totalcost = $("input[name=totalcost]").val();
          var offerp = $("input[name=offerp]").val();
          var totalcost = $("input[name=totalcost]").val();
          var id_no = x;
          var insuranceclaim = $("input[name=insurance]").val();
+
+
          var r_cost1 = $("input[name=r_cost1]").val();
          var r_cost2 = $("input[name=r_cost2]").val();
          var from_date = $("input[id=from_date]").val();
@@ -346,7 +320,7 @@ $("document").ready(function(){
           method: 'post',
           dataType:'json',
           data: {
-            id:id,
+             id:id,
              service:service,
              packagename:packagename,
              packagetype:packagetype,
@@ -359,8 +333,6 @@ $("document").ready(function(){
              to_date:to_date,
              r_cost1:r_cost1,
              r_cost2:r_cost2
-             // type: jQuery('#type').val(),
-             // price: jQuery('#price').val()
           },
 
           error: function(x,e) {
@@ -379,9 +351,8 @@ $("document").ready(function(){
                 alert('Error.\n'+x.responseText);
             }
           }
-
-
-
+        });
+        window.location.href = "/";
        });
 
      });

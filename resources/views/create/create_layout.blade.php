@@ -215,9 +215,8 @@
         success: function(data){
           alert(response.message)
         }
-
       });
-
+      window.location.href = "/";
      });
    });
 
