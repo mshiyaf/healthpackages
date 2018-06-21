@@ -12,13 +12,13 @@
 
           <div class="form-group">
               <label>Package Name</label>
-              <input type="text" name="packagename" class="form-control" placeholder=" " value={{ $package->packagename }}>
+              <input type="text" name="packagename" id="packagename" class="form-control" placeholder=" " value={{ $package->packagename }}>
           </div>
 
 
           <div class="form-group">
               <label>Package Type</label>
-              <input type="text" list="listptype" name="packagetype" class="form-control" placeholder=" " value={{ $package->packagetype }}>
+              <input type="text" list="listptype" name="packagetype" id="packagetype" class="form-control" placeholder=" " value={{ $package->packagetype }}>
               <datalist id="listptype">
                 <option>Basic</option>
                 <option>Premium</option>
@@ -36,7 +36,7 @@
 
                   </div>
                 </div>
-                <select name="service[]" id="service" class="form-control select2-multiple">
+                <select name="service[]" id="service" name="service" class="form-control select2-multiple">
 
                 <option value='{{ $thisservice->service_id }}' selected>{{ $thisservice->service_name }}</option>
                 @foreach ($services as $service)
@@ -79,7 +79,7 @@
 
           <div class="form-group">
               <label>Total Cost</label>
-              <input type="number" min="0" name="totalcost" class="form-control" placeholder=" " value={{ $package->totalcost }}>
+              <input type="number" min="0" name="totalcost" id="totalcost" class="form-control" placeholder=" " value={{ $package->totalcost }}>
           </div>
 
 
@@ -89,7 +89,7 @@
             <div class="input-group-prepend">
               <div class="input-group-text">
 
-                <input type="checkbox" id="offercheck">
+                <input type="checkbox" id="offercheck" name="offercheck">
 
               </div>
             </div>
@@ -119,13 +119,13 @@
           <div class="form-row">
 
               <div class="form-group col-md-1">
-                <input style="padding-left:1rem" type="checkbox" id="recurringcheck1">
+                <input style="padding-left:1rem" type="checkbox" id="recurringcheck1" name="recurringcheck1">
               </div>
 
 
               <div class="form-group col-md-2">
 
-                <input name="r_time" id="r_time1" class="form-control" disabled placeholder="Monthly">
+                <input name="r_time1" id="r_time1" class="form-control" disabled placeholder="Monthly">
 
               </div>
 
@@ -136,13 +136,13 @@
           </div>
           <div class="form-row">
               <div class="form-group col-md-1">
-                <input style="padding-left:1rem" type="checkbox" id="recurringcheck2">
+                <input style="padding-left:1rem" type="checkbox" id="recurringcheck2" name="recurringcheck2">
               </div>
 
 
               <div class="form-group col-md-2">
 
-                <input name="r_time" id="r_time2" class="form-control" style='background-colour:white' disabled placeholder="Yearly">
+                <input name="r_time2" id="r_time2" class="form-control" style='background-colour:white' disabled placeholder="Yearly">
 
               </div>
 
@@ -161,7 +161,7 @@
         <div class="form-group col-md">
         <div class="form row">
             <div class="form-group col-md-4">
-              <input class="form-control" type="date" id="from_date" value={{ $package->from_date }}>
+              <input class="form-control" type="date" id="from_date" name="from_date" value={{ $package->from_date }}>
             </div>
 
             <div class="form-group">
@@ -169,7 +169,7 @@
             </div>
 
             <div class="form-group col-md-4">
-              <input class="form-control" type="date" id="to_date" value={{ $package->to_date }}>
+              <input class="form-control" type="date" id="to_date" name="to_date" value={{ $package->to_date }}>
             </div>
         </div>
         </div>
@@ -185,7 +185,6 @@
 
       </form>
 
-      @include('errors')
 
   </article>
 

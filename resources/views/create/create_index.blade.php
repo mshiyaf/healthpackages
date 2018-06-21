@@ -15,13 +15,13 @@
 
           <div class="form-group">
               <label>Package Name</label>
-              <input type="text" name="packagename" class="form-control" placeholder=" " >
+              <input type="text" name="packagename" id="packagename" class="form-control" placeholder=" " >
           </div>
 
 
           <div class="form-group">
               <label>Package Type</label>
-              <input type="text" list="listptype" name="packagetype" class="form-control" placeholder=" ">
+              <input type="text" list="listptype" name="packagetype" id="packagetype" class="form-control" placeholder=" ">
               <datalist id="listptype">
                 <option>Basic</option>
                 <option>Premium</option>
@@ -35,7 +35,7 @@
                 <div class="input-group-prepend">
                   <div class="input-group-text">
 
-                    <input type="checkbox" id="servicecheck">
+                    <input type="checkbox" id="servicecheck" name="servicecheck">
 
                   </div>
                 </div>
@@ -79,7 +79,7 @@
 
           <div class="form-group">
               <label>Total Cost</label>
-              <input type="number" min="0" name="totalcost" class="form-control" placeholder=" " >
+              <input type="number" min="0" name="totalcost" id="totalcost" class="form-control" placeholder=" " >
           </div>
 
 
@@ -103,7 +103,7 @@
               <div class="form-check">
 
                   <input type="hidden" value="0" name="insurance" id="insurance">
-                  <input class="form-check-input" type="checkbox" name="select_letter" value="1" id="insurancecheck" onchange="document.getElementById('insurance').value = this.checked ? 1 : 0">
+                  <input class="form-check-input" type="checkbox" name="insurancecheck" value="1" id="insurancecheck" onchange="document.getElementById('insurance').value = this.checked ? 1 : 0">
                   <label class="form-check-label" for="insurancecheck">Insurance Claim</label>
 
               </div>
@@ -118,12 +118,12 @@
           <div class="form-row">
 
               <div class="form-group col-md-1">
-                <input style="padding-left:1rem" type="checkbox" id="recurringcheck1">
+                <input style="padding-left:1rem" type="checkbox" id="recurringcheck1" name="recurringcheck1">
               </div>
 
 
               <div class="form-group col-md-2">
-                <input name="r_time" id="r_time1" class="form-control" disabled placeholder="Monthly">
+                <input name="r_time1" id="r_time1" class="form-control" disabled placeholder="Monthly">
               </div>
 
               <div class="form-group col-md-4">
@@ -134,12 +134,12 @@
           <div class="form-row">
 
               <div class="form-group col-md-1">
-                <input style="padding-left:1rem" type="checkbox" id="recurringcheck2">
+                <input style="padding-left:1rem" type="checkbox" id="recurringcheck2" name="recurringcheck2">
               </div>
 
 
               <div class="form-group col-md-2">
-                <input name="r_time" id="r_time2" class="form-control" style='background-colour:white' disabled placeholder="Yearly">
+                <input name="r_time2" id="r_time2" class="form-control" style='background-colour:white' disabled placeholder="Yearly">
               </div>
 
               <div class="form-group col-md-4">
@@ -157,7 +157,7 @@
         <div class="form-group col-md">
         <div class="form row">
             <div class="form-group col-md-4">
-              <input class="form-control" type="date" id="from_date">
+              <input class="form-control" type="date" name="from_date" id="from_date">
             </div>
 
             <div class="form-group">
@@ -165,7 +165,7 @@
             </div>
 
             <div class="form-group col-md-4">
-              <input class="form-control" type="date" id="to_date">
+              <input class="form-control" type="date" name="to_date" id="to_date">
             </div>
         </div>
         </div>
@@ -181,7 +181,6 @@
 
       </form>
 
-      @include('/errors')
 
   </article>
 
