@@ -49,7 +49,10 @@ class PackagesController extends Controller
 
           'packagename' => 'required',
           'packagetype' => 'required',
-          'totalcost'=> 'required'
+          'duration'=>'required',
+          'totalcost'=> 'required',
+          'from_date'=>'required',
+          'to_date'=>'required'
         ]);
 
         $package = new Package;
@@ -126,7 +129,10 @@ class PackagesController extends Controller
 
           'packagename' => 'required',
           'packagetype' => 'required',
-          'totalcost'=> 'required'
+          'duration'=>'required',
+          'totalcost'=> 'required',
+          'from_date'=>'required',
+          'to_date'=>'required'
         ]);
 
         $id=request('id');

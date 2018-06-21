@@ -319,6 +319,7 @@ $("document").ready(function(){
           method: 'post',
           dataType:'json',
           data: {
+             duration:duration,
              id:id,
              service:service,
              packagename:packagename,
