@@ -15,9 +15,7 @@
 
           <div class="form-group required" >
               <label>Package Name</label>
-              <input type="text" name="packagename" id="packagename" class="form-control" placeholder=" "  >
-              <div class="ack" id="ack1"></div>
-
+              <input type="text" name="packagename" id="packagename" class="form-control" placeholder=" " >
           </div>
 
 
@@ -84,8 +82,6 @@
           <div class="form-group">
               <label>Total Cost</label>
               <input type="number" min="0" name="totalcost" id="totalcost" class="form-control" placeholder=" " >
-              <div class="ack" id="ack3"></div>
-
           </div>
 
 
@@ -163,7 +159,7 @@
         <div class="form-group col-md">
         <div class="form row">
             <div class="form-group col-md-4">
-              <input class="form-control" type="date" id="from_date" name="from_date">
+              <input class="form-control" type="date" name="from_date" id="from_date">
             </div>
 
             <div class="form-group">
@@ -171,7 +167,7 @@
             </div>
 
             <div class="form-group col-md-4">
-              <input class="form-control" type="date" id="to_date" name="to_date">
+              <input class="form-control" type="date" name="to_date" id="to_date">
             </div>
         </div>
         </div>
@@ -186,8 +182,6 @@
           <small class="text-muted">By clicking the 'Create' button, you confirm that you accept our <br> Terms of use and Privacy Policy.</small>
       </form>
 
-
-      @include('/errors')
 
   </article>
 
