@@ -208,7 +208,7 @@ $("document").ready(function(){
           $("#test_"+x).val(td);
           $("#test_"+x).trigger('change');
 
-        
+
       @endforeach
 
 
@@ -342,28 +342,6 @@ $("document").ready(function(){
              r_cost1:r_cost1,
              r_cost2:r_cost2
           },
-<<<<<<< HEAD
-
-          error: function(x,e) {
-            if (x.status==0) {
-                alert('You are offline!!\n Please Check Your Network.');
-            } else if(x.status==200){
-                window.location.href = "/";
-            } else if(x.status==404) {
-                alert('Requested URL not found.');
-            } else if(x.status==500) {
-                alert('Internel Server Error.');
-            } else if(e=='timeout'){
-                alert('Request Time out.');
-            } else {
-                 // modifyResponse(x);
-                alert('Error.\n'+JSON.stringify(JSON.parse(x.responseText).errors));
-                // JSON.stringify(JSON.parse(x.responseText).errors)
-            }
-          }
-        });
-        //window.location.href = "/";
-=======
           success: function(data){
             alert('Package Updated');
             window.location.href = "/";
@@ -395,7 +373,6 @@ $("document").ready(function(){
              const formControls = document.querySelectorAll('.form-control')
              formControls.forEach((element) => element.classList.remove('border', 'border-danger'))
          }
->>>>>>> origin/shiyaf
        });
 
      });

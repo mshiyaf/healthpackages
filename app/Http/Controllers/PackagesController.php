@@ -45,15 +45,14 @@ class PackagesController extends Controller
     function store(Request $request)
     {
 
-        $request->validate([
+      $request->validate([
 
-          'packagename' => 'required',
-          'packagetype' => 'required',
-          'totalcost'=> 'required'
-        ]);
+        'packagename' => 'required',
+        'packagetype' => 'required',
+        'totalcost'=> 'required'
+      ]);
 
         $package = new Package;
-      // }
         $package->duration = request('full_dur');
         $package->service_id = request('service');
         $package->packagename = request('packagename');
