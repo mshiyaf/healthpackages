@@ -213,18 +213,44 @@
            to_date:to_date
         },
         success: function(data){
-          alert(response.message)
-        }
+          alert('Package Created');
+          window.location.href = "/";
+
+        },
+        error: function (error){
+          if(error.responseJSON.errors)
+            {  const errors = error.responseJSON.errors;
+
+              const firstItem = Object.keys(errors)[0];
+              const firstItemDOM = document.getElementById(firstItem);
+              const firstErrorMessage = errors[firstItem][0];
+
+              firstItemDOM.scrollIntoView({ behavior:'smooth' });
+
+              clearErrors();
+
+              firstItemDOM.insertAdjacentHTML('afterend','<div class="text-danger">'+firstErrorMessage+'</div>');
+              firstItemDOM.classList.add('border', 'border-danger')
+
+          }}
       });
-      window.location.href = "/";
+      function clearErrors(){
+
+           // remove all error messages
+           const errorMessages = document.querySelectorAll('.text-danger')
+           errorMessages.forEach((element) => element.textContent = '')
+           // remove all form controls with highlighted error text box
+           const formControls = document.querySelectorAll('.form-control')
+           formControls.forEach((element) => element.classList.remove('border', 'border-danger'))
+       }
+
      });
    });
 
 </script>
 
-
-
 <br><br>
+
 
 </body>
 

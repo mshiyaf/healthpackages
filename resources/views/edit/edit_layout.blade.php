@@ -342,6 +342,7 @@ $("document").ready(function(){
              r_cost1:r_cost1,
              r_cost2:r_cost2
           },
+<<<<<<< HEAD
 
           error: function(x,e) {
             if (x.status==0) {
@@ -362,6 +363,39 @@ $("document").ready(function(){
           }
         });
         //window.location.href = "/";
+=======
+          success: function(data){
+            alert('Package Updated');
+            window.location.href = "/";
+
+          },
+          error: function (error){
+            if(error.responseJSON.errors)
+              {
+                const errors = error.responseJSON.errors;
+                const firstItem = Object.keys(errors)[0];
+                const firstItemDOM = document.getElementById(firstItem);
+                const firstErrorMessage = errors[firstItem][0];
+
+                firstItemDOM.scrollIntoView({ behavior:'smooth' });
+
+                clearErrors();
+
+                firstItemDOM.insertAdjacentHTML('afterend','<div class="text-danger">'+firstErrorMessage+'</div>');
+                firstItemDOM.classList.add('border', 'border-danger')
+
+            }}
+        });
+        function clearErrors(){
+
+             // remove all error messages
+             const errorMessages = document.querySelectorAll('.text-danger')
+             errorMessages.forEach((element) => element.textContent = '')
+             // remove all form controls with highlighted error text box
+             const formControls = document.querySelectorAll('.form-control')
+             formControls.forEach((element) => element.classList.remove('border', 'border-danger'))
+         }
+>>>>>>> origin/shiyaf
        });
 
      });
