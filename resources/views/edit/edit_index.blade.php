@@ -79,7 +79,7 @@
 
           <div class="form-group">
               <label>Total Cost</label>
-              <input type="number" min="0" name="totalcost" class="form-control" placeholder=" " value={{ $package->totalcost }} required>
+              <input type="number" min="0" name="totalcost" class="form-control" placeholder=" " value={{ $package->totalcost }}>
           </div>
 
 
@@ -185,7 +185,7 @@
 
       </form>
 
-      @include('errors')
+      @include('/errors')
 
   </article>
 

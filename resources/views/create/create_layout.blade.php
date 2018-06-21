@@ -51,7 +51,6 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
-
 <script type="text/javascript">
 
   $(document).ready(function() {
@@ -184,7 +183,6 @@
        var id_no = x;
        var insuranceclaim = $("input[name=insurance]").val();
 
-
        var r_cost1 = $("input[name=r_cost1]").val();
        var r_cost2 = $("input[name=r_cost2]").val();
        var from_date = $("input[id=from_date]").val();
@@ -217,13 +215,14 @@
         success: function(data){
           alert(response.message)
         }
-      
+
       });
 
      });
    });
 
 </script>
+
 
 
 <br><br>

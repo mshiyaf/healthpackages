@@ -125,7 +125,7 @@
 </script>
 
 <script type="text/javascript">
-
+var data={};
 
       $("document").ready(function(){
 
@@ -141,24 +141,46 @@
         var category_id = 'category_'+x;
         var cd = {{ $pct->cat_id }};
 
-
         // alert(cd);
         @foreach ($categories as $category)
           @if ($category->cat_id==$pct->cat_id)
+
+          var cat_id = {{$category->cat_id}};
+          var token = $("input[name='_token']").val();
+
+          $.ajax({
+              url: '/select-ajax',
+              method: 'POST',
+              data: {cat_id:cat_id, _token:token},
+              success: function(data) {
+                $("select[id="+test_id+"]").html('');
+                $("select[id="+test_id+"]").html(data.options);
+              }
+          });
+
+
 
           var cn = "{{ $category->cat_name }}";
           console.log(cn);
           @endif
           @endforeach
 
+
           @foreach ($tests as $test)
 
-            @if ($test->test_id==$pct->test_id)
-            var td = "{{ $pct->test_id }}";
+            var td = "{{ $test->test_id }}";
             var tn = "{{ $test->test_name }}";
             console.log(tn);
-            @endif
-            @endforeach
+
+            $("#test_"+x).append($('<option>', {
+                value: {{ $test->test_id }},
+                text: "{{ $test->test_name }}"
+            }));
+
+
+          @endforeach
+
+
             var $div = $('<div class="form-group catclass"><div class="card"><article class="card-body"><label>Category</label><select name="category[]" id='+category_id+' class="form-control select2-multiple" ><option selected="selected" value='+cd+'>'+cn+'</option></select><label>Tests</label><select name="test[]" id='+test_id+' class="form-control select2-multiple" multiple="multiple"><option selected="selected" value='+td+'>'+tn+'</option></select><div></div><a href="#" class="remove_field">Remove</a></article></div></div>');
             $(wrapper).append($div); //add input box
 
@@ -172,16 +194,7 @@
         @endif
       @endforeach
 
-      @foreach ($tests as $test)
-        @if($pct->test_id!=$test->test_id)
 
-              $("#test_"+x).append($('<option>', {
-                  value: {{ $test->test_id }},
-                  text: "{{ $test->test_name }}"
-
-                }));
-        @endif
-      @endforeach
       $div.find("#test_"+x).select2({
       allowClear:true,
       placeholder: '',
@@ -197,7 +210,7 @@
           var token = $("input[name='_token']").val();
 
           $.ajax({
-              url: 'select-ajax',
+              url: '/select-ajax',
               method: 'POST',
               data: {cat_id:cat_id, _token:token},
               success: function(data) {
@@ -320,6 +333,7 @@ $("document").ready(function(){
          var to_date = $("input[id=to_date]").val();
 
 
+
          // alert();
          $.ajaxSetup({
             headers: {
@@ -348,6 +362,7 @@ $("document").ready(function(){
              // type: jQuery('#type').val(),
              // price: jQuery('#price').val()
           },
+
           error: function(x,e) {
             if (x.status==0) {
                 alert('You are offline!!\n Please Check Your Network.');
@@ -360,6 +375,7 @@ $("document").ready(function(){
             } else if(e=='timeout'){
                 alert('Request Time out.');
             } else {
+                modifyResponse(x);
                 alert('Error.\n'+x.responseText);
             }
           }
@@ -367,11 +383,58 @@ $("document").ready(function(){
 
 
        });
+
      });
    });
 
+   function modifyResponse(response) {
+
+    var original_response, modified_response;
+
+    if (this.readyState === 4) {
+
+        // we need to store the original response before any modifications
+        // because the next step will erase everything it had
+        original_response = response.target.responseText;
+
+        // here we "kill" the response property of this request
+        // and we set it to writable
+        Object.defineProperty(this, "responseText", {writable: true});
+
+        // now we can make our modifications and save them in our new property
+        modified_response = JSON.parse(original_response);
+        modified_response.message = "Sorry your request has not been processed";
+        this.responseText = JSON.stringify(modified_response);
+
+    }
+}
+
+// here we listen to all requests being opened
+function openBypass(original_function) {
+
+    return function(method, url, async) {
+
+        // here we listen to the same request the "original" code made
+        // before it can listen to it, this guarantees that
+        // any response it receives will pass through our modifier
+        // function before reaching the "original" code
+        this.addEventListener("readystatechange", modifyResponse);
+
+        // here we return everything original_function might
+        // return so nothing breaks
+        return original_function.apply(this, arguments);
+
+    };
+
+}
+
+// here we override the default .open method so that
+// we can listen and modify the request before the original function get its
+XMLHttpRequest.prototype.open = openBypass(XMLHttpRequest.prototype.open);
+// to see the original response just remove/comment the line above
 
 </script>
+
 
 
 <br><br>

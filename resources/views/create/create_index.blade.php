@@ -1,3 +1,4 @@
+
 @extends('/create/create_layout')
 
 @section('form')
@@ -15,7 +16,7 @@
 
           <div class="form-group">
               <label>Package Name</label>
-              <input type="text" name="packagename" class="form-control" placeholder=" " >
+              <input type="text" name="packagename" class="form-control" placeholder=" " required>
           </div>
 
 
@@ -181,7 +182,7 @@
 
       </form>
 
-      @include('errors')
+      @include('/errors')
 
   </article>
 
