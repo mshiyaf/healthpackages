@@ -11,13 +11,13 @@
 
 
           <div class="form-group">
-              <label>Package Name</label>
+              <label required>Package Name</label>
               <input type="text" name="packagename" class="form-control" placeholder=" " value={{ $package->packagename }}>
           </div>
 
 
           <div class="form-group">
-              <label>Package Type</label>
+              <label required>Package Type</label>
               <input type="text" list="listptype" name="packagetype" class="form-control" placeholder=" " value={{ $package->packagetype }}>
               <datalist id="listptype">
                 <option>Basic</option>
@@ -78,7 +78,7 @@
 
 
           <div class="form-group">
-              <label>Total Cost</label>
+              <label required>Total Cost</label>
               <input type="number" min="0" name="totalcost" class="form-control" placeholder=" " value={{ $package->totalcost }}>
           </div>
 

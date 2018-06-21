@@ -56,6 +56,8 @@
 
   $(document).ready(function() {
 
+     jQuery("[required]").after("<span class='required'> *</span>");
+
     var d = "<?php echo $package->duration ?>";
     var d1 = d.replace("[Days,Hours,Minutes]","");
     var dur = parseInt(d,10);
@@ -151,10 +153,13 @@ $("document").ready(function(){
                 @if ($category->cat_id == $pct->cat_id)
 
 
-                var cn = "{{ $category->cat_id }}"
+                var cn = "{{ $category->cat_id }}";
+
+
 
               var $div = $('<div class="form-group catclass"><div class="card"><article class="card-body"><label>Category</label><select name="category[]" id='+category_id+' class="form-control select2-multiple"><option></option></select><label>Tests</label><select name="test[]" id='+test_id+' class="form-control select2-multiple" multiple="multiple"></select><div></div><a href="#" class="remove_field">Remove</a></article></div></div>');
               $(wrapper).append($div); //add input box
+
 
               @foreach ($categories as $category)
               $("#category_"+x).append($('<option>', {
@@ -162,8 +167,10 @@ $("document").ready(function(){
                   text : "{{ $category->cat_name }}"
               }));
               @endforeach
+
               @foreach ($tests as $test)
               $("#test_"+x).append($('<option>', {
+
                   value: {{ $test->test_id }},
                   text : "{{ $test->test_name }}"
               }));
@@ -201,8 +208,7 @@ $("document").ready(function(){
           $("#test_"+x).val(td);
           $("#test_"+x).trigger('change');
 
-
-
+        
       @endforeach
 
 
@@ -241,7 +247,6 @@ $("document").ready(function(){
               theme: 'bootstrap' });
 
 
-
               $("select[id="+category_id+"]").change(function(){
                   var cat_id = $(this).val();
                   var token = $("input[name='_token']").val();
@@ -267,6 +272,9 @@ $("document").ready(function(){
       });
 
   });
+
+
+
 
 
       $('#submit').click(function(e){
@@ -339,7 +347,7 @@ $("document").ready(function(){
             if (x.status==0) {
                 alert('You are offline!!\n Please Check Your Network.');
             } else if(x.status==200){
-                alert('Successfully entered');
+                window.location.href = "/";
             } else if(x.status==404) {
                 alert('Requested URL not found.');
             } else if(x.status==500) {
@@ -347,62 +355,17 @@ $("document").ready(function(){
             } else if(e=='timeout'){
                 alert('Request Time out.');
             } else {
-                modifyResponse(x);
-                alert('Error.\n'+x.responseText);
+                 // modifyResponse(x);
+                alert('Error.\n'+JSON.stringify(JSON.parse(x.responseText).errors));
+                // JSON.stringify(JSON.parse(x.responseText).errors)
             }
           }
         });
-        window.location.href = "/";
+        //window.location.href = "/";
        });
 
      });
-   });
 
-   function modifyResponse(response) {
-
-    var original_response, modified_response;
-
-    if (this.readyState === 4) {
-
-        // we need to store the original response before any modifications
-        // because the next step will erase everything it had
-        original_response = response.target.responseText;
-
-        // here we "kill" the response property of this request
-        // and we set it to writable
-        Object.defineProperty(this, "responseText", {writable: true});
-
-        // now we can make our modifications and save them in our new property
-        modified_response = JSON.parse(original_response);
-        modified_response.message = "Sorry your request has not been processed";
-        this.responseText = JSON.stringify(modified_response);
-
-    }
-}
-
-// here we listen to all requests being opened
-function openBypass(original_function) {
-
-    return function(method, url, async) {
-
-        // here we listen to the same request the "original" code made
-        // before it can listen to it, this guarantees that
-        // any response it receives will pass through our modifier
-        // function before reaching the "original" code
-        this.addEventListener("readystatechange", modifyResponse);
-
-        // here we return everything original_function might
-        // return so nothing breaks
-        return original_function.apply(this, arguments);
-
-    };
-
-}
-
-// here we override the default .open method so that
-// we can listen and modify the request before the original function get its
-XMLHttpRequest.prototype.open = openBypass(XMLHttpRequest.prototype.open);
-// to see the original response just remove/comment the line above
 
 </script>
 
