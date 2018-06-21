@@ -5,14 +5,16 @@
 
   <article class="card-body">
 
-      <form>
+      <form id="myform" name="form">
 
           {{ csrf_field() }}
 
 
           <div class="form-group">
               <label>Package Name</label>
-              <input type="text" name="packagename" class="form-control" placeholder=" " value={{ $package->packagename }}>
+              <input type="text" name="packagename" class="form-control" placeholder=" " value={{ $package->packagename }} >
+              <div class="ack" id="ack1"></div>
+
           </div>
 
 
@@ -23,6 +25,8 @@
                 <option>Basic</option>
                 <option>Premium</option>
               </datalist>
+              <div class="ack" id="ack2"></div>
+
           </div>
 
 
@@ -79,7 +83,9 @@
 
           <div class="form-group">
               <label>Total Cost</label>
-              <input type="number" min="0" name="totalcost" class="form-control" placeholder=" " value={{ $package->totalcost }}>
+              <input type="number" min="0" name="totalcost" class="form-control" placeholder=" " value={{ $package->totalcost }} >
+              <div class="ack" id="ack3"></div>
+
           </div>
 
 

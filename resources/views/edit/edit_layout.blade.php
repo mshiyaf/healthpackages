@@ -133,14 +133,7 @@ $("document").ready(function(){
   var add_button      = $(".add_field_button"); //Add button ID
   var x = 0;
   var output = {};
-
-
-
-
-
       @foreach ($packcattest as $pct)
-
-
               x++; //text box increment
               var test_id = 'test_'+x;
               var category_id = 'category_'+x;
@@ -148,13 +141,14 @@ $("document").ready(function(){
               var td = [{{ $pct->test_id }}];
 
               @foreach ($categories as $category)
+
                 @if ($category->cat_id == $pct->cat_id)
+                var cn = "{{ $category->cat_id }}";
 
 
-                var cn = "{{ $category->cat_id }}"
+                var $div = $('<div class="form-group catclass"><div class="card"><article class="card-body"><label>Category</label><select name="category[]" id='+category_id+' class="form-control select2-multiple"><option></option></select><label>Tests</label><select name="test[]" id='+test_id+' class="form-control select2-multiple" multiple="multiple"></select><div></div><a href="#" class="remove_field">Remove</a></article></div></div>');
+                $(wrapper).append($div); //add input box
 
-              var $div = $('<div class="form-group catclass"><div class="card"><article class="card-body"><label>Category</label><select name="category[]" id='+category_id+' class="form-control select2-multiple"><option></option></select><label>Tests</label><select name="test[]" id='+test_id+' class="form-control select2-multiple" multiple="multiple"></select><div></div><a href="#" class="remove_field">Remove</a></article></div></div>');
-              $(wrapper).append($div); //add input box
 
               @foreach ($categories as $category)
               $("#category_"+x).append($('<option>', {
@@ -162,12 +156,17 @@ $("document").ready(function(){
                   text : "{{ $category->cat_name }}"
               }));
               @endforeach
+              $("#category_"+x).val(cn);
+              $("#category_"+x).trigger('change');
+
               @foreach ($tests as $test)
               $("#test_"+x).append($('<option>', {
                   value: {{ $test->test_id }},
                   text : "{{ $test->test_name }}"
               }));
               @endforeach
+              $("#test_"+x).val(td);
+              $("#test_"+x).trigger('change');
 
               $div.find("#test_"+x).select2({
               allowClear:true,
@@ -181,29 +180,15 @@ $("document").ready(function(){
               theme: 'bootstrap' });
 
 
-
-
             $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
               e.preventDefault();
-
               $(this).parent().parent().parent('div').remove();
-
             });
-
-
-            $("#category_"+x).val(cn);
-            $("#category_"+x).trigger('change');
-
             @endif
+
+            @endforeach
+
           @endforeach
-
-
-          $("#test_"+x).val(td);
-          $("#test_"+x).trigger('change');
-
-
-
-      @endforeach
 
 
       $(add_button).click(function(e){ //on add input button click
@@ -314,6 +299,8 @@ $("document").ready(function(){
             }
         });
 
+
+
        $.ajax({
           url: "/update",
           method: 'post',
@@ -338,6 +325,8 @@ $("document").ready(function(){
           }
         });
         window.location.href = "/";
+
+    
        });
  });
 

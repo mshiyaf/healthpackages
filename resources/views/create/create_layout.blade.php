@@ -196,7 +196,28 @@
               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
           }
       });
-     $.ajax({
+      if(packagename=="" && packagetype=="" && totalcost=="")
+      // $("#ack").html("Packagename,Packagetype and Totalcost fields are mandatory");
+      {
+        $(".ack").html("This field is required");
+        $(".ack").css("color", "red");
+
+      // alert("Packagename,Packagetype and Totalcost fields are mandatory");
+      }
+       if (packagename=="") {
+        $("#ack1").html("This field is required");
+        $("#ack1").css("color", "red");
+      }
+       if (packagetype=="") {
+        $("#ack2").html("This field is required");
+        $("#ack2").css("color", "red");
+      }
+    if (totalcost=="") {
+        $("#ack3").html("This field is required");
+        $("#ack3").css("color", "red");
+      }
+      else
+      {  $.ajax({
         url: "/packages",
         method: 'post',
         dataType:'json',
@@ -219,6 +240,8 @@
         }
       });
       window.location.href = "/";
+
+    }
      });
    });
 
