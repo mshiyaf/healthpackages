@@ -11,9 +11,6 @@
           {{ csrf_field() }}
 
 
-
-
-
           <div class="form-group">
               <label>Package Name</label>
               <input type="text" name="packagename" id="packagename" class="form-control" placeholder=" ">
